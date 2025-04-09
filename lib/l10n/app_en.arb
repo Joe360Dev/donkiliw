@@ -1,0 +1,501 @@
+{
+  "@@locale": "en",
+  "@@last_modified": "2025-04-02",
+  "@@author": "Joe Dev",
+  "language": "English",
+  "@language": {
+    "description": "Language code for English"
+  },
+  "appName": "Donkiliw",
+  "@appName": {
+    "description": "The name of the app"
+  },
+  "appDescription": "{appName} allows you to explore and sing your local hymns in Bamanakan and Dogon (currently under development).\nEnjoy features such as advanced search, grouping by themes, creating collections, and exporting hymns as images to share with your loved ones.\nOur mission is to preserve and promote spiritual musical culture.",
+  "@appDescription": {
+    "description": "Description of the app",
+    "placeholders": {
+      "appName": {
+        "type": "String",
+        "description": "Name of the app",
+        "example": "Donkiliw"
+      }
+    }
+  },
+  "versionNumber": "Version {version}",
+  "@versionNumber": {
+    "description": "Version number with version code",
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "description": "Version code",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "home": "Home",
+  "@home": {
+    "description": "The title of the home tab"
+  },
+  "themes": "Themes",
+  "@themes": {
+    "description": "The title of the themes tab"
+  },
+  "collections": "Collections",
+  "@collections": {
+    "description": "The title of the collections tab"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "The title of the settings tab"
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "Label for favorites"
+  },
+  "appearancePageTitle": "Appearance & Theme",
+  "@appearancePageTitle": {
+    "description": "The title of the appearance page"
+  },
+  "welcomeToDonkiliw": "Welcome to Donkiliw",
+  "@welcomeToDonkiliw": {
+    "description": "Welcome message on the home page"
+  },
+  "exploreByTheme": "Explore by Theme",
+  "@exploreByTheme": {
+    "description": "Title for exploring hymns by theme"
+  },
+  "myCollections": "My Collections",
+  "@myCollections": {
+    "description": "Title for the collections page"
+  },
+  "myFavorites": "My Favorites",
+  "@myFavorites": {
+    "description": "Label for my favorites"
+  },
+  "loadingText": "Loading in progress...",
+  "@loadingText": {
+    "description": "Text displayed while data is being loaded"
+  },
+  "loadingCollections": "Loading collections...",
+  "@loadingCollections": {
+    "description": "Loading message for collections"
+  },
+  "errorText": "An error occurred",
+  "@errorText": {
+    "description": "Text displayed when an error occurs during data loading"
+  },
+  "errorTryAgain": "Error: Please try again.",
+  "@errorTryAgain": {
+    "description": "Error message when an error occurs"
+  },
+  "errorWhenLoadingCollections": "Error: Unable to load your collections",
+  "@errorWhenLoadingCollections": {
+    "description": "Error message when unable to load collections"
+  },
+  "errorWhenLoadingHymns": "Error: Unable to load your hymns",
+  "@errorWhenLoadingHymns": {
+    "description": "Error message when unable to load hymns"
+  },
+  "errorWhenLoadingThemes": "Error: Unable to load your themes",
+  "@errorWhenLoadingThemes": {
+    "description": "Error message when unable to load themes"
+  },
+  "errorWhenLoadingBooks": "Error: Unable to load your books",
+  "@errorWhenLoadingBooks": {
+    "description": "Error message when unable to load books"
+  },
+  "errorWhenLoadingHymn": "Error: Unable to load your hymn",
+  "@errorWhenLoadingHymn": {
+    "description": "Error message when unable to load a hymn"
+  },
+  "errorWhenCopying": "Error when copying",
+  "@errorWhenCopying": {
+    "description": "Message when there is an error while copying"
+  },
+  "imageExportationFailedMessage": "Image exportation failed",
+  "@imageExportationFailedMessage": {
+    "description": "Message when image exportation fails"
+  },
+  "unableToOpenMailClient": "Unable to open mail client.",
+  "@unableToOpenMailClient": {
+    "description": "Message when the mail client cannot be opened"
+  },
+  "emptyText": "No data available",
+  "@emptyText": {
+    "description": "Text displayed when there is no data to show"
+  },
+  "emptyTextCreateCollection": "Create your first collection",
+  "@emptyTextCreateCollection": {
+    "description": "Message when there are no collections"
+  },
+  "noResult": "No result",
+  "@noResult": {
+    "description": "Message when there are no results"
+  },
+  "noHymnFound": "No hymn found",
+  "@noHymnFound": {
+    "description": "Message when no hymn is found"
+  },
+  "noTitle": "No title",
+  "@noTitle": {
+    "description": "Message when there is no title available"
+  },
+  "noTitleCollection": "No title collection",
+  "@noTitleCollection": {
+    "description": "Message when there is no title for a collection"
+  },
+  "noDescription": "No description",
+  "@noDescription": {
+    "description": "Message when there is no description available"
+  },
+  "createYourFirstCollection": "Create your first collection",
+  "@createYourFirstCollection": {
+    "description": "Message prompting the user to create their first collection"
+  },
+  "addHymnsToYourCollection": "Add hymns to your collection",
+  "@addHymnsToYourCollection": {
+    "description": "Message prompting the user to add hymns to their collection"
+  },
+  "createNewCollection": "Create a new collection",
+  "@createNewCollection": {
+    "description": "Button text for creating a new collection"
+  },
+  "addHymns": "Add hymns",
+  "@addHymns": {
+    "description": "Button text for adding hymns"
+  },
+  "addToCollection": "Add to collection ({count})",
+  "@addToCollection": {
+    "description": "Button text for adding to a collection with the number of collections",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "description": "The number of collections",
+        "example": "2"
+      }
+    }
+  },
+  "exploreThemes": "Explore Themes",
+  "@exploreThemes": {
+    "description": "Button text for exploring themes"
+  },
+  "exploreBooks": "Hymn Books",
+  "@exploreBooks": {
+    "description": "Button text for exploring hymn books"
+  },
+  "seeMore": "See More",
+  "@seeMore": {
+    "description": "Button text for seeing more items"
+  },
+  "seeLess": "See Less",
+  "@seeLess": {
+    "description": "Button text for seeing less items"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Button text for canceling an action"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Button text for saving an action"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Button text for editing"
+  },
+  "editCollection": "Edit Collection",
+  "@editCollection": {
+    "description": "Button text for editing a collection"
+  },
+  "share": "Share",
+  "@share": {
+    "description": "Label for share"
+  },
+  "copy": "Copy",
+  "@copy": {
+    "description": "Label for copy"
+  },
+  "exportAsImage": "Export as Image",
+  "@exportAsImage": {
+    "description": "Label for exporting as image"
+  },
+  "openSettings": "Open Settings",
+  "@openSettings": {
+    "description": "label for Open Settings"
+  },
+  "retry": "Retry",
+  "@retry": {
+    "description": "Label for Retry"
+  },
+  "hymnsAddedToCollection": "{count, plural, one {Hymn added to collection} other {Hymns added to collections}}",
+  "@hymnsAddedToCollection": {
+    "description": "Message when one or more hymns are added to a collection",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "description": "The number of hymns added",
+        "example": "1"
+      }
+    }
+  },
+  "hymnRemovedFromCollection": "Hymn removed from collection",
+  "@hymnRemovedFromCollection": {
+    "description": "Message when a hymn is removed from a collection"
+  },
+  "collectionDeleted": "Collection deleted",
+  "@collectionDeleted": {
+    "description": "Message when a collection is deleted"
+  },
+  "hymnShared": "Hymn shared!",
+  "@hymnShared": {
+    "description": "Message when a hymn is shared"
+  },
+  "hymnCopied": "Hymn copied!",
+  "@hymnCopied": {
+    "description": "Message when a hymn is copied"
+  },
+  "hymnExported": "Hymn exported!",
+  "@hymnExported": {
+    "description": "Message when a hymn is exported"
+  },
+  "imageSavedToGallery": "Image saved to gallery!",
+  "@imageSavedToGallery": {
+    "description": "Message when the image is saved to the gallery"
+  },
+  "toggleLikeResponseMessage": "{likeStatus, select, liked {Hymn added to favorites!} unliked {Hymn removed from favorites!} other {An error occurred. Please retry!}}",
+  "@toggleLikeResponseMessage": {
+    "description": "Message displayed after toggling the like status of a hymn",
+    "placeholders": {
+      "likeStatus": {
+        "type": "String",
+        "description": "The like status of the hymn: 'liked' or 'unliked'",
+        "example": "liked"
+      }
+    }
+  },
+  "hymnsCount": "{count, plural, zero {No hymns} one {1 hymn} other {{count} hymns}}",
+  "@hymnsCount": {
+    "description": "Message for the number of hymns in a collection",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "description": "The number of hymns in the collection",
+        "example": "5"
+      }
+    }
+  },
+  "countResult": "{count, plural, zero {No result} one {1 result} other {{count} results}}",
+  "@countResult": {
+    "description": "Message for the number of results",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "description": "The number of results",
+        "example": "3"
+      }
+    }
+  },
+  "createdAt": "Created on {date}",
+  "@createdAt": {
+    "description": "Message for the creation date of a collection",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "description": "The creation date of the collection",
+        "example": "2025-04-02"
+      }
+    }
+  },
+  "signature": "Generated with {appName}",
+  "@signature": {
+    "description": "App signature when exporting as image",
+    "placeholders": {
+      "appName": {
+        "type": "String",
+        "description": "Application name",
+        "example": "Donkiliw"
+      }
+    }
+  },
+  "searchAnHymn": "Search a hymn...",
+  "@searchAnHymn": {
+    "description": "Placeholder text for the search bar"
+  },
+  "searchCollection": "Search a collection...",
+  "@searchCollection": {
+    "description": "Placeholder text for the collection search bar"
+  },
+  "collectionName": "Collection Name",
+  "@collectionName": {
+    "description": "Label for the name of a collection"
+  },
+  "selectionCollection": "Select a collection",
+  "@selectionCollection": {
+    "description": "Label for selecting a collection"
+  },
+  "collectionDescription": "Description of the collection",
+  "@collectionDescription": {
+    "description": "Label for the description of a collection"
+  },
+  "result": "Result",
+  "@result": {
+    "description": "Label for the result section"
+  },
+  "hymn": "Hymn",
+  "@hymn": {
+    "description": "Label for hymn"
+  },
+  "hymns": "Hymns",
+  "@hymns": {
+    "description": "Label for hymns"
+  },
+  "number": "Number",
+  "@number": {
+    "description": "Label for number"
+  },
+  "title": "Title",
+  "@title": {
+    "description": "Label for title"
+  },
+  "book": "Book",
+  "@book": {
+    "description": "Label for book"
+  },
+  "collection": "Collection",
+  "@collection": {
+    "description": "Label for collection"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Label for description"
+  },
+  "languageLabel": "Language",
+  "@languageLabel": {
+    "description": "Label for language"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Label for appearance"
+  },
+  "mode": "Mode",
+  "@mode": {
+    "description": "Label for mode"
+  },
+  "darkMode": "Dark",
+  "@darkMode": {
+    "description": "Label for dark mode"
+  },
+  "lightMode": "Light",
+  "@lightMode": {
+    "description": "Label for light mode"
+  },
+  "systemMode": "System",
+  "@systemMode": {
+    "description": "Label for system mode"
+  },
+  "themeMode": "Theme Mode",
+  "@themeMode": {
+    "description": "Label for theme mode"
+  },
+  "themeColor": "Theme Color",
+  "@themeColor": {
+    "description": "Label for theme color"
+  },
+  "fontSize": "Font Size",
+  "@fontSize": {
+    "description": "Label for font size"
+  },
+  "repeatRefrain": "Repeat Refrain",
+  "@repeatRefrain": {
+    "description": "Label for repeat refrain"
+  },
+  "repeatRefrainDescription": "Repeat the refrain after each verse",
+  "@repeatRefrainDescription": {
+    "description": "Description for repeat refrain"
+  },
+  "connectedMode": "Connected Mode",
+  "@connectedMode": {
+    "description": "Label for connected mode"
+  },
+  "connectedModeDescription": "Celebrate the LORD in community with your friends and family.",
+  "@connectedModeDescription": {
+    "description": "Description for connected mode"
+  },
+  "about": "About",
+  "@about": {
+    "description": "Label for about"
+  },
+  "developer": "Developer",
+  "@developer": {
+    "description": "Label for developer"
+  },
+  "appDeveloperText": "Developed by Joe Dev",
+  "@appDeveloperText": {
+    "description": "Text for the app developer"
+  },
+  "developerDescription": "Another victory for the LORD.",
+  "@developerDescription": {
+    "description": "Description for the app developer"
+  },
+  "contact": "Contact",
+  "@contact": {
+    "description": "Label for contact"
+  },
+  "contactDescription": "If you have any questions, feedback, suggestions, or want to contribute to the app, please don't hesitate to reach out to me.",
+  "@contactDescription": {
+    "description": "Description for contact"
+  },
+  "donkiliwQuote": "All that breathes praise the LORD.",
+  "@donkiliwQuote": {
+    "description": "Quote from the Bible"
+  },
+  "donkiliwQuoteReference": "Psalm 150:6",
+  "@donkiliwQuoteReference": {
+    "description": "Reference for the quote"
+  },
+  "permissionRequired": "Permission Required",
+  "@permissionRequired": {
+    "description": "Permission required message"
+  },
+  "permissionRequiredMessage": "{permission} permission is required {reason}. Please enable it in app settings.",
+  "@permissionRequiredMessage": {
+    "description": "Permission required message",
+    "placeholders": {
+      "permission": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "permissionDenied": "Permission Denied",
+  "@permissionDenied": {
+    "description": "Permission denied message"
+  },
+  "permissionDeniedMessage": "{permission} permission was denied. This is required {reason}. Would you like to try again?",
+  "@permissionDeniedMessage": {
+    "description": "Permission denied message",
+    "placeholders": {
+      "permission": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "storagePermission": "Storage",
+  "@storagePermission": {
+    "description": "Stockage"
+  },
+  "photosPermission": "Photos",
+  "@photosPermission": {
+    "description": "Photos"
+  },
+  "saveHymnImages": "to save hymn images",
+  "@saveHymnImages": {
+    "description": "Save hymn images"
+  }
+  
+}

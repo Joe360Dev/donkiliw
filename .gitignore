@@ -1,0 +1,148 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related (e.g., Android Studio)
+*.iml
+.idea/
+*.ipr
+*.iws
+*.lock
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Flutter/Dart generated files
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+flutter_*.snapshot
+*.g.dart
+*.freezed.dart
+*.gen.dart
+
+# Flutter specific
+*.flutter-plugins
+*.flutter-plugins-dependencies
+flutter_export_environment.sh
+
+# Android specific
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/*.keystore
+android/*.jks
+android/key.properties
+
+# iOS specific
+ios/.generated/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+ios/Podfile.lock
+ios/Runner.xcworkspace/xcshareddata/
+ios/Runner.xcworkspace/xcuserdata/
+ios/*.pbxproj
+ios/*.xcscheme
+ios/*.xcuserstate
+ios/*.mode1v3
+ios/*.mode2v3
+ios/*.perspectivev3
+ios/*.xccheckout
+
+# Web (if you use Flutter web)
+web/favicon.png
+web/index.html
+web/manifest.json
+
+# macOS/Linux/Windows local files
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+# Sensitive or local config files
+*.env
+*.key
+*.pem
+*.cer
+
+# Build outputs
+*.apk
+*.aab
+*.ipa
+*.xcarchive
+*.dSYM.zip
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Logs and caches
+*.log
+*.log.*
+*.cache
