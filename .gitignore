@@ -4,100 +4,65 @@
 *.pyc
 *.swp
 .DS_Store
+.Thumbs.db
+desktop.ini
 .atom/
 .build/
 .buildlog/
 .history
-.svn/
 .swiftpm/
-migrate_working_dir/
-
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
-
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
-
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
 .svn/
 migrate_working_dir/
 
-# IntelliJ related (e.g., Android Studio)
+# IDEs
+# IntelliJ/Android Studio
 *.iml
-.idea/
 *.ipr
 *.iws
+.idea/
 *.lock
 
-# VS Code
+# VS Code (keep some configs if needed)
 .vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Flutter/Dart generated files
+# Flutter/Dart
 .dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 build/
 flutter_*.png
 flutter_*.snapshot
+flutter_export_environment.sh
 *.g.dart
 *.freezed.dart
 *.gen.dart
+**/doc/api/
+**/ios/Flutter/.last_build_id
 
-# Flutter specific
-*.flutter-plugins
-*.flutter-plugins-dependencies
-flutter_export_environment.sh
+# Symbolication and Obfuscation
+app.*.symbols
+app.*.map.json
 
-# Android specific
+# Android
 android/.gradle/
 android/build/
 android/app/build/
+android/app/debug/
+android/app/profile/
+android/app/release/
 android/local.properties
 android/*.keystore
 android/*.jks
 android/key.properties
 
-# iOS specific
+# iOS
 ios/.generated/
 ios/Flutter/App.framework
 ios/Flutter/Flutter.framework
@@ -115,34 +80,28 @@ ios/*.mode2v3
 ios/*.perspectivev3
 ios/*.xccheckout
 
-# Web (if you use Flutter web)
+# Web (if applicable)
 web/favicon.png
 web/index.html
 web/manifest.json
 
-# macOS/Linux/Windows local files
-*.DS_Store
-Thumbs.db
-desktop.ini
-
-# Sensitive or local config files
+# Sensitive/Local Configs
 *.env
 *.key
 *.pem
 *.cer
 
-# Build outputs
+# Build Outputs
 *.apk
 *.aab
 *.ipa
 *.xcarchive
 *.dSYM.zip
 
-# Dependency directories
+# Dependency Directories
 vendor/
 node_modules/
 
-# Logs and caches
-*.log
+# Logs and Caches
 *.log.*
 *.cache
