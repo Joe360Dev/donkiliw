@@ -41,7 +41,8 @@ class DatabaseHelper {
       await Directory(dbPath).create(recursive: true);
 
       try {
-        ByteData data = await rootBundle.load('assets/databases/hymn_app.db');
+        ByteData data =
+            await rootBundle.load('assets/databases/donkiliw_app.db');
         List<int> bytes = data.buffer.asUint8List(
           data.offsetInBytes,
           data.lengthInBytes,
