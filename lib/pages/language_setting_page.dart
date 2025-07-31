@@ -76,7 +76,12 @@ class _LanguageSettingsPageState extends State<LanguageSettingsPage> {
             side: BorderSide(
               color: Colors.transparent,
             ),
-            title: Text('Bamanakan'),
+            title: Text(
+              'Bamanakan',
+              style: GoogleFonts.notoSans(
+                color: colorScheme.onSurface.withAlpha(100),
+              ),
+            ),
           ),
           CheckboxListTile(
             value: language == Language.english,

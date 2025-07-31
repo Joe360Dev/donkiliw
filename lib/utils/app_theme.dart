@@ -57,7 +57,6 @@ class AppTheme {
       ),
       scaffoldBackgroundColor: darkColorScheme.surface,
       cardColor: darkColorScheme.surface,
-      dialogBackgroundColor: darkColorScheme.surface,
       appBarTheme: AppBarTheme(
         backgroundColor: darkColorScheme.surface,
         foregroundColor: darkColorScheme.onSurface,
@@ -67,6 +66,7 @@ class AppTheme {
         selectedItemColor: darkColorScheme.primary,
         unselectedItemColor: darkColorScheme.onSurface.withAlpha(153),
       ),
+      dialogTheme: DialogThemeData(backgroundColor: darkColorScheme.surface),
     );
   }
 }

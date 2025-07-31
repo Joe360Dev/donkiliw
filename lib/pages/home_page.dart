@@ -7,6 +7,7 @@ import 'package:hymns/pages/search_page.dart';
 import 'package:hymns/pages/theme_details_page.dart';
 import 'package:hymns/utils/database_helper.dart';
 import 'package:hymns/utils/size_config.dart';
+import 'package:hymns/widgets/dismissible_keyboard.dart';
 import 'package:hymns/widgets/future_builder_wrapper.dart';
 import 'package:hymns/widgets/hymn_book_tile.dart';
 import 'package:hymns/widgets/hymn_theme_card.dart';
@@ -156,7 +157,7 @@ class _HomePageState extends State<HomePage>
               horizontal: defaultSize * .75,
               vertical: defaultSize * .5,
             ),
-            childAspectRatio: 2 / 2,
+            childAspectRatio: 2 / 1.95,
             children: List.generate(
               hymnBooks.length,
               (index) {
@@ -188,20 +189,26 @@ class _HomePageState extends State<HomePage>
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
 
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(
-          kToolbarHeight * 2.5,
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(defaultSize * 1.5),
-            bottomRight: Radius.circular(defaultSize * 1.5),
+    return DismissibleKeyboard(
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(
+            kToolbarHeight * 2.5,
           ),
           child: AppBar(
+            elevation: 4,
             backgroundColor: colorScheme.primary,
             foregroundColor: colorScheme.onPrimary,
-            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(
+                  defaultSize * 1.75,
+                ),
+                bottomRight: Radius.circular(
+                  defaultSize * 1.75,
+                ),
+              ),
+            ),
             flexibleSpace: SafeArea(
               child: Padding(
                 padding: EdgeInsets.symmetric(
@@ -283,60 +290,60 @@ class _HomePageState extends State<HomePage>
             ],
           ),
         ),
-      ),
-      body: FutureBuilderWrapper(
-          future: _dataLoadFuture,
-          builder: (data) {
-            final List<HymnBook> hymnBooks = data['hymn_books'] ?? [];
-            final List<HymnTheme> hymnThemes = data['hymn_themes'] ?? [];
+        body: FutureBuilderWrapper(
+            future: _dataLoadFuture,
+            builder: (data) {
+              final List<HymnBook> hymnBooks = data['hymn_books'] ?? [];
+              final List<HymnTheme> hymnThemes = data['hymn_themes'] ?? [];
 
-            return SingleChildScrollView(
-              padding: EdgeInsets.symmetric(
-                vertical: defaultSize * .6,
-                // horizontal: defaultSize,
-              ),
-              child: Column(
-                children: [
-                  // Thematics
-                  _buildThematics(hymnThemes),
+              return SingleChildScrollView(
+                padding: EdgeInsets.symmetric(
+                  vertical: defaultSize * .6,
+                  // horizontal: defaultSize,
+                ),
+                child: Column(
+                  children: [
+                    // Thematics
+                    _buildThematics(hymnThemes),
 
-                  SizedBox(height: defaultSize * 1.1),
-                  _buildHymnBooks(hymnBooks),
-                  SizedBox(height: defaultSize * .25),
-                  Divider(
-                    color: colorScheme.onSurface.withAlpha(128),
-                    thickness: .5,
-                    indent: defaultSize * 5,
-                    endIndent: defaultSize * 5,
-                  ),
-                  SizedBox(height: defaultSize * .1),
-
-                  RichText(
-                    text: TextSpan(
-                      text: l10n.donkiliwQuote,
-                      style: textTheme.bodyLarge!.copyWith(
-                        color: colorScheme.onSurface,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: '\n${l10n.donkiliwQuoteReference}',
-                          style: GoogleFonts.notoSans(
-                            fontWeight: FontWeight.w600,
-                            color: colorScheme.primary,
-                            fontSize: defaultSize * .9,
-                            height: 1.5,
-                          ),
-                        ),
-                      ],
+                    SizedBox(height: defaultSize * 1.1),
+                    _buildHymnBooks(hymnBooks),
+                    SizedBox(height: defaultSize * .25),
+                    Divider(
+                      color: colorScheme.onSurface.withAlpha(128),
+                      thickness: .5,
+                      indent: defaultSize * 5,
+                      endIndent: defaultSize * 5,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: defaultSize * .3),
-                ],
-              ),
-            );
-          }),
+                    SizedBox(height: defaultSize * .1),
+
+                    RichText(
+                      text: TextSpan(
+                        text: l10n.donkiliwQuote,
+                        style: textTheme.bodyLarge!.copyWith(
+                          color: colorScheme.onSurface,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: '\n${l10n.donkiliwQuoteReference}',
+                            style: GoogleFonts.notoSans(
+                              fontWeight: FontWeight.w600,
+                              color: colorScheme.primary,
+                              fontSize: defaultSize * .9,
+                              height: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: defaultSize * .3),
+                  ],
+                ),
+              );
+            }),
+      ),
     );
   }
 }

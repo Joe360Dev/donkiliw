@@ -8,7 +8,7 @@
 
 - **Hymn Library**: Explore hymns, starting with Bamanakan classics.
 - **Upcoming**:
-  - *Add Dogon language hymn books.
+  - *Add Dogon* language hymn books.
   - *Churches Map*: Locate nearby churches.
   - *Christian Events*: Discover worship gatherings and concerts.
   - *Ticket Sales*: Buy concert tickets in-app.

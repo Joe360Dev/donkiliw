@@ -116,7 +116,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         title: Text(
           l10n.toggleLikeResponseMessage(
             l10n.toggleLikeResponseMessage(
-              hymn.isLiked ? 'liked' : 'unliked',
+              hymn.isLiked ? 'unliked' : 'liked',
             ),
           ),
           style: textTheme.titleMedium!.copyWith(

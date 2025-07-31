@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,7 +15,7 @@ import 'package:hymns/widgets/add_hymn_to_collection_bottom_sheet.dart';
 import 'package:hymns/widgets/circular_icon_text_button.dart';
 import 'package:hymns/widgets/future_builder_wrapper.dart';
 import 'package:hymns/widgets/hymn_section_widget.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -225,7 +226,7 @@ class _HymnPageState extends State<HymnPage> {
         style: ToastificationStyle.flat,
         title: Text(
           l10n.toggleLikeResponseMessage(
-            hymn.isLiked ? 'liked' : 'unliked',
+            hymn.isLiked ? 'unliked' : 'liked',
           ),
           style: textTheme.titleMedium!.copyWith(
             fontSize: defaultSize * .85,
@@ -750,7 +751,7 @@ class _HymnPageState extends State<HymnPage> {
       final formattedDate = _getFormattedDate();
       final fileName = '${hymn.title.replaceAll(' ', '_')}_$formattedDate.png';
 
-      final result = await ImageGallerySaver.saveImage(
+      final result = await ImageGallerySaverPlus.saveImage(
         image,
         quality: 100,
         name: fileName,

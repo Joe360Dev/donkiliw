@@ -713,3 +713,75 @@ const thematics = {
   ],
   "Esprit Saint": [55, 68, 81, 109, 125, 178, 185]
 };
+
+const themes = [
+  {
+    "id": 12,
+    "title": "Actes de Foi",
+    "beticoura": [],
+  },
+  {
+    "id": 1,
+    "title": "Adoration & Prière",
+    "beticoura": [2, 3, 5],
+  },
+  {
+    "id": 8,
+    "title": "Amour & Grâce",
+    "beticoura": [],
+  },
+  {
+    "id": 3,
+    "title": "Combat Spirituel & Persévérance",
+    "beticoura": [],
+  },
+  {
+    "id": 4,
+    "title": "Délivrance & Secours",
+    "beticoura": [4, 6],
+  },
+  {
+    "id": 13,
+    "title": "Esprit Saint",
+    "beticoura": [],
+  },
+  {
+    "id": 9,
+    "title": "Espérance Céleste & Avènement",
+    "beticoura": [],
+  },
+  {
+    "id": 2,
+    "title": "Foi & Espérance",
+    "beticoura": [],
+  },
+  {
+    "id": 6,
+    "title": "Jésus-Christ",
+    "beticoura": [],
+  },
+  {
+    "id": 10,
+    "title": "Loi & Commandement",
+    "beticoura": [
+      1,
+    ],
+  },
+  {
+    "id": 11,
+    "title": "Mission & Discipulat",
+    "beticoura": [],
+  },
+  {
+    "id": 5,
+    "title": "Passion & Résurrection",
+    "beticoura": [],
+  },
+  {
+    "id": 7,
+    "title": "Puissance & Parole de Dieu",
+    "beticoura": [
+      4,
+    ],
+  }
+];

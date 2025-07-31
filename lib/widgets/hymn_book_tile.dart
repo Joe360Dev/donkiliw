@@ -47,7 +47,7 @@ class _HymnBookTileState extends State<HymnBookTile> {
             width: double.infinity,
             padding: EdgeInsets.all(defaultSize * .2),
             decoration: BoxDecoration(
-              color: colorScheme.onSurface.withAlpha(153),
+              color: colorScheme.onSurface.withAlpha(200),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(defaultSize * .5),
                 bottomRight: Radius.circular(defaultSize * .5),
@@ -61,7 +61,7 @@ class _HymnBookTileState extends State<HymnBookTile> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: textTheme.titleMedium!.copyWith(
-                color: colorScheme.onPrimary,
+                color: colorScheme.surfaceBright,
                 fontSize: defaultSize * .7,
                 fontWeight: FontWeight.bold,
                 height: 1.1,
@@ -72,7 +72,7 @@ class _HymnBookTileState extends State<HymnBookTile> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(widget.coverImagePath),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
               borderRadius: BorderRadius.circular(defaultSize * .5),
             ),

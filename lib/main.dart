@@ -7,10 +7,16 @@ import 'package:hymns/utils/page_router.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:upgrader/upgrader.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Upgrader.clearSavedSettings(); // REMOVE this for release builds
   runApp(const MyApp());
 }
+
+// Global key for accessing the navigator from anywhere
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,7 +38,9 @@ class MyApp extends StatelessWidget {
 
           return ToastificationWrapper(
             child: MaterialApp(
-              title: 'Hymns App',
+              debugShowCheckedModeBanner: false,
+              navigatorKey: navigatorKey,
+              title: 'Donkiliw',
               theme: appTheme.buildLightTheme(),
               darkTheme: appTheme.buildDarkTheme(),
               themeMode: settings.themeMode,
@@ -50,7 +58,26 @@ class MyApp extends StatelessWidget {
               ],
               routes: PageRouter.routes,
               onGenerateRoute: PageRouter.onGenerateRoute,
-              home: const MainPage(),
+              home: UpgradeAlert(
+                upgrader: Upgrader(
+                  // storeController: UpgraderStoreController(
+                  //     // onAndroid: () => UpgraderAppcastStore(
+                  //     //   appcastURL:
+                  //     //       'https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast.xml',
+                  //     // ),
+                  //     // oniOS: () => UpgraderAppcastStore(
+                  //     //   appcastURL:
+                  //     //       'https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast.xml',
+                  //     // ),
+                  //     ),
+                  countryCode: locale.countryCode,
+                  languageCode: locale.languageCode,
+                  minAppVersion: '1.1.0',
+                  debugLogging: true,
+                  debugDisplayAlways: true, // Forces dialog
+                ),
+                child: const MainPage(),
+              ),
             ),
           );
         },

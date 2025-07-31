@@ -14,7 +14,7 @@ class HymnBook {
     this.publicationYear,
     this.language,
   }) : coverImagePath =
-            'assets/book_covers/${slugify(name, delimiter: '_')}.jpg';
+            'assets/book_covers/${slugify(name, delimiter: '_')}.png';
 
   factory HymnBook.fromMap(Map<String, dynamic> map) {
     return HymnBook(

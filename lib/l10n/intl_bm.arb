@@ -1,461 +1,111 @@
 {
   "@@locale": "bm",
-  "@@last_modified": "2025-04-02",
+  "@@last_modified": "2025-07-30",
   "@@author": "Joe Dev",
-
-  "language": "Bamanakan",
-  "@language": {
-    "description": "Bamanakan ka kan kɔdɔ"
-  },
-  "appName": "Betiw",
-  "@appName": {
-    "description": "Aplikasion ka tɔgɔ"
-  },
-  "appDescription": "{appName} a ka kan sɔrɔ ni kuma suuru kura Bamanakan ni Dogon (o kɛra dɛlɔmɛn la).\nFɛn karaw sɔrɔ kura, groupe kura ni tɛmɛw, ka koleksion sɔrɔ, ni ka suuru dɔn sari fɛn ka bɔ kelen kelen ni i ka dɔgɔkunw.\nAn ka misi ka jamana sɔrɔ ni ka bɔ kelen kɛlen mousso kunkan ni mizika.",
-  "@appDescription": {
-    "description": "Aplikasion ka ɲɛfɔli",
-    "placeholders": {
-      "appName": {
-        "type": "String",
-        "description": "Aplikasion ka tɔgɔ",
-        "example": "Betiw"
-      }
-    }
-  },
-  "versionNumber": "Versiyon {version}",
-  "@versionNumber": {
-    "description": "Versiyon nɔmɔrɔ ni versiyon kɔdɔ ye",
-    "placeholders": {
-      "version": {
-        "type": "String",
-        "description": "Versiyon kɔdɔ",
-        "example": "1.0.0"
-      }
-    }
-  },
-
-  "home": "Dugu",
-  "@home": {
-    "description": "Dugu ka titri"
-  },
-  "themes": "Tɛmɛw",
-  "@themes": {
-    "description": "Tɛmɛw ka titri"
-  },
-  "collections": "Koleksionw",
-  "@collections": {
-    "description": "Koleksionw ka titri"
-  },
-  "settings": "Paramɛtrɛw",
-  "@settings": {
-    "description": "Paramɛtrɛw ka titri"
-  },
-  "favorites": "Favoriw",
-  "@favorites": {
-    "description": "Favoriw ka etiket"
-  },
-
-  "appearancePageTitle": "Kɛnɛma ni Tɛmɛ",
-  "@appearancePageTitle": {
-    "description": "Kɛnɛma ka pajɛ titri"
-  },
-  "welcomeToBetiw": "I ni ce Betiw la",
-  "@welcomeToBetiw": {
-    "description": "I ni ce sɔrɔli kan dugu ka pajɛ kan"
-  },
-  "exploreByTheme": "Sɔrɔ ni Tɛmɛ",
-  "@exploreByTheme": {
-    "description": "Titri ka suuru sɔrɔ ni tɛmɛ ye"
-  },
-  "myCollections": "N ka Koleksionw",
-  "@myCollections": {
-    "description": "Koleksionw ka pajɛ titri"
-  },
-  "myFavorites": "N ka Favoriw",
-  "@myFavorites": {
-    "description": "N ka favoriw ka etiket"
-  },
-
-  "loadingText": "Kɛra kɔrɔ la...",
-  "@loadingText": {
-    "description": "Kan kɛra sɔrɔli la waati"
-  },
-  "loadingCollections": "Koleksionw kɛra kɔrɔ la...",
-  "@loadingCollections": {
-    "description": "Koleksionw ka sɔrɔli kan"
-  },
-
-  "errorText": "Erɛr o bɛ",
-  "@errorText": {
-    "description": "Kan kɛra sɔrɔli la waati ka erɛr bɛ"
-  },
-  "errorTryAgain": "Erɛr: I ka sɔrɔ kɛ fɔlɔ",
-  "@errorTryAgain": {
-    "description": "Erɛr kan waati ka erɛr bɛ"
-  },
-  "errorWhenLoadingCollections": "Erɛr: I ka koleksionw sɔrɔ kɛnɛ",
-  "@errorWhenLoadingCollections": {
-    "description": "Erɛr kan waati ka koleksionw sɔrɔ kɛnɛ"
-  },
-  "errorWhenLoadingHymns": "Erɛr: I ka suuru sɔrɔ kɛnɛ",
-  "@errorWhenLoadingHymns": {
-    "description": "Erɛr kan waati ka suuru sɔrɔ kɛnɛ"
-  },
-  "errorWhenLoadingThemes": "Erɛr: I ka tɛmɛw sɔrɔ kɛnɛ",
-  "@errorWhenLoadingThemes": {
-    "description": "Erɛr kan waati ka tɛmɛw sɔrɔ kɛnɛ"
-  },
-  "errorWhenLoadingBooks": "Erɛr: I ka livrew sɔrɔ kɛnɛ",
-  "@errorWhenLoadingBooks": {
-    "description": "Erɛr kan waati ka livrew sɔrɔ kɛnɛ"
-  },
-  "errorWhenLoadingHymn": "Erɛr: I ka suuru dɔ sɔrɔ kɛnɛ",
-  "@errorWhenLoadingHymn": {
-    "description": "Erɛr kan waati ka suuru dɔ sɔrɔ kɛnɛ"
-  },
-  "errorWhenCopying": "Erɛr waati ka kopi kɛ",
-  "@errorWhenCopying": {
-    "description": "Kan waati ka erɛr bɛ kopi kɛli la"
-  },
-  "imageExportationFailedMessage": "Sari fɛn ka bɔ kɛnɛ",
-  "@imageExportationFailedMessage": {
-    "description": "Kan waati ka sari fɛn bɔli kɛnɛ"
-  },
-  "unableToOpenMailClient": "Mɛyi kilayan sɔrɔ kɛnɛ.",
-  "@unableToOpenMailClient": {
-    "description": "Kan waati ka mɛyi kilayan sɔrɔ kɛnɛ"
-  },
-
-  "emptyText": "Doni tɛ yɔrɔ",
-  "@emptyText": {
-    "description": "Kan kɛra sɔrɔli la waati ka doni tɛ yɔrɔ"
-  },
-  "emptyTextCreateCollection": "I ka koleksion fɔlɔ kɛ",
-  "@emptyTextCreateCollection": {
-    "description": "Kan waati ka koleksionw tɛ yɔrɔ"
-  },
-  "noResult": "Rɛzilta tɛ yɔrɔ",
-  "@noResult": {
-    "description": "Kan waati ka rɛzilta tɛ yɔrɔ"
-  },
-  "noHymnFound": "Suuru tɛ sɔrɔ",
-  "@noHymnFound": {
-    "description": "Kan waati ka suuru tɛ sɔrɔ"
-  },
-  "noTitle": "Titri tɛ yɔrɔ",
-  "@noTitle": {
-    "description": "Kan waati ka titri tɛ yɔrɔ"
-  },
-  "noTitleCollection": "Koleksion titri tɛ yɔrɔ",
-  "@noTitleCollection": {
-    "description": "Kan waati ka koleksion titri tɛ yɔrɔ"
-  },
-  "noDescription": "Deskripsion tɛ yɔrɔ",
-  "@noDescription": {
-    "description": "Kan waati ka deskripsion tɛ yɔrɔ"
-  },
-
-  "createYourFirstCollection": "I ka koleksion fɔlɔ kɛ",
-  "@createYourFirstCollection": {
-    "description": "Kan ka mɔgɔ dɛmɛ ka koleksion fɔlɔ kɛ"
-  },
-  "addHymnsToYourCollection": "Suuru dɔw ka i ka koleksion la",
-  "@addHymnsToYourCollection": {
-    "description": "Kan ka mɔgɔ dɛmɛ ka suuru dɔw ka koleksion la"
-  },
-  "createNewCollection": "Koleksion kura kɛ",
-  "@createNewCollection": {
-    "description": "Bouton kan ka koleksion kura kɛ"
-  },
-  "addHymns": "Suuru dɔw ka",
-  "@addHymns": {
-    "description": "Bouton kan ka suuru dɔw ka"
-  },
-  "addToCollection": "Ka koleksion la ({count})",
-  "@addToCollection": {
-    "description": "Bouton kan ka koleksion la ni koleksionw ka nɔmɔrɔ ye",
-    "placeholders": {
-      "count": {
-        "type": "int",
-        "description": "Koleksionw ka nɔmɔrɔ",
-        "example": "2"
-      }
-    }
-  },
-  "exploreThemes": "Tɛmɛw sɔrɔ",
-  "@exploreThemes": {
-    "description": "Bouton kan ka tɛmɛw sɔrɔ"
-  },
-  "exploreBooks": "Suuru Livrew",
-  "@exploreBooks": {
-    "description": "Bouton kan ka suuru livrew sɔrɔ"
-  },
-  "seeMore": "Yeli dɔw sɔrɔ",
-  "@seeMore": {
-    "description": "Bouton kan ka yeli dɔw sɔrɔ"
-  },
-  "seeLess": "Yeli dɔw dɔgɔya",
-  "@seeLess": {
-    "description": "Bouton kan ka yeli dɔw dɔgɔya"
-  },
-  "cancel": "Ka ban",
-  "@cancel": {
-    "description": "Bouton kan ka kɛli ban"
-  },
-  "save": "Ka sɔrɔ",
-  "@save": {
-    "description": "Bouton kan ka kɛli sɔrɔ"
-  },
-  "edit": "Ka chanjé",
-  "@edit": {
-    "description": "Bouton kan ka chanjé"
-  },
-  "editCollection": "Koleksion Chanjé",
-  "@editCollection": {
-    "description": "Bouton kan ka koleksion chanjé"
-  },
-  "share": "Ka bɔ kelen kelen",
-  "@share": {
-    "description": "Etiket ka bɔ kelen kelen"
-  },
-  "copy": "Ka kopi",
-  "@copy": {
-    "description": "Etiket ka kopi"
-  },
-  "exportAsImage": "Ka dɔn sari fɛn",
-  "@exportAsImage": {
-    "description": "Etiket ka dɔn sari fɛn"
-  },
-
-  "hymnsAddedToCollection": "{count, plural, one {Suuru dɔ ka koleksion la} other {Suuru dɔw ka koleksionw la}}",
-  "@hymnsAddedToCollection": {
-    "description": "Kan waati ka suuru dɔ ani dɔw ka koleksion la",
-    "placeholders": {
-      "count": {
-        "type": "int",
-        "description": "Suuru dɔw ka nɔmɔrɔ ka koleksion la",
-        "example": "1"
-      }
-    }
-  },
-  "hymnRemovedFromCollection": "Suuru bɔra koleksion kɔnɔ",
-  "@hymnRemovedFromCollection": {
-    "description": "Kan waati ka suuru bɔra koleksion kɔnɔ"
-  },
-  "collectionDeleted": "Koleksion bɔra",
-  "@collectionDeleted": {
-    "description": "Kan waati ka koleksion bɔra"
-  },
-  "hymnShared": "Suuru bɔra kelen kelen!",
-  "@hymnShared": {
-    "description": "Kan waati ka suuru bɔra kelen kelen"
-  },
-  "hymnCopied": "Suuru kopira!",
-  "@hymnCopied": {
-    "description": "Kan waati ka suuru kopira"
-  },
-  "hymnExported": "Suuru dɔn sari fɛn!",
-  "@hymnExported": {
-    "description": "Kan waati ka suuru dɔn sari fɛn"
-  },
-  "imageSavedToGallery": "Sari fɛn sɔrɔra galeri la!",
-  "@imageSavedToGallery": {
-    "description": "Kan waati ka sari fɛn sɔrɔra galeri la"
-  },
-  "toggleLikeResponseMessage": "{likeStatus, select, liked {Suuru ka favoriw la!} unliked {Suuru bɔra favoriw kɔnɔ!} other {Erɛr o bɛ. I ka sɔrɔ kɛ fɔlɔ!}}",
-  "@toggleLikeResponseMessage": {
-    "description": "Kan kɛra suuru ka favori yɛrɛyɛrɛli kɔfɛ",
-    "placeholders": {
-      "likeStatus": {
-        "type": "String",
-        "description": "Suuru ka favori yɛrɛyɛrɛli: 'liked' ani 'unliked'",
-        "example": "liked"
-      }
-    }
-  },
-
-  "hymnsCount": "{count, plural, zero {Suuru tɛ yɔrɔ} one {1 suuru} other {{count} suuru}}",
-  "@hymnsCount": {
-    "description": "Kan ka suuru nɔmɔrɔ koleksion kɔnɔ",
-    "placeholders": {
-      "count": {
-        "type": "int",
-        "description": "Suuru nɔmɔrɔ koleksion kɔnɔ",
-        "example": "5"
-      }
-    }
-  },
-  "countResult": "{count, plural, zero {Rɛzilta tɛ yɔrɔ} one {1 rɛzilta} other {{count} rɛzilta}}",
-  "@countResult": {
-    "description": "Kan ka rɛzilta nɔmɔrɔ",
-    "placeholders": {
-      "count": {
-        "type": "int",
-        "description": "Rɛzilta nɔmɔrɔ",
-        "example": "3"
-      }
-    }
-  },
-  "createdAt": "Kɛra {date} la",
-  "@createdAt": {
-    "description": "Kan ka koleksion ka kɛli datɛ",
-    "placeholders": {
-      "date": {
-        "type": "String",
-        "description": "Koleksion ka kɛli datɛ",
-        "example": "2025-04-02"
-      }
-    }
-  },
-  "signature": "Kɛra ni {appName}",
-  "@signature": {
-    "description": "Aplikasion ka sɛnɛ waati ka dɔn sari fɛn",
-    "placeholders": {
-      "appName": {
-        "type": "String",
-        "description": "Aplikasion tɔgɔ",
-        "example": "Betiw"
-      }
-    }
-  },
-
-  "searchAnHymn": "Suuru sɔrɔ...",
-  "@searchAnHymn": {
-    "description": "Sɔrɔli kan ka suuru sɔrɔ"
-  },
-  "searchCollection": "Koleksion sɔrɔ...",
-  "@searchCollection": {
-    "description": "Sɔrɔli kan ka koleksion sɔrɔ"
-  },
-  "collectionName": "Koleksion Tɔgɔ",
-  "@collectionName": {
-    "description": "Etiket ka koleksion tɔgɔ"
-  },
-  "selectionCollection": "Koleksion dɔ sɛbɛn",
-  "@selectionCollection": {
-    "description": "Etiket ka koleksion dɔ sɛbɛn"
-  },
-  "collectionDescription": "Koleksion ka Deskripsion",
-  "@collectionDescription": {
-    "description": "Etiket ka koleksion ka deskripsion"
-  },
-
-  "result": "Rɛzilta",
-  "@result": {
-    "description": "Etiket ka rɛzilta sɛkisɛ"
-  },
-  "hymn": "Suuru",
-  "@hymn": {
-    "description": "Etiket ka suuru"
-  },
-  "hymns": "Suuruw",
-  "@hymns": {
-    "description": "Etiket ka suuru dɔw"
-  },
-  "number": "Nɔmɔrɔ",
-  "@number": {
-    "description": "Etiket ka nɔmɔrɔ"
-  },
-  "title": "Titri",
-  "@title": {
-    "description": "Etiket ka titri"
-  },
-  "book": "Livre",
-  "@book": {
-    "description": "Etiket ka livre"
-  },
-  "collection": "Koleksion",
-  "@collection": {
-    "description": "Etiket ka koleksion"
-  },
-  "description": "Deskripsion",
-  "@description": {
-    "description": "Etiket ka deskripsion"
-  },
-
-  "languageLabel": "Kan",
-  "@languageLabel": {
-    "description": "Etiket ka kan"
-  },
-  "appearance": "Kɛnɛma",
-  "@appearance": {
-    "description": "Etiket ka kɛnɛma"
-  },
-  "mode": "Mɔdɛ",
-  "@mode": {
-    "description": "Etiket ka mɔdɛ"
-  },
-  "darkMode": "Dibi",
-  "@darkMode": {
-    "description": "Etiket ka dibi mɔdɛ"
-  },
-  "lightMode": "Kɛnɛ",
-  "@lightMode": {
-    "description": "Etiket ka kɛnɛ mɔdɛ"
-  },
-  "systemMode": "Sistɛmɛ",
-  "@systemMode": {
-    "description": "Etiket ka sistɛmɛ mɔdɛ"
-  },
-  "themeMode": "Tɛmɛ Mɔdɛ",
-  "@themeMode": {
-    "description": "Etiket ka tɛmɛ mɔdɛ"
-  },
-  "themeColor": "Tɛmɛ Kulɛri",
-  "@themeColor": {
-    "description": "Etiket ka tɛmɛ kulɛri"
-  },
-  "fontSize": "Sɛbɛnni Kɛnɛma",
-  "@fontSize": {
-    "description": "Etiket ka sɛbɛnni kɛnɛma"
-  },
-  "repeatRefrain": "Refrɛn Kɛ Fɔlɔ",
-  "@repeatRefrain": {
-    "description": "Etiket ka refrɛn kɛ fɔlɔ"
-  },
-  "repeatRefrainDescription": "Refrɛn kɛ fɔlɔ ka versɛ bɛɛ kɔfɛ",
-  "@repeatRefrainDescription": {
-    "description": "Deskripsion ka refrɛn kɛ fɔlɔ"
-  },
-  "connectedMode": "Kɔnɛksion Mɔdɛ",
-  "@connectedMode": {
-    "description": "Etiket ka kɔnɛksion mɔdɛ"
-  },
-  "connectedModeDescription": "I ni Alla sɛbɛn ni i ka dɔgɔkunw ni i ka familu.",
-  "@connectedModeDescription": {
-    "description": "Deskripsion ka kɔnɛksion mɔdɛ"
-  },
-
-  "about": "Kɔnɔ",
-  "@about": {
-    "description": "Etiket ka kɔnɔ"
-  },
-  "developer": "Dɛlɔpɛrɛ",
-  "@developer": {
-    "description": "Etiket ka dɛlɔpɛrɛ"
-  },
-  "appDeveloperText": "Joe Dev ka kɛ",
-  "@appDeveloperText": {
-    "description": "Kan ka aplikasion dɛlɔpɛrɛ ye"
-  },
-  "developerDescription": "Alla ka sɔrɔ kura dɔ.",
-  "@developerDescription": {
-    "description": "Deskripsion ka aplikasion dɛlɔpɛrɛ ye"
-  },
-  "contact": "Kontakɛ",
-  "@contact": {
-    "description": "Etiket ka kontakɛ"
-  },
-  "contactDescription": "N'i ye ɲininkali dɔw sɔrɔ, kuma dɔw sɔrɔ, sɛbɛnni dɔw sɔrɔ, ani ka aplikasion dɛmɛ, i ka ban ka n cɛsiri.",
-  "@contactDescription": {
-    "description": "Deskripsion ka kontakɛ"
-  },
-  "betiwQuote": "Bɛɛ min bɛ sanfɛ Alla sɛbɛn.",
-  "@betiwQuote": {
-    "description": "Kuma Bibel kɔnɔ"
-  },
-  "betiwQuoteReference": "Zaburu 150:6",
-  "@betiwQuoteReference": {
-    "description": "Referans ka kuma ye"
-  }
+  "language": "Bamanankan",
+  "appName": "Donkiliw",
+  "appDescription": "{appName} bɛɛ fɛ ka dɔnkiliw bamanankan ani dogon kan (dogon kan bɛ kɛlɛ). \nI bɛ kɛ don kɛɲɛnkɛ, suguya kalan, wɛrɛ kɔrɔlen donkiliw, ani donkiliw dɔrɔn fɔlɔ sisan ka baara bolo i ce yera. \nU ye a la sariya kɔrɔba ani donkili bamanakan dɔɔn bolo.",
+  "versionNumber": "Sigilan {version}",
+  "home": "Sɔrɔ",
+  "themes": "Suguya",
+  "collections": "Wɛrɛw",
+  "settings": "Tungɛnɛ",
+  "favorites": "Bɛɛ min i bɛ se ka fɛ",
+  "appearancePageTitle": "Dugu ani sigi",
+  "welcomeToDonkiliw": "I ni ce Donkiliw la",
+  "exploreByTheme": "Ka suguya la don",
+  "myCollections": "Ne wɛrɛw",
+  "myFavorites": "Ne bɛɛ min ne bɛ fɛ",
+  "loadingText": "Ka ladɛ...",
+  "loadingCollections": "Ka wɛrɛw ladɛ...",
+  "errorText": "Fɔlɔ fɛɛra",
+  "errorTryAgain": "Fɔlɔ: A fɔlɔ, i ka segin.",
+  "errorWhenLoadingCollections": "Fɔlɔ: Wɛrɛw ka ladɛ bɔ fɔ",
+  "errorWhenLoadingHymns": "Fɔlɔ: Donkiliw ka ladɛ bɔ fɔ",
+  "errorWhenLoadingThemes": "Fɔlɔ: Suguya ka ladɛ bɔ fɔ",
+  "errorWhenLoadingBooks": "Fɔlɔ: Liburu ladɛ bɔ fɔ",
+  "errorWhenLoadingHymn": "Fɔlɔ: Donkili ka ladɛ bɔ fɔ",
+  "errorWhenCopying": "Fɔlɔ ka kɔpi kɛ",
+  "imageExportationFailedMessage": "Sɛnin fɔlɔ ladɛ bɔ fɔ",
+  "unableToOpenMailClient": "I bɛ se ka email kɛnɛ bɔ fɔ.",
+  "emptyText": "Dɔ bɛ yen",
+  "emptyTextCreateCollection": "Ka i fɔlɔ wɛrɛ daminɛn",
+  "noResult": "Ala fɛn bɛ yen",
+  "noHymnFound": "Ala donkili bɛ yen",
+  "noTitle": "Ala tɔgɔ bɛ yen",
+  "noTitleCollection": "Wɛrɛ min tɔgɔ tɛ",
+  "noDescription": "Ala tafɛn bɛ yen",
+  "createYourFirstCollection": "Ka i fɔlɔ wɛrɛ daminɛn",
+  "addHymnsToYourCollection": "Ka donkiliw kɛ i wɛrɛ kan",
+  "createNewCollection": "Ka wɛrɛ kɛ kɔrɔ",
+  "addHymns": "Ka donkiliw dɔrɔn",
+  "addToCollection": "Ka wɛrɛ kan dɔrɔn ({count})",
+  "exploreThemes": "Ka suguya don",
+  "exploreBooks": "Donkili liburuw",
+  "seeMore": "Ka dɔrɔ",
+  "seeLess": "Ka nɔgɔya",
+  "cancel": "Fɔlɔ",
+  "save": "Dɛmɛ",
+  "edit": "Bɛɛ kɛ",
+  "editCollection": "Ka wɛrɛ bɛɛ kɛ",
+  "share": "Kɛla",
+  "copy": "Kɔpi",
+  "exportAsImage": "Ka sɛnin tɛgɛ fɔ",
+  "hymnsAddedToCollection": "{count, plural, one {Donkili dɔrɔn ka wɛrɛ kan} other {Donkiliw dɔrɔn ka wɛrɛ kan}}",
+  "hymnRemovedFromCollection": "Donkili ka wɛrɛ kan fɔ",
+  "collectionDeleted": "Wɛrɛ ka tɔgɔ",
+  "hymnShared": "Donkili ka kɛla!",
+  "hymnCopied": "Donkili ka kɔpi kɛ!",
+  "hymnExported": "Donkili ka fɔ!",
+  "imageSavedToGallery": "Sɛnin ka galerie kɔnɔ dɛmɛ!",
+  "toggleLikeResponseMessage": "{likeStatus, select, liked {Donkili ka bɛɛ fɛ!} unliked {Donkili ka bɛɛ fɔ!} other {Fɔlɔ fɛɛra. A fɔlɔ, i ka segin!}}",
+  "hymnsCount": "{count, plural, zero {Ala donkili} one {Donkili kelen} other {{count} donkiliw}}",
+  "countResult": "{count, plural, zero {Ala natigɛ} one {Natigɛ kelen} other {{count} natigɛw}}",
+  "createdAt": "Ka kɛ {date}",
+  "signature": "Ka kɛ fɛ {appName} bɛɛ",
+  "searchAnHymn": "Ka donkiliw kɛnɛ...",
+  "searchCollection": "Ka wɛrɛ kɛnɛ...",
+  "collectionName": "Wɛrɛ tɔgɔ",
+  "selectionCollection": "Ka wɛrɛ sɔrɔ",
+  "collectionDescription": "Wɛrɛ tafɛn",
+  "result": "Natigɛ",
+  "hymn": "Donkili",
+  "hymns": "Donkiliw",
+  "number": "Nɔmba",
+  "title": "Tɔgɔ",
+  "book": "Liburu",
+  "collection": "Wɛrɛ",
+  "description": "Tafɛn",
+  "languageLabel": "Kangɛ",
+  "appearance": "Sigilen",
+  "mode": "Fɛnɛ",
+  "darkMode": "Sɔrɔkɔ",
+  "lightMode": "Jɛ",
+  "systemMode": "Sistɛmu",
+  "themeMode": "Suguya fɛnɛ",
+  "themeColor": "Suguya kɔnɔni",
+  "fontSize": "Bo kan",
+  "repeatRefrain": "Ka refɛrɛ kɔrɔladon",
+  "repeatRefrainDescription": "Ka refɛrɛ kɔrɔladon kɔnɔ fɔlɔ kɛnɛ",
+  "connectedMode": "Mɔgɔ tugu fɛnɛ",
+  "connectedModeDescription": "Ka SEGUW ka yera kɛ mɔgɔnw ka ɲɛgɛn bolo.",
+  "about": "Ka i bɔ",
+  "developer": "Dɛvɛlɔpɛri",
+  "appDeveloperText": "Joe Dev bɛɛ kɛ don",
+  "developerDescription": "SEGUW bɛɛ kɛ fɔ!",
+  "supports": "Bɔ kɛbaw",
+  "supportsDescription": "Ala ka kɛnɛ Idrissa Pierre Diarra la, u ye donkili base de données ko jɛ ko don.",
+  "contact": "Taw",
+  "contactDescription": "Sisan, i bɛ se ka ka ɲinɛ, kɛlɛ, jɛgɛya ani ka app fɛɛra, i bɛ se ka ɲinɛ nɔgɔ.",
+  "donkiliwQuote": "Mɔgɔ bɛɛ ye SEGUW ka donkili.",
+  "donkiliwQuoteReference": "Zabura 150:6",
+  "permissionRequired": "Sɔrɔ sisan ye",
+  "permissionRequiredMessage": "Sɔrɔ {permission} ye sisan {reason}. Ka a kɛ app tungɛnɛ kɔnɔ.",
+  "permissionDenied": "Sɔrɔ ka fɔ",
+  "permissionDeniedMessage": "Sɔrɔ {permission} ka fɔ. A ye sisan ye {reason}. I bɛ segin?",
+  "storagePermission": "Damɛ",
+  "photosPermission": "Sɛninw",
+  "saveHymnImages": "ka donkili sɛninw dɛmɛ",
+  "openSettings": "Ka tungɛnɛ bɔ",
+  "retry": "Segin"
 }

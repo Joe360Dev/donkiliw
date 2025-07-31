@@ -167,6 +167,24 @@ class _AboutPageState extends State<AboutPage> {
             SizedBox(
               height: defaultSize * .75,
             ),
+            SizedBox(
+              height: defaultSize * .5,
+            ),
+            Text(
+              l10n.supports,
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: defaultSize * .5,
+            ),
+            Text(
+              l10n.supportsDescription,
+            ),
+            SizedBox(
+              height: defaultSize * .75,
+            ),
             Text(
               l10n.contact,
               style: textTheme.titleLarge?.copyWith(

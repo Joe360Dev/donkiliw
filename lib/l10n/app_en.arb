@@ -437,6 +437,14 @@
   "@developerDescription": {
     "description": "Description for the app developer"
   },
+  "supports": "Supported by",
+  "@supports": {
+    "description": "Label for supports"
+  },
+  "supportsDescription": "Big thanks to Idrissa Pierre Diarra for sharing his local hymns database.",
+  "@supportsDescription": {
+    "description": "Description for supports"
+  },
   "contact": "Contact",
   "@contact": {
     "description": "Label for contact"

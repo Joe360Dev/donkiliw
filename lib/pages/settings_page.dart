@@ -1,4 +1,3 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +5,7 @@ import 'package:hymns/pages/about_page.dart';
 import 'package:hymns/pages/appearence_setting_page.dart';
 import 'package:hymns/pages/language_setting_page.dart';
 import 'package:hymns/utils/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -129,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 CupertinoIcons.chevron_right,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

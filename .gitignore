@@ -61,6 +61,7 @@ android/local.properties
 android/*.keystore
 android/*.jks
 android/key.properties
+android/app/.cxx/
 
 # iOS
 ios/.generated/
@@ -97,6 +98,7 @@ web/manifest.json
 *.ipa
 *.xcarchive
 *.dSYM.zip
+
 
 # Dependency Directories
 vendor/
