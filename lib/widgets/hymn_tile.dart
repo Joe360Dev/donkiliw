@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/pages/hymn_page.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/pages/hymn_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class HymnTile extends StatelessWidget {
   const HymnTile({

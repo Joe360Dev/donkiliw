@@ -1,17 +1,17 @@
+import 'package:donkiliw/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn_book.dart';
-import 'package:hymns/models/hymn_theme.dart';
-import 'package:hymns/pages/favorites_page.dart';
-import 'package:hymns/pages/search_page.dart';
-import 'package:hymns/pages/theme_details_page.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/dismissible_keyboard.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
-import 'package:hymns/widgets/hymn_book_tile.dart';
-import 'package:hymns/widgets/hymn_theme_card.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/models/hymn_book.dart';
+import 'package:donkiliw/models/hymn_theme.dart';
+import 'package:donkiliw/pages/search_page.dart';
+import 'package:donkiliw/pages/theme_details_page.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/dismissible_keyboard.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/widgets/hymn_book_tile.dart';
+import 'package:donkiliw/widgets/hymn_theme_card.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

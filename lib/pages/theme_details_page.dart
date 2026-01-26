@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/models/hymn_theme.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
-import 'package:hymns/widgets/hymn_list_tile.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/models/hymn_theme.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/widgets/hymn_list_tile.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class ThemeDetailsPage extends StatefulWidget {
   const ThemeDetailsPage({super.key, this.hymnThemeId});
@@ -15,7 +15,8 @@ class ThemeDetailsPage extends StatefulWidget {
   final int? hymnThemeId;
 
   @override
-  State<ThemeDetailsPage> createState() => _ThemeDetailsPageState();
+  State<ThemeDetailsPage> createState() =>
+      _ThemeDetailsPageState();
 }
 
 class _ThemeDetailsPageState extends State<ThemeDetailsPage>
@@ -29,7 +30,8 @@ class _ThemeDetailsPageState extends State<ThemeDetailsPage>
 
   @override
   void initState() {
-    _selectedHymnTheme = widget.hymnThemeId ?? _selectedHymnTheme;
+    _selectedHymnTheme =
+        widget.hymnThemeId ?? _selectedHymnTheme;
     super.initState();
     _loadHymnThemes();
     _loadThemeHymns();
@@ -88,7 +90,8 @@ class _ThemeDetailsPageState extends State<ThemeDetailsPage>
                   },
                   itemBuilder: (context, index) {
                     final hymnTheme = hymnThemes[index];
-                    final isSelected = _selectedHymnTheme == hymnTheme.id;
+                    final isSelected =
+                        _selectedHymnTheme == hymnTheme.id;
                     return FilterChip(
                       showCheckmark: false,
                       padding: EdgeInsets.all(
@@ -96,7 +99,8 @@ class _ThemeDetailsPageState extends State<ThemeDetailsPage>
                       ),
                       selected: isSelected,
                       selectedColor: colorScheme.primary,
-                      backgroundColor: colorScheme.surfaceContainerLow,
+                      backgroundColor:
+                          colorScheme.surfaceContainerLow,
                       avatar: SvgPicture.asset(
                         'assets/svg_icons/${hymnTheme.iconName}',
                         colorFilter: ColorFilter.mode(
@@ -110,7 +114,9 @@ class _ThemeDetailsPageState extends State<ThemeDetailsPage>
                         hymnTheme.name,
                         style: GoogleFonts.notoSans().copyWith(
                           fontWeight: FontWeight.w600,
-                          color: isSelected ? colorScheme.onPrimary : null,
+                          color: isSelected
+                              ? colorScheme.onPrimary
+                              : null,
                         ),
                       ),
                       onSelected: (bool value) {

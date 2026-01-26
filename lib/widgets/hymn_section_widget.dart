@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/section.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/models/section.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class HymnSectionWidget extends StatelessWidget {
   const HymnSectionWidget({

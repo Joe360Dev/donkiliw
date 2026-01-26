@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:hymns/database/data/thematics.dart';
-import 'package:hymns/models/hymn_collection.dart';
-import 'package:hymns/models/hymn_collection_join.dart';
+import 'package:donkiliw/database/data/thematics.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
+import 'package:donkiliw/models/hymn_collection_join.dart';
 import 'package:path/path.dart';
 import 'package:slugify/slugify.dart';
 import 'package:sqflite/sqflite.dart';
@@ -98,8 +98,8 @@ class DatabaseHelper {
         hymn_number INTEGER NOT NULL,
         title TEXT NOT NULL,
         first_line TEXT,
-        FOREIGN KEY (hymn_book_id) REFERENCES hymn_book(id),
-        UNIQUE(hymn_book_id, hymn_number)
+        other_reference TEXT,
+        FOREIGN KEY (hymn_book_id) REFERENCES hymn_book(id)
     )''');
 
     await db.execute('''
@@ -197,130 +197,199 @@ class DatabaseHelper {
     final hymnBookFiles = [
       {
         'book_name': 'Beti Coura',
-        'data': await jsonToHymnBookData('assets/json_books/betiba.json'),
+        'path': 'assets/json_books/betiba.json',
       },
       {
         'book_name': 'Ala Tanu Donkiliw Nº1',
-        'data': await jsonToHymnBookData(
-            'assets/json_books/ala_tanu_donkiliw_1.json'),
+        'path': 'assets/json_books/ala_tanu_donkiliw_1.json',
       },
       {
         'book_name': 'Ala Tanu Donkiliw Nº2',
-        'data': await jsonToHymnBookData(
-            'assets/json_books/ala_tanu_donkiliw_2.json'),
+        'path': 'assets/json_books/ala_tanu_donkiliw_2.json',
+      },
+      {
+        'book_name': 'Nii Don Diyɛ',
+        'path': 'assets/json_books/nii_don.json',
       },
     ];
 
-    // Regex to extract repeat count like (6x), Unicode-safe
     final repeatCountRegex = RegExp(r'\((\d+)x\)', unicode: true);
-
-    // Regex to remove leading/trailing colons and spaces, preserving Bamanakan characters
     final cleanRegex = RegExp(r'^[:\s]*|[:\s]*$', unicode: true);
 
     for (var bookFile in hymnBookFiles) {
       final bookName = bookFile['book_name'] as String;
-      final List<List<Map<String, String>>> jsonBook =
-          bookFile['data'] as List<List<Map<String, String>>>;
+      final data = await jsonToHymnBookData(bookFile['path'] as String);
 
-      // Insert the hymn book
       final hymnBookId = await dbHelper.insertHymnBook(
         HymnBook(name: bookName),
       );
 
-      int hymnNumber = 1;
+      int currentHymnNumber = (bookName == 'Nii Don Diyɛ') ? 0 : 1;
 
-      for (var jsonHymn in jsonBook) {
-        // Extract title
-        final titleSection = jsonHymn.firstWhere(
-            (jsonSection) => jsonSection.containsKey('titre'),
-            orElse: () => {'titre': 'Untitled $hymnNumber'});
-        final sectionFirst = jsonHymn.firstWhere(
-          (jsonSection) =>
-              jsonSection.containsKey('couple') ||
-              jsonSection.containsKey('refrain'),
-          orElse: () => {'couple': ''},
-        );
+      for (var jsonGroup in data) {
+        // jsonGroup is a list of sections for one or more hymns sharing currentHymnNumber
+        List<Map<String, String>> currentHymnSections = [];
+        String? currentHymnTitle;
+        String? otherReference;
 
-        final hymn = Hymn(
-          hymnBookId: hymnBookId,
-          bookName: bookName,
-          number: hymnNumber,
-          title: titleSection['titre']!,
-          firstLine: sectionFirst[
-                  sectionFirst.containsKey('couple') ? 'couple' : 'refrain']
-              ?.split('\n')
-              .first
-              .replaceAll(cleanRegex, ''),
-        );
-
-        final hymnId = await dbHelper.insertHymn(hymn);
-
-        // Insert sections
-        String? previousRefrain;
-        for (var jsonSection in jsonHymn) {
-          if (jsonSection['titre'] == null &&
-              jsonSection['couple'] == null &&
-              jsonSection['refrain'] == null) {
+        for (var jsonSection in jsonGroup) {
+          if (jsonSection.containsKey('autrepassage')) {
+            otherReference = jsonSection['autrepassage'];
             continue;
           }
 
-          final section = Section(
-            hymnId: hymnId,
-            title:
-                jsonSection.containsKey('titre') ? jsonSection['titre'] : null,
-            sectionType: jsonSection.containsKey('titre')
-                ? 'title'
-                : jsonSection.containsKey('couple')
-                    ? 'verse'
-                    : 'refrain',
-            sequence: jsonHymn.indexOf(jsonSection) + 1,
-          );
-
-          if (section.sectionType == 'refrain' &&
-              jsonSection.values.first == previousRefrain) {
-            continue;
-          } else if (section.sectionType == 'refrain') {
-            previousRefrain = jsonSection.values.first;
-          }
-
-          final sectionId = await dbHelper.insertSection(section);
-
-          // Split and clean phrases
-          final jsonPhrases = jsonSection.values.first.split('\n');
-          int sequence = 1;
-
-          for (var jsonPhrase in jsonPhrases) {
-            if (jsonPhrase.trim().isEmpty) continue;
-
-            // Extract repeat count
-            int repeatCount = 1;
-            final match = repeatCountRegex.firstMatch(jsonPhrase);
-            if (match != null) {
-              repeatCount = int.parse(match.group(1)!);
+          if (jsonSection.containsKey('titre')) {
+            final title = jsonSection['titre']!;
+            if (bookName == 'Nii Don Diyɛ') {
+              final numberMatch = RegExp(r'^(\d+)').firstMatch(title);
+              if (numberMatch != null) {
+                currentHymnNumber = int.parse(numberMatch.group(1)!);
+              }
             }
 
-            // Clean the phrase, preserving Bamanakan characters
-            String cleanedPhrase = jsonPhrase
-                .trim()
-                .replaceAll(repeatCountRegex, '')
-                .replaceAll(cleanRegex, '')
-                .trim();
-
-            if (cleanedPhrase.isNotEmpty) {
-              final phrase = Phrase(
-                sectionId: sectionId,
-                content: cleanedPhrase,
-                sequence: sequence++,
-                repeatCount: repeatCount,
+            // If we already have sections, it means we found a NEW title in the same group
+            if (currentHymnSections.isNotEmpty) {
+              await _processAndInsertHymn(
+                dbHelper,
+                hymnBookId,
+                bookName,
+                currentHymnNumber,
+                currentHymnTitle ?? 'Untitled',
+                currentHymnSections,
+                repeatCountRegex,
+                cleanRegex,
+                otherReference,
               );
-              await dbHelper.insertPhrase(phrase);
+              currentHymnSections = [];
+              otherReference = null;
             }
+            currentHymnTitle = title;
           }
+          currentHymnSections.add(jsonSection);
         }
-        hymnNumber++;
+
+        // Insert the last (or only) hymn in this group
+        if (currentHymnSections.isNotEmpty) {
+          await _processAndInsertHymn(
+            dbHelper,
+            hymnBookId,
+            bookName,
+            currentHymnNumber,
+            currentHymnTitle ?? 'Untitled',
+            currentHymnSections,
+            repeatCountRegex,
+            cleanRegex,
+            otherReference,
+          );
+        }
+
+        if (bookName != 'Nii Don Diyɛ') {
+          currentHymnNumber++;
+        }
       }
     }
     if (kDebugMode) print('Hymn Import COMPLETED!');
+  }
+
+  Future<void> _processAndInsertHymn(
+    DatabaseHelper dbHelper,
+    int hymnBookId,
+    String bookName,
+    int hymnNumber,
+    String title,
+    List<Map<String, String>> sections,
+    RegExp repeatCountRegex,
+    RegExp cleanRegex,
+    String? otherReference,
+  ) async {
+    // Determine first line
+    String? firstLine;
+    for (var section in sections) {
+      if (section.containsKey('couple') || section.containsKey('refrain')) {
+        firstLine = section.values.first
+            .split('\n')
+            .firstWhere((line) => line.trim().isNotEmpty, orElse: () => '')
+            .replaceAll(cleanRegex, '');
+        if (firstLine.isNotEmpty) break;
+      }
+    }
+
+    String finalTitle = title;
+    if (bookName == 'Nii Don Diyɛ') {
+      finalTitle = title.replaceFirst(RegExp(r'^\d+[\.\s]+'), '').trim();
+    }
+
+    final hymn = Hymn(
+      hymnBookId: hymnBookId,
+      bookName: bookName,
+      number: hymnNumber,
+      title: finalTitle,
+      firstLine: firstLine,
+      otherReference: otherReference,
+    );
+
+    final hymnId = await dbHelper.insertHymn(hymn);
+
+    // Insert sections
+    String? previousRefrain;
+    int sequence = 1;
+
+    for (var jsonSection in sections) {
+      final sectionType = jsonSection.containsKey('titre')
+          ? 'title'
+          : jsonSection.containsKey('couple')
+              ? 'verse'
+              : 'refrain';
+
+      // Skip duplicated refrains within the SAME hymn if desired,
+      // but usually the JSON already contains them.
+      // The old logic had: if (section.sectionType == 'refrain' && jsonSection.values.first == previousRefrain) continue;
+      if (sectionType == 'refrain' &&
+          jsonSection.values.first == previousRefrain) {
+        continue;
+      } else if (sectionType == 'refrain') {
+        previousRefrain = jsonSection.values.first;
+      }
+
+      final section = Section(
+        hymnId: hymnId,
+        title: jsonSection.containsKey('titre') ? jsonSection['titre'] : null,
+        sectionType: sectionType,
+        sequence: sequence++,
+      );
+
+      final sectionId = await dbHelper.insertSection(section);
+
+      // Split and clean phrases
+      final jsonPhrases = jsonSection.values.first.split('\n');
+      int phraseSequence = 1;
+
+      for (var jsonPhrase in jsonPhrases) {
+        if (jsonPhrase.trim().isEmpty) continue;
+
+        int repeatCount = 1;
+        final match = repeatCountRegex.firstMatch(jsonPhrase);
+        if (match != null) {
+          repeatCount = int.parse(match.group(1)!);
+        }
+
+        String cleanedPhrase = jsonPhrase
+            .trim()
+            .replaceAll(repeatCountRegex, '')
+            .replaceAll(cleanRegex, '')
+            .trim();
+
+        if (cleanedPhrase.isNotEmpty) {
+          final phrase = Phrase(
+            sectionId: sectionId,
+            content: cleanedPhrase,
+            sequence: phraseSequence++,
+            repeatCount: repeatCount,
+          );
+          await dbHelper.insertPhrase(phrase);
+        }
+      }
+    }
   }
 
   Future<List<List<Map<String, String>>>> jsonToHymnBookData(
@@ -380,10 +449,11 @@ class DatabaseHelper {
     LEFT JOIN phrase p ON p.section_id = s.id
     WHERE LOWER(h.title) LIKE ? 
        OR LOWER(h.first_line) LIKE ? 
+       OR LOWER(h.other_reference) LIKE ?
        OR LOWER(p.content) LIKE ?
     ORDER BY id
     ''',
-      ['%$lowerQuery%', '%$lowerQuery%', '%$lowerQuery%'],
+      ['%$lowerQuery%', '%$lowerQuery%', '%$lowerQuery%', '%$lowerQuery%'],
     );
 
     final groupedHymns = <String, List<Hymn>>{};
@@ -532,7 +602,7 @@ class DatabaseHelper {
       'favorite_hymn',
       where: 'hymn_id = ?',
       whereArgs: [hymnId],
-    ).then((maps) => maps.isNotEmpty);
+    ).then((map) => map.isNotEmpty);
 
     final hymn = Hymn.fromMap(
       hymnMaps.first,
@@ -575,6 +645,22 @@ class DatabaseHelper {
     );
   }
 
+  Future<List<Hymn>> getHymnsByNumber(int bookId, int number) async {
+    final db = await database;
+    final results = await db.query(
+      'hymn',
+      where: 'hymn_book_id = ? AND hymn_number = ?',
+      whereArgs: [bookId, number],
+      orderBy: 'id ASC',
+    );
+
+    final List<Hymn> hymns = [];
+    for (var row in results) {
+      hymns.add(await getHymnData(row['id'] as int));
+    }
+    return hymns;
+  }
+
   Future<List<Hymn>> getHymnsByBook(int bookId) async {
     final db = await database;
 
@@ -598,9 +684,8 @@ class DatabaseHelper {
   }
 
   // hymn like methods
-  Future<void> toggleHymnLike(Hymn hymn) async {
-    final hymnId = hymn.id!;
-    if (hymn.isLiked) {
+  Future<void> toggleHymnLike(int hymnId, bool isCurrentlyLiked) async {
+    if (isCurrentlyLiked) {
       await unlikeHymn(hymnId);
     } else {
       await likeHymn(hymnId);
@@ -674,11 +759,11 @@ class DatabaseHelper {
   Future<List<HymnCollection>> getCollectionsData() async {
     final db = await database;
     final result = await db.rawQuery('''
-      SELECT hc.*, h.id AS hymn_id, h.title AS hymn_title, h.hymn_book_id, h.book_name, h.hymn_number, h.first_line
+      SELECT hc.*, h.id AS hymn_id, h.title AS hymn_title, h.hymn_book_id, h.book_name, h.hymn_number, h.first_line, h.other_reference
       FROM hymn_collection hc
       LEFT JOIN hymn_collection_join hcj ON hc.id = hcj.collection_id
       LEFT JOIN hymn h ON hcj.hymn_id = h.id
-      ORDER BY hc.creation_date DESC
+      ORDER BY hc.creation_date DESC, hcj.order_index ASC
     ''');
 
     // Group hymns by collection
@@ -708,6 +793,7 @@ class DatabaseHelper {
                 bookName: row['book_name'] as String,
                 number: row['hymn_number'] as int,
                 firstLine: row['first_line'] as String?,
+                otherReference: row['other_reference'] as String?,
               ),
             );
       }
@@ -718,7 +804,7 @@ class DatabaseHelper {
   Future<HymnCollection> getHymnByCollection(int collectionId) async {
     final db = await database;
     final result = await db.rawQuery(
-      '''SELECT hc.*, h.id AS hymn_id, h.title AS hymn_title, h.hymn_book_id, h.book_name, h.hymn_number, h.first_line
+      '''SELECT hc.*, h.id AS hymn_id, h.title AS hymn_title, h.hymn_book_id, h.book_name, h.hymn_number, h.first_line, h.other_reference
         FROM hymn_collection hc
         LEFT JOIN hymn_collection_join hcj ON hc.id = hcj.collection_id
         LEFT JOIN hymn h ON hcj.hymn_id = h.id
@@ -751,6 +837,7 @@ class DatabaseHelper {
             bookName: row['book_name'] as String,
             number: row['hymn_number'] as int,
             firstLine: row['first_line'] as String?,
+            otherReference: row['other_reference'] as String?,
           ),
         );
       }
@@ -804,11 +891,23 @@ class DatabaseHelper {
   // Junction Table Operations
   Future<void> addHymnToCollection(int hymnId, int collectionId) async {
     final db = await database;
+
+    // Get the current maximum order_index for this collection
+    final result = await db.rawQuery(
+      'SELECT MAX(order_index) as max_index FROM hymn_collection_join WHERE collection_id = ?',
+      [collectionId],
+    );
+    int nextIndex = 0;
+    if (result.isNotEmpty && result.first['max_index'] != null) {
+      nextIndex = (result.first['max_index'] as int) + 1;
+    }
+
     await db.insert(
       'hymn_collection_join',
       HymnCollectionJoin(
         hymnId: hymnId,
         collectionId: collectionId,
+        orderIndex: nextIndex,
       ).toMap(),
       conflictAlgorithm: ConflictAlgorithm.ignore,
     );

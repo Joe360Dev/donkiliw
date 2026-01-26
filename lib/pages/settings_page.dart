@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/pages/about_page.dart';
-import 'package:hymns/pages/appearence_setting_page.dart';
-import 'package:hymns/pages/language_setting_page.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/pages/about_page.dart';
+import 'package:donkiliw/pages/appearence_setting_page.dart';
+import 'package:donkiliw/pages/language_setting_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -51,9 +51,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 l10n.connectedMode,
                 style: defaultTextStyle.style.copyWith(
                   fontSize: textTheme.titleMedium!.fontSize,
-                  color: colorScheme.brightness == Brightness.dark
-                      ? Colors.grey.shade600
-                      : null,
+                  color:
+                      colorScheme.brightness == Brightness.dark
+                          ? Colors.grey.shade600
+                          : null,
                 ),
               );
             }),
@@ -64,7 +65,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   l10n.connectedModeDescription,
                   style: DefaultTextStyle.of(ctx).style.copyWith(
                         fontSize: defaultSize * .6,
-                        color: colorScheme.brightness == Brightness.dark
+                        color: colorScheme.brightness ==
+                                Brightness.dark
                             ? Colors.grey.shade600
                             : null,
                       ),

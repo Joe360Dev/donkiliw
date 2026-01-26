@@ -1,7 +1,7 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/utils/size_config.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:toastification/toastification.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -108,7 +108,9 @@ class _AboutPageState extends State<AboutPage> {
                     ),
                   ),
                   Text(
-                    _appName.isNotEmpty ? _appName : l10n.appName,
+                    _appName.isNotEmpty
+                        ? _appName
+                        : l10n.appName,
                     style: textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: colorScheme.primary,

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/pages/main_page.dart';
-import 'package:hymns/providers/settings_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:donkiliw/pages/main_page.dart';
+import 'package:donkiliw/providers/settings_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hymns/utils/app_theme.dart';
-import 'package:hymns/utils/page_router.dart';
+import 'package:donkiliw/utils/app_theme.dart';
+import 'package:donkiliw/utils/page_router.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:upgrader/upgrader.dart';
+import 'package:flutter/services.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Upgrader.clearSavedSettings(); // REMOVE this for release builds
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const MyApp());
 }
 
@@ -35,7 +39,6 @@ class MyApp extends StatelessWidget {
             settings.languageCode,
             settings.languageCountryCode,
           );
-
           return ToastificationWrapper(
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -54,25 +57,14 @@ class MyApp extends StatelessWidget {
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate
+                GlobalCupertinoLocalizations.delegate,
               ],
               routes: PageRouter.routes,
               onGenerateRoute: PageRouter.onGenerateRoute,
               home: UpgradeAlert(
                 upgrader: Upgrader(
-                  // storeController: UpgraderStoreController(
-                  //     // onAndroid: () => UpgraderAppcastStore(
-                  //     //   appcastURL:
-                  //     //       'https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast.xml',
-                  //     // ),
-                  //     // oniOS: () => UpgraderAppcastStore(
-                  //     //   appcastURL:
-                  //     //       'https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast.xml',
-                  //     // ),
-                  //     ),
                   countryCode: locale.countryCode,
                   languageCode: locale.languageCode,
-                  minAppVersion: '1.1.0',
                   debugLogging: true,
                   debugDisplayAlways: true, // Forces dialog
                 ),

@@ -27,6 +27,7 @@
   "errorWhenLoadingHymn": "Fɔlɔ: Donkili ka ladɛ bɔ fɔ",
   "errorWhenCopying": "Fɔlɔ ka kɔpi kɛ",
   "imageExportationFailedMessage": "Sɛnin fɔlɔ ladɛ bɔ fɔ",
+  "generatingImage": "Sɛnin fɔlɔ bɔ fɔ sisan...",
   "unableToOpenMailClient": "I bɛ se ka email kɛnɛ bɔ fɔ.",
   "emptyText": "Dɔ bɛ yen",
   "emptyTextCreateCollection": "Ka i fɔlɔ wɛrɛ daminɛn",

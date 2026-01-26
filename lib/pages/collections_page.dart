@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn_collection.dart';
-import 'package:hymns/pages/manage_collection_page.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
-import 'package:hymns/widgets/hymn_collection_card.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
+import 'package:donkiliw/pages/manage_collection_page.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/widgets/hymn_collection_card.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class CollectionsPage extends StatefulWidget {
   const CollectionsPage({super.key});
 
   @override
-  State<CollectionsPage> createState() => _CollectionsPageState();
+  State<CollectionsPage> createState() =>
+      _CollectionsPageState();
 }
 
 class _CollectionsPageState extends State<CollectionsPage>
@@ -83,7 +84,8 @@ class _CollectionsPageState extends State<CollectionsPage>
                 style: OutlinedButton.styleFrom(
                   elevation: 1,
                   shadowColor: theme.shadowColor.withAlpha(100),
-                  overlayColor: colorScheme.surfaceContainerLowest,
+                  overlayColor:
+                      colorScheme.surfaceContainerLowest,
                   backgroundColor: colorScheme.primary,
                   padding: EdgeInsets.symmetric(
                     vertical: defaultSize * .55,

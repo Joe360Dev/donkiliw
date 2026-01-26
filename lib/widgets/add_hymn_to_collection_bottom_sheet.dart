@@ -1,12 +1,12 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn_collection.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/dismissible_keyboard.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/dismissible_keyboard.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
 import 'package:toastification/toastification.dart';
 
 class AddHymnToCollectionBottomSheet extends StatefulWidget {
@@ -25,7 +25,8 @@ class AddHymnToCollectionBottomSheet extends StatefulWidget {
 class _AddHymnToCollectionBottomSheetState
     extends State<AddHymnToCollectionBottomSheet> {
   late Future<List<HymnCollection>> _collectionsFuture;
-  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController =
+      TextEditingController();
   List<HymnCollection> _filteredCollections = [];
   final Set<int> _selectedCollectionIds = {};
 
@@ -33,7 +34,8 @@ class _AddHymnToCollectionBottomSheetState
   void initState() {
     super.initState();
     final dbHelper = DatabaseHelper();
-    _collectionsFuture = dbHelper.getAllCollections().then((collections) {
+    _collectionsFuture =
+        dbHelper.getAllCollections().then((collections) {
       _filteredCollections = collections;
       return _filteredCollections;
     });
@@ -44,9 +46,14 @@ class _AddHymnToCollectionBottomSheetState
     final query = _searchController.text.toLowerCase();
     _collectionsFuture.then((allCollections) {
       setState(() {
-        _filteredCollections = allCollections.where((collection) {
-          return collection.title!.toLowerCase().contains(query) ||
-              (collection.description ?? '').toLowerCase().contains(query);
+        _filteredCollections =
+            allCollections.where((collection) {
+          return collection.title!
+                  .toLowerCase()
+                  .contains(query) ||
+              (collection.description ?? '')
+                  .toLowerCase()
+                  .contains(query);
         }).toList();
       });
     });
@@ -96,7 +103,8 @@ class _AddHymnToCollectionBottomSheetState
             vertical: defaultSize * 0.5,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(defaultSize * 0.5),
+            borderRadius:
+                BorderRadius.circular(defaultSize * 0.5),
             borderSide: BorderSide.none,
           ),
           hintText: l10n.searchCollection,
@@ -139,7 +147,8 @@ class _AddHymnToCollectionBottomSheetState
           itemCount: _filteredCollections.length,
           itemBuilder: (context, index) {
             final collection = _filteredCollections[index];
-            final isSelected = _selectedCollectionIds.contains(collection.id);
+            final isSelected =
+                _selectedCollectionIds.contains(collection.id);
             return ListTile(
               leading: CircleAvatar(
                 radius: defaultSize * 0.75,
@@ -171,21 +180,26 @@ class _AddHymnToCollectionBottomSheetState
                       style: GoogleFonts.notoSans().copyWith(
                         fontSize: defaultSize * .6,
                         fontWeight: FontWeight.w600,
-                        color: colorScheme.onSurface.withAlpha(180),
+                        color:
+                            colorScheme.onSurface.withAlpha(180),
                       ),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     )
                   : null,
               trailing: Icon(
-                isSelected ? Icons.check_circle : Icons.circle_outlined,
+                isSelected
+                    ? Icons.check_circle
+                    : Icons.circle_outlined,
                 color: isSelected
                     ? colorScheme.primary
                     : colorScheme.onSurface.withAlpha(150),
               ),
-              onTap: () => _onToggleCollectionSelection(collection.id!),
+              onTap: () =>
+                  _onToggleCollectionSelection(collection.id!),
               selected: isSelected,
-              selectedTileColor: colorScheme.primary.withAlpha(150),
+              selectedTileColor:
+                  colorScheme.primary.withAlpha(150),
             );
           },
         );
@@ -260,9 +274,11 @@ class _AddHymnToCollectionBottomSheetState
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(defaultSize * 0.5),
+            borderRadius:
+                BorderRadius.circular(defaultSize * 0.5),
           ),
-          padding: EdgeInsets.symmetric(vertical: defaultSize * 0.75),
+          padding:
+              EdgeInsets.symmetric(vertical: defaultSize * 0.75),
           minimumSize: Size(double.infinity, 0), // Full width
         ),
         child: Text(

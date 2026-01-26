@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/models/hymn_collection.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/collection_hymn_addition_bottom_sheet.dart';
-import 'package:hymns/widgets/collection_hymn_list_tile.dart';
-import 'package:hymns/widgets/dismissible_keyboard.dart';
-import 'package:hymns/widgets/expandable_text.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/collection_hymn_addition_bottom_sheet.dart';
+import 'package:donkiliw/widgets/collection_hymn_list_tile.dart';
+import 'package:donkiliw/widgets/dismissible_keyboard.dart';
+import 'package:donkiliw/widgets/expandable_text.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
 import 'package:intl/intl.dart';
 import 'package:toastification/toastification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class ManageCollectionPage extends StatefulWidget {
   const ManageCollectionPage({
@@ -102,31 +102,26 @@ class _ManageCollectionPageState extends State<ManageCollectionPage> {
     });
   }
 
-  void _onReorder(int oldIndex, int newIndex) {
-    setState(() {
-      if (newIndex > oldIndex) {
-        newIndex -= 1;
-      }
-      final Hymn item = _collection.hymns.removeAt(oldIndex);
-      _collection.hymns.insert(newIndex, item);
-      _hasChanges = true;
-    });
-    final dbHelper = DatabaseHelper();
-    dbHelper.reorderHymnsInCollection(
-      _collection.id!,
-      _collection.hymns,
-    );
-  }
-
   Future<void> _removeHymn(Hymn hymn) async {
     final l10n = AppLocalizations.of(context)!;
     final dbHelper = DatabaseHelper();
-    await dbHelper.removeHymnFromCollection(
-      hymn.id!,
-      _collection.id!,
-    );
+
+    // Find all hymns in the collection that share this book and number
+    final hymnsToRemove = _collection.hymns
+        .where(
+            (h) => h.hymnBookId == hymn.hymnBookId && h.number == hymn.number)
+        .toList();
+
+    for (var h in hymnsToRemove) {
+      await dbHelper.removeHymnFromCollection(
+        h.id!,
+        _collection.id!,
+      );
+    }
+
     setState(() {
-      _collection.hymns.remove(hymn);
+      _collection.hymns.removeWhere(
+          (h) => h.hymnBookId == hymn.hymnBookId && h.number == hymn.number);
       _hasChanges = true;
     });
 
@@ -461,20 +456,64 @@ class _ManageCollectionPageState extends State<ManageCollectionPage> {
                             ),
                             SizedBox(height: defaultSize * .5),
                             Expanded(
-                              child: ReorderableListView(
-                                shrinkWrap: true,
-                                onReorder: _onReorder,
-                                children: _collection.hymns.map(
-                                  (hymn) {
-                                    return CollectionHymnListTile(
-                                      key: Key(hymn.id.toString()),
-                                      contextHymns: _collection.hymns,
-                                      hymn: hymn,
-                                      onDelete: () => _removeHymn(hymn),
+                              child: (() {
+                                final List<Hymn> uniqueHymns = [];
+                                final Set<String> seenGroups = {};
+                                for (var h in _collection.hymns) {
+                                  final key = '${h.hymnBookId}_${h.number}';
+                                  if (!seenGroups.contains(key)) {
+                                    uniqueHymns.add(h);
+                                    seenGroups.add(key);
+                                  }
+                                }
+
+                                return ReorderableListView(
+                                  shrinkWrap: true,
+                                  onReorder: (oldIdx, newIdx) {
+                                    // Get groups as units
+                                    final List<List<Hymn>> grouped = [];
+                                    final Set<String> processedKeys = {};
+                                    for (var h in _collection.hymns) {
+                                      final key = '${h.hymnBookId}_${h.number}';
+                                      if (processedKeys.add(key)) {
+                                        grouped.add(_collection.hymns
+                                            .where((x) =>
+                                                x.hymnBookId == h.hymnBookId &&
+                                                x.number == h.number)
+                                            .toList());
+                                      }
+                                    }
+
+                                    setState(() {
+                                      if (newIdx > oldIdx) newIdx -= 1;
+                                      final group = grouped.removeAt(oldIdx);
+                                      grouped.insert(newIdx, group);
+
+                                      // Flatten back
+                                      _collection.hymns =
+                                          grouped.expand((g) => g).toList();
+                                      _hasChanges = true;
+                                    });
+
+                                    final dbHelper = DatabaseHelper();
+                                    dbHelper.reorderHymnsInCollection(
+                                      _collection.id!,
+                                      _collection.hymns,
                                     );
                                   },
-                                ).toList(),
-                              ),
+                                  children: uniqueHymns.map(
+                                    (hymn) {
+                                      return CollectionHymnListTile(
+                                        key: Key(
+                                            '${hymn.hymnBookId}_${hymn.number}'),
+                                        contextHymns: _collection.hymns,
+                                        hymn: hymn,
+                                        onDelete: () => _removeHymn(hymn),
+                                      );
+                                    },
+                                  ).toList(),
+                                );
+                              })(),
                             ),
                           ],
                         ),

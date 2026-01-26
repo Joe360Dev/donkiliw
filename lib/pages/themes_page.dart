@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/models/hymn_theme.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
-import 'package:hymns/widgets/hymn_list_tile.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/models/hymn_theme.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/widgets/hymn_list_tile.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class ThemesPage extends StatefulWidget {
   const ThemesPage({super.key});
@@ -86,7 +86,8 @@ class _ThemesPageState extends State<ThemesPage>
                   },
                   itemBuilder: (context, index) {
                     final hymnTheme = hymnThemes[index];
-                    final isSelected = _selectedHymnTheme == hymnTheme.id;
+                    final isSelected =
+                        _selectedHymnTheme == hymnTheme.id;
                     return FilterChip(
                       showCheckmark: false,
                       padding: EdgeInsets.all(
@@ -94,7 +95,8 @@ class _ThemesPageState extends State<ThemesPage>
                       ),
                       selected: isSelected,
                       selectedColor: colorScheme.primary,
-                      backgroundColor: colorScheme.surfaceContainerLow,
+                      backgroundColor:
+                          colorScheme.surfaceContainerLow,
                       avatar: SvgPicture.asset(
                         'assets/svg_icons/${hymnTheme.iconName}',
                         colorFilter: ColorFilter.mode(
@@ -108,7 +110,9 @@ class _ThemesPageState extends State<ThemesPage>
                         hymnTheme.name,
                         style: GoogleFonts.notoSans().copyWith(
                           fontWeight: FontWeight.w600,
-                          color: isSelected ? colorScheme.onPrimary : null,
+                          color: isSelected
+                              ? colorScheme.onPrimary
+                              : null,
                         ),
                       ),
                       onSelected: (bool value) {

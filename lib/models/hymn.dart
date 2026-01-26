@@ -1,4 +1,4 @@
-import 'package:hymns/models/section.dart';
+import 'package:donkiliw/models/section.dart';
 
 class Hymn {
   final int? id;
@@ -8,6 +8,7 @@ class Hymn {
   final String? firstLine;
   bool isLiked = false;
   final String? bookName;
+  final String? otherReference;
   List<Section> sections = [];
 
   Hymn({
@@ -17,6 +18,7 @@ class Hymn {
     required this.number,
     required this.title,
     this.firstLine,
+    this.otherReference,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,6 +29,7 @@ class Hymn {
       'hymn_number': number,
       'first_line': firstLine,
       'book_name': bookName,
+      'other_reference': otherReference,
     };
   }
 
@@ -41,6 +44,7 @@ class Hymn {
       number: map['hymn_number'] as int,
       title: map['title'] as String,
       firstLine: map['first_line'],
+      otherReference: map['other_reference'],
     );
     hymn.isLiked = isLiked;
     return hymn;
@@ -53,6 +57,7 @@ class Hymn {
     int? number,
     String? title,
     String? firstLine,
+    String? otherReference,
     bool? isLiked,
     List<Section>? sections,
   }) {
@@ -63,6 +68,7 @@ class Hymn {
       number: number ?? this.number,
       title: title ?? this.title,
       firstLine: firstLine ?? this.firstLine,
+      otherReference: otherReference ?? this.otherReference,
     );
 
     hymn.isLiked = isLiked ?? this.isLiked;

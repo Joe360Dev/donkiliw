@@ -27,6 +27,7 @@
   "errorWhenLoadingHymn": "Erreur : Impossible de charger votre cantique",
   "errorWhenCopying": "Erreur lors de la copie",
   "imageExportationFailedMessage": "Échec de l'exportation de l'image",
+  "generatingImage": "Génération de l'image...",
   "unableToOpenMailClient": "Impossible d'ouvrir le client de messagerie.",
   "emptyText": "Aucune donnée disponible",
   "emptyTextCreateCollection": "Créez votre première collection",

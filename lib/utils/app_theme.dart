@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class AppTheme {
   static const Color primaryColor = Color(0xFFCD853F); // Peru
@@ -52,8 +52,6 @@ class AppTheme {
       colorScheme: darkColorScheme,
       textTheme: GoogleFonts.notoSansTextTheme(
         ThemeData.dark().textTheme,
-      ).apply(
-        fontFamily: 'NotoSans',
       ),
       scaffoldBackgroundColor: darkColorScheme.surface,
       cardColor: darkColorScheme.surface,

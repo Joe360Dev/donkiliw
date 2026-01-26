@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/utils/app_theme.dart';
-import 'package:hymns/utils/language_enum.dart';
+import 'package:donkiliw/utils/app_theme.dart';
+import 'package:donkiliw/utils/language_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsProvider with ChangeNotifier {
@@ -39,7 +39,7 @@ class SettingsProvider with ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.light;
   ThemeMode get themeMode => _themeMode;
 
-  double _fontSize = 16.0;
+  double _fontSize = 18.0;
   double get fontSize => _fontSize;
 
   Color _themeColor = AppTheme.primaryColor;
@@ -65,7 +65,7 @@ class SettingsProvider with ChangeNotifier {
         prefs.getInt(_themeModeKey) ?? ThemeMode.system.index;
     _themeMode = ThemeMode.values[themeModeIndex];
 
-    _fontSize = prefs.getDouble(_fontSizeKey) ?? 14.0;
+    _fontSize = prefs.getDouble(_fontSizeKey) ?? 16.0;
 
     final themeColorValue =
         prefs.getInt(_themeColorKey) ?? AppTheme.primaryColor.value;

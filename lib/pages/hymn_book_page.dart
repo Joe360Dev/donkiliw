@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/pages/search_page.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/hymn_list_view_mode_num.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
-import 'package:hymns/widgets/hymn_grid_tile.dart';
-import 'package:hymns/widgets/hymn_list_tile.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/pages/search_page.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/hymn_list_view_mode_num.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/widgets/hymn_grid_tile.dart';
+import 'package:donkiliw/widgets/hymn_list_tile.dart';
+import 'package:donkiliw/widgets/hymn_actions_bottom_sheet.dart';
 
 class HymnBookPage extends StatefulWidget {
   const HymnBookPage({
@@ -52,7 +53,13 @@ class _HymnBookPageState extends State<HymnBookPage> {
       case HymnListViewModeNum.gridView:
       case HymnListViewModeNum.listViewNumericalOrder:
         sortedHymns.sort((a, b) => a.number.compareTo(b.number));
-        break;
+        final Map<int, Hymn> uniqueHymns = {};
+        for (final hymn in sortedHymns) {
+          if (!uniqueHymns.containsKey(hymn.number)) {
+            uniqueHymns[hymn.number] = hymn;
+          }
+        }
+        return uniqueHymns.values.toList();
       case HymnListViewModeNum.listViewAlphabeticalOrder:
         sortedHymns.sort((a, b) => a.title.compareTo(b.title));
         break;
@@ -102,6 +109,11 @@ class _HymnBookPageState extends State<HymnBookPage> {
             return HymnListTile(
               hymn: hymn,
               contextHymns: _hymnsData,
+              onActionTap: () {
+                HymnActionsBottomSheet.show(context, hymn, onUpdate: () {
+                  setState(() {});
+                });
+              },
             );
           },
         );
@@ -166,7 +178,7 @@ class _HymnBookPageState extends State<HymnBookPage> {
                     'Numéro',
                     style: GoogleFonts.notoSans(
                       fontWeight: FontWeight.w500,
-                      fontSize: defaultSize * .7,
+                      fontSize: defaultSize * .65,
                       textStyle: textTheme.titleMedium,
                     ),
                   ),
@@ -180,7 +192,7 @@ class _HymnBookPageState extends State<HymnBookPage> {
                       'Titre 1-$value',
                       style: GoogleFonts.notoSans(
                         fontWeight: FontWeight.w500,
-                        fontSize: defaultSize * .7,
+                        fontSize: defaultSize * .65,
                         textStyle: textTheme.titleMedium,
                       ),
                     ),
@@ -193,7 +205,7 @@ class _HymnBookPageState extends State<HymnBookPage> {
                     'Titre A-Z',
                     style: GoogleFonts.notoSans(
                       fontWeight: FontWeight.w500,
-                      fontSize: defaultSize * .7,
+                      fontSize: defaultSize * .65,
                       textStyle: textTheme.titleMedium,
                     ),
                   ),

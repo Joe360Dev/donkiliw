@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn_collection.dart';
-import 'package:hymns/pages/hymn_page.dart';
-import 'package:hymns/pages/manage_collection_page.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/empty_content_widget.dart';
-import 'package:hymns/widgets/hymn_tile.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
+import 'package:donkiliw/pages/hymn_page.dart';
+import 'package:donkiliw/pages/manage_collection_page.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/empty_content_widget.dart';
+import 'package:donkiliw/widgets/hymn_tile.dart';
 import 'package:intl/intl.dart';
 import 'package:toastification/toastification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
+import 'package:donkiliw/models/hymn.dart';
 
 class HymnCollectionCard extends StatefulWidget {
   const HymnCollectionCard({
@@ -58,6 +59,15 @@ class _HymnCollectionCardState extends State<HymnCollectionCard> {
     final vh = SizeConfig.vh;
     final vw = SizeConfig.vw;
     final hymns = widget.collection.hymns;
+    final List<Hymn> uniqueHymns = [];
+    final Set<String> seenGroups = {};
+    for (var h in hymns) {
+      final key = '${h.hymnBookId}_${h.number}';
+      if (!seenGroups.contains(key)) {
+        uniqueHymns.add(h);
+        seenGroups.add(key);
+      }
+    }
 
     return Card(
       elevation: 1,
@@ -87,9 +97,8 @@ class _HymnCollectionCardState extends State<HymnCollectionCard> {
                       ),
                       title: Text(
                         widget.collection.title!,
-                        style: GoogleFonts.notoSans().copyWith(
+                        style: GoogleFonts.notoSans(
                           fontWeight: FontWeight.w600,
-                          overflow: TextOverflow.ellipsis,
                           color: colorScheme.primary,
                           fontSize: defaultSize * .9,
                         ),
@@ -150,9 +159,9 @@ class _HymnCollectionCardState extends State<HymnCollectionCard> {
                           )
                         : ListView.builder(
                             shrinkWrap: true,
-                            itemCount: hymns.length,
+                            itemCount: uniqueHymns.length,
                             itemBuilder: (context, index) {
-                              final hymn = widget.collection.hymns[index];
+                              final hymn = uniqueHymns[index];
                               return HymnTile(
                                 hymn: hymn,
                                 contextHymns: hymns,
@@ -176,7 +185,7 @@ class _HymnCollectionCardState extends State<HymnCollectionCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    l10n.hymnsCount(hymns.length),
+                    l10n.hymnsCount(uniqueHymns.length),
                     style: textTheme.bodySmall!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: colorScheme.onSurfaceVariant,
@@ -192,7 +201,9 @@ class _HymnCollectionCardState extends State<HymnCollectionCard> {
                               'collection': widget.collection,
                             },
                           ).then((result) {
-                            if (result == true) widget.onRefresh?.call();
+                            if (result == true) {
+                              widget.onRefresh?.call();
+                            }
                           });
                         },
                         style: TextButton.styleFrom(

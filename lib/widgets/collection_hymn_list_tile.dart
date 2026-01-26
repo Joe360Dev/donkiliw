@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/pages/hymn_page.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/pages/hymn_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class CollectionHymnListTile extends StatelessWidget {
   const CollectionHymnListTile({
@@ -75,7 +75,7 @@ class CollectionHymnListTile extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             hymn.number.toString(),
-            style: GoogleFonts.notoSans().copyWith(
+            style: GoogleFonts.notoSans(
               color: colorScheme.primary,
               fontWeight: FontWeight.w600,
               fontSize: defaultSize * .8,
@@ -84,11 +84,10 @@ class CollectionHymnListTile extends StatelessWidget {
         ),
         title: Text(
           hymn.title,
-          style: GoogleFonts.notoSans().copyWith(
+          style: GoogleFonts.notoSans(
             fontSize: defaultSize * .8,
             fontWeight: FontWeight.w600,
             height: 1.5,
-            overflow: TextOverflow.ellipsis,
           ),
         ),
         subtitle: Text(
@@ -96,7 +95,6 @@ class CollectionHymnListTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.notoSans(
             textStyle: textTheme.titleSmall!.copyWith(
-              overflow: TextOverflow.ellipsis,
               fontWeight: FontWeight.normal,
             ),
           ),

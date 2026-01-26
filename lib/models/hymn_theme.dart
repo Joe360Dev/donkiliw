@@ -1,4 +1,4 @@
-import 'package:hymns/models/hymn.dart';
+import 'package:donkiliw/models/hymn.dart';
 
 class HymnTheme {
   final int? id;

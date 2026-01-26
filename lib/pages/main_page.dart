@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/pages/collections_page.dart';
-import 'package:hymns/pages/themes_page.dart';
-import 'package:hymns/pages/home_page.dart';
-import 'package:hymns/pages/settings_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/pages/collections_page.dart';
+import 'package:donkiliw/pages/themes_page.dart';
+import 'package:donkiliw/pages/home_page.dart';
+import 'package:donkiliw/pages/settings_page.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

@@ -1,12 +1,12 @@
 import 'dart:io';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/providers/settings_provider.dart';
-import 'package:hymns/utils/app_theme.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/circular_color_choice_chip.dart';
+import 'package:donkiliw/providers/settings_provider.dart';
+import 'package:donkiliw/utils/app_theme.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/circular_color_choice_chip.dart';
 import 'package:provider/provider.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 class AppearenceSettingPage extends StatelessWidget {
   const AppearenceSettingPage({super.key});
@@ -15,6 +15,7 @@ class AppearenceSettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+
     SizeConfig.init(context);
     final defaultSize = SizeConfig.defaultSize;
     final colorScheme = Theme.of(context).colorScheme;
@@ -95,7 +96,8 @@ class AppearenceSettingPage extends StatelessWidget {
                     ),
                   ],
                   selected: <ThemeMode>{settings.themeMode},
-                  onSelectionChanged: (Set<ThemeMode> newSelection) {
+                  onSelectionChanged:
+                      (Set<ThemeMode> newSelection) {
                     settings.setThemeMode(newSelection.first);
                   },
                 ),
@@ -127,7 +129,8 @@ class AppearenceSettingPage extends StatelessWidget {
                         onSelected: (p0) {
                           settings.setThemeColor(color);
                         },
-                        isSelected: settings.themeColor.value == color.value,
+                        isSelected: settings.themeColor.value ==
+                            color.value,
                         color: color,
                       );
                     },

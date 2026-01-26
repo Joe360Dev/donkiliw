@@ -1,8 +1,8 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class EmptyContentWidget extends StatelessWidget {
   const EmptyContentWidget({

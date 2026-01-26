@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class CircularIconTextButton extends StatelessWidget {
   const CircularIconTextButton({

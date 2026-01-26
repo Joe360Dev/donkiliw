@@ -116,6 +116,10 @@
   "@imageExportationFailedMessage": {
     "description": "Message when image exportation fails"
   },
+  "generatingImage": "Generating image...",
+  "@generatingImage": {
+    "description": "Message when the image is being generated"
+  },
   "unableToOpenMailClient": "Unable to open mail client.",
   "@unableToOpenMailClient": {
     "description": "Message when the mail client cannot be opened"
@@ -505,5 +509,4 @@
   "@saveHymnImages": {
     "description": "Save hymn images"
   }
-  
 }

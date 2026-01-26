@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/pages/hymn_page.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/pages/hymn_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class HymnGridTile extends StatelessWidget {
   const HymnGridTile({
@@ -31,8 +31,8 @@ class HymnGridTile extends StatelessWidget {
             ),
           ),
           child: InkWell(
-            onTap: () {
-              Navigator.of(context).pushNamed(
+            onTap: () async {
+              await Navigator.of(context).pushNamed(
                 HymnPage.routeName,
                 arguments: {
                   'initial_index': contextHymns.indexWhere(
@@ -41,6 +41,10 @@ class HymnGridTile extends StatelessWidget {
                   'context_hymns': contextHymns,
                 },
               );
+              // Need a way to refresh the parent.
+              // Since this is a stateless widget, we hope the parent passes a callback if needed,
+              // but for now, we'll just await.
+              // Actually, I should add a callback to HymnGridTile too if it was used in dynamic lists.
             },
             borderRadius: BorderRadius.circular(
               defaultSize * 0.25,

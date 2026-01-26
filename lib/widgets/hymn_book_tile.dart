@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/pages/hymn_book_page.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/pages/hymn_book_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class HymnBookTile extends StatefulWidget {
   const HymnBookTile({

@@ -1,9 +1,9 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/empty_content_widget.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/empty_content_widget.dart';
 
 class FutureBuilderWrapper<T> extends StatelessWidget {
   final Future<T> future;
@@ -33,7 +33,8 @@ class FutureBuilderWrapper<T> extends StatelessWidget {
     return FutureBuilder<T>(
       future: future,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        if (snapshot.connectionState ==
+            ConnectionState.waiting) {
           return Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -50,7 +51,8 @@ class FutureBuilderWrapper<T> extends StatelessWidget {
                     style: GoogleFonts.notoSans().copyWith(
                       fontSize: defaultSize * 0.75,
                       fontWeight: FontWeight.w500,
-                      color: colorScheme.onSurface.withAlpha(245),
+                      color:
+                          colorScheme.onSurface.withAlpha(245),
                     ),
                   ),
                 ],

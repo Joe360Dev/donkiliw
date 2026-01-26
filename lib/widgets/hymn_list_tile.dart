@@ -1,9 +1,9 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/pages/hymn_page.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/pages/hymn_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
 
 class HymnListTile extends StatelessWidget {
   const HymnListTile({
@@ -26,8 +26,8 @@ class HymnListTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return ListTile(
-      onTap: () {
-        Navigator.of(context).pushNamed(
+      onTap: () async {
+        await Navigator.of(context).pushNamed(
           HymnPage.routeName,
           arguments: {
             'initial_index': contextHymns.indexWhere(
@@ -36,6 +36,7 @@ class HymnListTile extends StatelessWidget {
             'context_hymns': contextHymns,
           },
         );
+        onActionTap?.call(); // Refresh parent if possible
       },
       contentPadding: EdgeInsets.only(
         left: defaultSize * .5,
@@ -59,7 +60,7 @@ class HymnListTile extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           hymn.number.toString(),
-          style: GoogleFonts.notoSans().copyWith(
+          style: GoogleFonts.notoSans(
             color: colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: defaultSize * .8,
@@ -68,11 +69,10 @@ class HymnListTile extends StatelessWidget {
       ),
       title: Text(
         hymn.title,
-        style: GoogleFonts.notoSans().copyWith(
+        style: GoogleFonts.notoSans(
           fontSize: defaultSize * .8,
           fontWeight: FontWeight.w600,
           height: 1.5,
-          overflow: TextOverflow.ellipsis,
         ),
       ),
       subtitle: Text(
@@ -80,7 +80,6 @@ class HymnListTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: GoogleFonts.notoSans(
           textStyle: textTheme.titleSmall!.copyWith(
-            overflow: TextOverflow.ellipsis,
             fontWeight: FontWeight.normal,
           ),
         ),

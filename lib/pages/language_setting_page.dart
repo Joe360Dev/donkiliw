@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/providers/settings_provider.dart';
-import 'package:hymns/utils/language_enum.dart';
-import 'package:hymns/utils/size_config.dart';
+import 'package:donkiliw/providers/settings_provider.dart';
+import 'package:donkiliw/utils/language_enum.dart';
+import 'package:donkiliw/utils/size_config.dart';
 import 'package:provider/provider.dart';
 
 class LanguageSettingsPage extends StatefulWidget {
@@ -13,10 +13,12 @@ class LanguageSettingsPage extends StatefulWidget {
   static const String routeName = '/settings-language';
 
   @override
-  State<LanguageSettingsPage> createState() => _LanguageSettingsPageState();
+  State<LanguageSettingsPage> createState() =>
+      _LanguageSettingsPageState();
 }
 
-class _LanguageSettingsPageState extends State<LanguageSettingsPage> {
+class _LanguageSettingsPageState
+    extends State<LanguageSettingsPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -47,7 +49,8 @@ class _LanguageSettingsPageState extends State<LanguageSettingsPage> {
             value: language == Language.french,
             onChanged: (value) {
               setState(() {
-                language = value == true ? Language.french : language;
+                language =
+                    value == true ? Language.french : language;
                 settings.setLanguage(language);
               });
             },
@@ -65,7 +68,8 @@ class _LanguageSettingsPageState extends State<LanguageSettingsPage> {
             value: language == Language.bambara,
             onChanged: (value) {
               setState(() {
-                language = value == true ? Language.bambara : language;
+                language =
+                    value == true ? Language.bambara : language;
                 settings.setLanguage(language);
               });
             },
@@ -87,7 +91,8 @@ class _LanguageSettingsPageState extends State<LanguageSettingsPage> {
             value: language == Language.english,
             onChanged: (value) {
               setState(() {
-                language = value == true ? Language.english : language;
+                language =
+                    value == true ? Language.english : language;
                 settings.setLanguage(language);
               });
             },

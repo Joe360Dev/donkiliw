@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/pages/theme_details_page.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/pages/theme_details_page.dart';
 
 class HymnThemeCard extends StatelessWidget {
   const HymnThemeCard({

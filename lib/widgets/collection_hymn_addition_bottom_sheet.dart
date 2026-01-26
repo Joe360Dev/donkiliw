@@ -1,13 +1,13 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:donkiliw/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/models/hymn_collection.dart';
-import 'package:hymns/utils/database_helper.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/dismissible_keyboard.dart';
-import 'package:hymns/widgets/future_builder_wrapper.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
+import 'package:donkiliw/utils/database_helper.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/dismissible_keyboard.dart';
+import 'package:donkiliw/widgets/future_builder_wrapper.dart';
 import 'package:toastification/toastification.dart';
 
 class CollectionHymnAdditionBottomSheet extends StatefulWidget {
@@ -146,7 +146,7 @@ class _CollectionHymnAdditionBottomSheetState
         children: [
           Text(
             l10n.addHymns,
-            style: GoogleFonts.notoSans().copyWith(
+            style: GoogleFonts.notoSans(
               fontSize: defaultSize * 0.9,
               fontWeight: FontWeight.w600,
               color: colorScheme.onSurface,
@@ -170,7 +170,7 @@ class _CollectionHymnAdditionBottomSheetState
       padding: EdgeInsets.all(defaultSize * 0.5),
       child: TextField(
         controller: _searchController,
-        style: GoogleFonts.notoSans().copyWith(
+        style: GoogleFonts.notoSans(
           fontSize: defaultSize * 0.75,
           fontWeight: FontWeight.w500,
           color: colorScheme.onSurface,
@@ -189,7 +189,7 @@ class _CollectionHymnAdditionBottomSheetState
             borderSide: BorderSide.none,
           ),
           hintText: l10n.searchAnHymn,
-          hintStyle: GoogleFonts.notoSans().copyWith(
+          hintStyle: GoogleFonts.notoSans(
             fontSize: defaultSize * 0.75,
             fontWeight: FontWeight.w500,
             color: colorScheme.onSurfaceVariant,
@@ -267,7 +267,7 @@ class _CollectionHymnAdditionBottomSheetState
                               : colorScheme.surfaceContainerHigh,
                           child: Text(
                             '${hymn.number}',
-                            style: GoogleFonts.notoSans().copyWith(
+                            style: GoogleFonts.notoSans(
                               fontSize: defaultSize * 0.6,
                               fontWeight: FontWeight.w600,
                               color: isSelected
@@ -278,7 +278,7 @@ class _CollectionHymnAdditionBottomSheetState
                         ),
                         title: Text(
                           hymn.title,
-                          style: GoogleFonts.notoSans().copyWith(
+                          style: GoogleFonts.notoSans(
                             fontSize: defaultSize * 0.75,
                             fontWeight: FontWeight.w600,
                             color: colorScheme.onSurface,
@@ -325,7 +325,7 @@ class _CollectionHymnAdditionBottomSheetState
         ),
         child: Text(
           l10n.addToCollection(_selectedHymnIds.length),
-          style: GoogleFonts.notoSans().copyWith(
+          style: GoogleFonts.notoSans(
             fontSize: defaultSize * 0.8,
             fontWeight: FontWeight.w600,
           ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/pages/about_page.dart';
-import 'package:hymns/pages/appearence_setting_page.dart';
-import 'package:hymns/pages/favorites_page.dart';
-import 'package:hymns/pages/hymn_book_page.dart';
-import 'package:hymns/pages/hymn_page.dart';
-import 'package:hymns/pages/language_setting_page.dart';
-import 'package:hymns/pages/manage_collection_page.dart';
-import 'package:hymns/pages/search_page.dart';
-import 'package:hymns/pages/theme_details_page.dart';
+import 'package:donkiliw/pages/about_page.dart';
+import 'package:donkiliw/pages/appearence_setting_page.dart';
+import 'package:donkiliw/pages/favorites_page.dart';
+import 'package:donkiliw/pages/hymn_book_page.dart';
+import 'package:donkiliw/pages/hymn_page.dart';
+import 'package:donkiliw/pages/language_setting_page.dart';
+import 'package:donkiliw/pages/manage_collection_page.dart';
+import 'package:donkiliw/pages/search_page.dart';
+import 'package:donkiliw/pages/theme_details_page.dart';
 
 class PageRouter {
   static final routes = {

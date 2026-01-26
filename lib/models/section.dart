@@ -1,4 +1,4 @@
-import 'package:hymns/models/phrase.dart';
+import 'package:donkiliw/models/phrase.dart';
 
 class Section {
   final int? id;

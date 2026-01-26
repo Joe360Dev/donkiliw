@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hymns/models/hymn.dart';
-import 'package:hymns/models/section.dart';
-import 'package:hymns/utils/size_config.dart';
-import 'package:hymns/widgets/hymn_section_widget.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/models/section.dart';
+import 'package:donkiliw/utils/size_config.dart';
+import 'package:donkiliw/widgets/hymn_section_widget.dart';
 
 class HymBodyWidget extends StatelessWidget {
   const HymBodyWidget({
