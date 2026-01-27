@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:donkiliw/pages/main_page.dart';
 import 'package:donkiliw/providers/settings_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

@@ -315,7 +315,7 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
 
       if (status.isPermanentlyDenied) {
         // Option to open settings
-        return !false;
+        return false;
       }
 
       return status.isGranted || status.isLimited;
