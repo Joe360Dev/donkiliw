@@ -3,13 +3,22 @@
 # Exit on error
 set -e
 
-# The CI_WORKSPACE is the path to the git repository
-# Root of the project is CI_WORKSPACE
-cd $CI_WORKSPACE
+# In Xcode Cloud, the script runs from ios/ci_scripts
+# Use CI_PRIMARY_REPOSITORY_PATH if available, else go up two levels
+if [ -n "$CI_PRIMARY_REPOSITORY_PATH" ]; then
+    PROJECT_ROOT=$CI_PRIMARY_REPOSITORY_PATH
+else
+    PROJECT_ROOT=$(cd ../.. && pwd)
+fi
 
-# Install Flutter using git
+echo "Navigating to project root: $PROJECT_ROOT"
+cd "$PROJECT_ROOT"
+
+# Install Flutter using git if not already present
 echo "Installing Flutter..."
-git clone https://github.com/flutter/flutter.git -b stable $HOME/flutter
+if [ ! -d "$HOME/flutter" ]; then
+    git clone https://github.com/flutter/flutter.git -b stable $HOME/flutter
+fi
 export PATH="$PATH:$HOME/flutter/bin"
 
 # Check Flutter version
