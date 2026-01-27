@@ -55,6 +55,7 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
     final l10n = AppLocalizations.of(context)!;
     final dbHelper = DatabaseHelper();
     final originallyLiked = widget.hymn.isLiked;
+    final colorScheme = Theme.of(context).colorScheme;
 
     setState(() {
       widget.hymn.isLiked = !originallyLiked;
@@ -74,7 +75,7 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
           style: TextStyle(
             fontSize: SizeConfig.defaultSize * .85,
             fontWeight: FontWeight.w500,
-            color: Theme.of(context).colorScheme.surface,
+            color: colorScheme.surface,
           ),
         ),
         alignment: Alignment.bottomCenter,
@@ -127,9 +128,9 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
   String _getHymnLyricsText() {
     final buffer = StringBuffer();
     for (var section in widget.hymn.sections) {
-      if (section.title != null && section.title!.isNotEmpty) {
-        buffer.writeln('${section.title}:');
-      }
+      // if (section.title != null && section.title!.isNotEmpty) {
+      //   buffer.writeln('${section.title}');
+      // }
       for (var phrase in section.phrases) {
         buffer.writeln(phrase.content);
       }
@@ -140,25 +141,40 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
 
   void _shareLyrics() async {
     final l10n = AppLocalizations.of(context)!;
+    final navigator = Navigator.of(context);
     final shareText = '${l10n.title}: ${widget.hymn.title}\n'
         '${l10n.book}: ${widget.hymn.bookName ?? "-"}\n'
         '${l10n.number}: ${widget.hymn.number}\n\n'
         '${_getHymnLyricsText()}';
 
-    await SharePlus.instance.share(
+    final box = context.findRenderObject() as RenderBox?;
+
+    final result = await SharePlus.instance.share(
       ShareParams(
         title: widget.hymn.title,
         text: shareText,
         subject: widget.hymn.title,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
       ),
     );
-    Navigator.of(context).pop();
+
+    if (result.status == ShareResultStatus.success) {
+      toastification.show(
+        type: ToastificationType.success,
+        style: ToastificationStyle.flat,
+        title: Text(l10n.hymnShared),
+        alignment: Alignment.bottomCenter,
+        autoCloseDuration: const Duration(seconds: 2),
+      );
+    }
+    navigator.pop();
   }
 
   Future<void> _exportLyricsAsImage() async {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final vw = MediaQuery.of(context).size.width;
+    final mediaQueryData = MediaQuery.of(context);
+    final vw = mediaQueryData.size.width;
     final packageInfo = await PackageInfo.fromPlatform();
     final appName = packageInfo.appName;
     final colorScheme = theme.colorScheme;
@@ -166,7 +182,7 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
 
     try {
       final hasPermission = await _requestPermissions();
-      if (!hasPermission) {
+      if (!hasPermission || !mounted) {
         toastification.show(
           type: ToastificationType.error,
           title: Text(l10n.permissionDenied),
@@ -229,11 +245,16 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
           ),
         ),
       );
-
       final image = await _screenshotController.captureFromLongWidget(
-        InheritedTheme.captureAll(context, exportWidget),
+        MediaQuery(
+          data: mediaQueryData,
+          child: Directionality(
+            textDirection: TextDirection.ltr,
+            child: InheritedTheme.captureAll(context, exportWidget),
+          ),
+        ),
         constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width,
+          maxWidth: vw,
         ),
         pixelRatio: 3.0, // Higher quality
       );
@@ -294,7 +315,7 @@ class _HymnActionsBottomSheetState extends State<HymnActionsBottomSheet> {
 
       if (status.isPermanentlyDenied) {
         // Option to open settings
-        return false;
+        return !false;
       }
 
       return status.isGranted || status.isLimited;
