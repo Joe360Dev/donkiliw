@@ -37,5 +37,11 @@ echo "Installing Pods..."
 cd ios
 pod install
 
+# Initialize the build settings properly for Xcode Cloud
+# This ensures Generated.xcconfig and other files are fully populated
+echo "Initializing Flutter iOS build..."
+cd ..
+flutter build ios --release --no-codesign
+
 echo "Xcode Cloud setup completed successfully!"
 exit 0
