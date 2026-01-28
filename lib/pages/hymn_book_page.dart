@@ -1,3 +1,4 @@
+import 'package:donkiliw/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:donkiliw/models/hymn.dart';
@@ -132,6 +133,8 @@ class _HymnBookPageState extends State<HymnBookPage> {
     final defaultSize = SizeConfig.defaultSize;
     final textTheme = Theme.of(context).textTheme;
 
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -175,7 +178,7 @@ class _HymnBookPageState extends State<HymnBookPage> {
                 ButtonSegment<HymnListViewModeNum>(
                   value: HymnListViewModeNum.gridView,
                   label: Text(
-                    'Numéro',
+                    l10n.number,
                     style: GoogleFonts.notoSans(
                       fontWeight: FontWeight.w500,
                       fontSize: defaultSize * .65,
@@ -189,7 +192,7 @@ class _HymnBookPageState extends State<HymnBookPage> {
                   label: ValueListenableBuilder<int>(
                     valueListenable: _bookSize,
                     builder: (_, value, __) => Text(
-                      'Titre 1-$value',
+                      '${l10n.title} 1-$value',
                       style: GoogleFonts.notoSans(
                         fontWeight: FontWeight.w500,
                         fontSize: defaultSize * .65,
@@ -202,7 +205,7 @@ class _HymnBookPageState extends State<HymnBookPage> {
                 ButtonSegment<HymnListViewModeNum>(
                   value: HymnListViewModeNum.listViewAlphabeticalOrder,
                   label: Text(
-                    'Titre A-Z',
+                    '${l10n.title} A-Z',
                     style: GoogleFonts.notoSans(
                       fontWeight: FontWeight.w500,
                       fontSize: defaultSize * .65,
