@@ -343,7 +343,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get supportsDescription =>
-      'Big thanks to Idrissa Pierre Diarra for sharing his local hymns database.';
+      'Many thanks to Idrissa Pierre Diarra and Daniel Sagara for supporting this work.';
 
   @override
   String get contact => 'Contact';

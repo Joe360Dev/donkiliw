@@ -342,7 +342,7 @@ class AppLocalizationsBm extends AppLocalizations {
 
   @override
   String get supportsDescription =>
-      'Ala ka kɛnɛ Idrissa Pierre Diarra la, u ye donkili base de données ko jɛ ko don.';
+      'Ka foli di Pierre Diarra ni Daniel Sagara ma ni bara demeli koson.';
 
   @override
   String get contact => 'Taw';

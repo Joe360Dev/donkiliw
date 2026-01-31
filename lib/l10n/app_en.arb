@@ -445,7 +445,7 @@
   "@supports": {
     "description": "Label for supports"
   },
-  "supportsDescription": "Big thanks to Idrissa Pierre Diarra for sharing his local hymns database.",
+  "supportsDescription": "Many thanks to Idrissa Pierre Diarra and Daniel Sagara for supporting this work.",
   "@supportsDescription": {
     "description": "Description for supports"
   },

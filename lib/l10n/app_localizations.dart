@@ -673,7 +673,7 @@ abstract class AppLocalizations {
   /// Description for supports
   ///
   /// In en, this message translates to:
-  /// **'Big thanks to Idrissa Pierre Diarra for sharing his local hymns database.'**
+  /// **'Many thanks to Idrissa Pierre Diarra and Daniel Sagara for supporting this work.'**
   String get supportsDescription;
 
   /// Label for contact

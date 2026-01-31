@@ -351,7 +351,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get supportsDescription =>
-      'Grand merci à Idrissa Pierre Diarra pour avoir partagé sa base de données de cantiques.';
+      'Grand merci à Idrissa Pierre Diarra et à Daniel Sagara pour avoir soutenu cette œuvre.';
 
   @override
   String get contact => 'Contact';
