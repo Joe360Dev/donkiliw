@@ -65,7 +65,7 @@ class SettingsProvider with ChangeNotifier {
         prefs.getInt(_themeModeKey) ?? ThemeMode.system.index;
     _themeMode = ThemeMode.values[themeModeIndex];
 
-    _fontSize = prefs.getDouble(_fontSizeKey) ?? 16.0;
+    _fontSize = prefs.getDouble(_fontSizeKey) ?? 18.0;
 
     final themeColorValue =
         prefs.getInt(_themeColorKey) ?? AppTheme.primaryColor.value;

@@ -7,6 +7,7 @@ import 'package:donkiliw/database/data/thematics.dart';
 import 'package:donkiliw/models/hymn_collection.dart';
 import 'package:donkiliw/models/hymn_collection_join.dart';
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:slugify/slugify.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -23,6 +24,10 @@ class DatabaseHelper {
   DatabaseHelper._internal();
 
   static Database? _database;
+  static bool _isUpgrading = false;
+  static const int currentDataVersion =
+      3; // Increment this to trigger a re-import
+  static const String _dataVersionKey = 'data_version';
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -62,12 +67,17 @@ class DatabaseHelper {
     }
 
     // Open the existing database
-    // Only runs if the database is newly created (rare case)
-    return await openDatabase(
+    final db = await openDatabase(
       path,
       version: 1,
       onCreate: _onCreate,
     );
+
+    // Check if we need to refresh static data (JSON content)
+    // Run this in the background to avoid blocking the app launch
+    _checkDataUpgrade(db);
+
+    return db;
   }
 
   Future<void> _onCreate(Database db, int version) async {
@@ -170,46 +180,182 @@ class DatabaseHelper {
     );
   }
 
-  Future<void> setHymnThemes() async {
-    final dbHelper = DatabaseHelper();
+  Future<void> _checkDataUpgrade(Database db) async {
+    if (_isUpgrading) return;
+
+    final prefs = await SharedPreferences.getInstance();
+    final storedVersion = prefs.getInt(_dataVersionKey) ?? 0;
+
+    if (currentDataVersion > storedVersion) {
+      _isUpgrading = true;
+      try {
+        debugPrint(
+          'Data upgrade detected: $storedVersion -> $currentDataVersion. '
+          'Starting seamless import..',
+        );
+
+        await seamlessImport(db);
+        await prefs.setInt(_dataVersionKey, currentDataVersion);
+      } catch (e) {
+        debugPrint('Error during seamless import: $e');
+      } finally {
+        _isUpgrading = false;
+      }
+    }
+  }
+
+  Future<void> setHymnThemes([DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
     for (var themeMap in thematics.entries) {
-      dbHelper
-          .insertTheme(HymnTheme(
-        name: themeMap.key,
-        iconName: '${slugify(themeMap.key, delimiter: '_')}.svg',
-      ))
-          .then(
-        (themeId) {
-          if (themeId <= 0) return;
-          for (var hymnId in themeMap.value) {
-            dbHelper.setHymnTheme(hymnId, themeId);
-          }
-        },
+      final themeId = await insertTheme(
+        HymnTheme(
+          name: themeMap.key,
+          iconName: '${slugify(themeMap.key, delimiter: '_')}.svg',
+        ),
+        executor,
       );
+
+      if (themeId <= 0) continue;
+      for (var hymnId in themeMap.value) {
+        await setHymnTheme(hymnId, themeId, executor);
+      }
     }
 
     if (kDebugMode) print('Hymn theme setting COMPLETED!');
   }
 
-  Future<void> importHymnsFromJson() async {
-    final dbHelper = DatabaseHelper();
+  /// Seamlessly imports new data while preserving user favorites and collections.
+  Future<void> seamlessImport([Database? db]) async {
+    final activeDb = db ?? await database;
+
+    // 1. Backup User Data (Favorites and Collections)
+    final backup = await _backupUserData(activeDb);
+
+    // 2. Clear static data and re-import within a SINGLE transaction
+    await activeDb.transaction((txn) async {
+      // Clear static data tables
+      await txn.execute('DELETE FROM phrase');
+      await txn.execute('DELETE FROM section');
+      await txn.execute('DELETE FROM hymn_theme');
+      await txn.execute('DELETE FROM theme');
+      await txn.execute('DELETE FROM hymn_collection_join');
+      await txn.execute('DELETE FROM hymn');
+      await txn.execute('DELETE FROM hymn_book');
+
+      // Reset sequences for clean AUTOINCREMENT from 1
+      await txn.execute("DELETE FROM sqlite_sequence WHERE name='hymn'");
+      await txn.execute("DELETE FROM sqlite_sequence WHERE name='hymn_book'");
+      await txn.execute("DELETE FROM sqlite_sequence WHERE name='section'");
+      await txn.execute("DELETE FROM sqlite_sequence WHERE name='phrase'");
+      await txn.execute("DELETE FROM sqlite_sequence WHERE name='theme'");
+
+      // 3. Re-import everything from JSON within the SAME transaction
+      await importHymnsFromJson(txn);
+      await setHymnThemes(txn);
+
+      // 4. Restore User Data by matching Books, Numbers, and Titles
+      await _restoreUserData(txn, backup);
+    });
+
+    if (kDebugMode) print('Seamless Import COMPLETED!');
+  }
+
+  Future<Map<String, dynamic>> _backupUserData(DatabaseExecutor db) async {
+    // Backup Favorites
+    final favorites = await db.rawQuery('''
+      SELECT hb.name AS book_name, h.hymn_number, h.title 
+      FROM favorite_hymn f
+      JOIN hymn h ON f.hymn_id = h.id
+      JOIN hymn_book hb ON h.hymn_book_id = hb.id
+    ''');
+
+    // Backup Collections
+    final collectionJoins = await db.rawQuery('''
+      SELECT hcj.collection_id, hb.name AS book_name, h.hymn_number, h.title, hcj.order_index
+      FROM hymn_collection_join hcj
+      JOIN hymn h ON hcj.hymn_id = h.id
+      JOIN hymn_book hb ON h.hymn_book_id = hb.id
+    ''');
+
+    return {
+      'favorites': favorites,
+      'collectionJoins': collectionJoins,
+    };
+  }
+
+  Future<void> _restoreUserData(
+      DatabaseExecutor db, Map<String, dynamic> backup) async {
+    final List<Map<String, dynamic>> favorites = backup['favorites'];
+    final List<Map<String, dynamic>> collectionJoins =
+        backup['collectionJoins'];
+
+    // Restore Favorites
+    // We clear the old table because IDs might have changed
+    await db.execute('DELETE FROM favorite_hymn');
+    for (var fav in favorites) {
+      final newHymnId = await _findNewHymnId(
+        db,
+        fav['book_name'],
+        fav['hymn_number'],
+        fav['title'],
+      );
+      if (newHymnId != null) {
+        await db.insert('favorite_hymn', {'hymn_id': newHymnId});
+      }
+    }
+
+    // Restore Collection Joins
+    // Note: hymn_collection_join was already deleted in seamlessImport
+    for (var join in collectionJoins) {
+      final newHymnId = await _findNewHymnId(
+        db,
+        join['book_name'],
+        join['hymn_number'],
+        join['title'],
+      );
+      if (newHymnId != null) {
+        await db.insert('hymn_collection_join', {
+          'hymn_id': newHymnId,
+          'collection_id': join['collection_id'],
+          'order_index': join['order_index'],
+        });
+      }
+    }
+  }
+
+  Future<int?> _findNewHymnId(
+      DatabaseExecutor db, String bookName, int number, String title) async {
+    final results = await db.rawQuery('''
+      SELECT h.id FROM hymn h
+      JOIN hymn_book hb ON h.hymn_book_id = hb.id
+      WHERE hb.name = ? AND h.hymn_number = ? AND h.title = ?
+    ''', [bookName, number, title]);
+
+    if (results.isNotEmpty) {
+      return results.first['id'] as int;
+    }
+    return null;
+  }
+
+  Future<void> importHymnsFromJson([DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
 
     final hymnBookFiles = [
       {
         'book_name': 'Beti Coura',
-        'path': 'assets/json_books/betiba.json',
+        'path': 'assets/json_books/betiba_v2.json',
       },
       {
         'book_name': 'Ala Tanu Donkiliw Nº1',
-        'path': 'assets/json_books/ala_tanu_donkiliw_1.json',
+        'path': 'assets/json_books/ala_tanu_donkiliw_1_v2.json',
       },
       {
         'book_name': 'Ala Tanu Donkiliw Nº2',
-        'path': 'assets/json_books/ala_tanu_donkiliw_2.json',
+        'path': 'assets/json_books/ala_tanu_donkiliw_2_v2.json',
       },
       {
         'book_name': 'Nii Don Diyɛ',
-        'path': 'assets/json_books/nii_don.json',
+        'path': 'assets/json_books/nii_don_v2.json',
       },
     ];
 
@@ -218,63 +364,40 @@ class DatabaseHelper {
 
     for (var bookFile in hymnBookFiles) {
       final bookName = bookFile['book_name'] as String;
-      final data = await jsonToHymnBookData(bookFile['path'] as String);
+      final List<Map<String, dynamic>> data =
+          await jsonToHymnBookData(bookFile['path'] as String);
 
-      final hymnBookId = await dbHelper.insertHymnBook(
+      final hymnBookId = await insertHymnBook(
         HymnBook(name: bookName),
+        executor,
       );
 
-      int currentHymnNumber = (bookName == 'Nii Don Diyɛ') ? 0 : 1;
+      for (var jsonHymn in data) {
+        final hymnNumber = jsonHymn['hymn_number'] as int;
+        final List<dynamic> content = jsonHymn['content'];
 
-      for (var jsonGroup in data) {
-        // jsonGroup is a list of sections for one or more hymns sharing currentHymnNumber
         List<Map<String, String>> currentHymnSections = [];
         String? currentHymnTitle;
         String? otherReference;
 
-        for (var jsonSection in jsonGroup) {
-          if (jsonSection.containsKey('autrepassage')) {
-            otherReference = jsonSection['autrepassage'];
+        for (var rawSection in content) {
+          final section = Map<String, String>.from(rawSection);
+          if (section.containsKey('autrepassage')) {
+            otherReference = section['autrepassage'];
             continue;
           }
-
-          if (jsonSection.containsKey('titre')) {
-            final title = jsonSection['titre']!;
-            if (bookName == 'Nii Don Diyɛ') {
-              final numberMatch = RegExp(r'^(\d+)').firstMatch(title);
-              if (numberMatch != null) {
-                currentHymnNumber = int.parse(numberMatch.group(1)!);
-              }
-            }
-
-            // If we already have sections, it means we found a NEW title in the same group
-            if (currentHymnSections.isNotEmpty) {
-              await _processAndInsertHymn(
-                dbHelper,
-                hymnBookId,
-                bookName,
-                currentHymnNumber,
-                currentHymnTitle ?? 'Untitled',
-                currentHymnSections,
-                repeatCountRegex,
-                cleanRegex,
-                otherReference,
-              );
-              currentHymnSections = [];
-              otherReference = null;
-            }
-            currentHymnTitle = title;
+          if (section.containsKey('titre')) {
+            currentHymnTitle = section['titre'];
           }
-          currentHymnSections.add(jsonSection);
+          currentHymnSections.add(section);
         }
 
-        // Insert the last (or only) hymn in this group
         if (currentHymnSections.isNotEmpty) {
           await _processAndInsertHymn(
-            dbHelper,
+            executor,
             hymnBookId,
             bookName,
-            currentHymnNumber,
+            hymnNumber,
             currentHymnTitle ?? 'Untitled',
             currentHymnSections,
             repeatCountRegex,
@@ -282,17 +405,13 @@ class DatabaseHelper {
             otherReference,
           );
         }
-
-        if (bookName != 'Nii Don Diyɛ') {
-          currentHymnNumber++;
-        }
       }
     }
     if (kDebugMode) print('Hymn Import COMPLETED!');
   }
 
   Future<void> _processAndInsertHymn(
-    DatabaseHelper dbHelper,
+    DatabaseExecutor db,
     int hymnBookId,
     String bookName,
     int hymnNumber,
@@ -328,9 +447,12 @@ class DatabaseHelper {
       otherReference: otherReference,
     );
 
-    final hymnId = await dbHelper.insertHymn(hymn);
+    final hymnId = await insertHymn(hymn, db);
 
-    // Insert sections
+    // Insert sections with their phrases using a single batch if possible,
+    // but here we need the sectionId for phrases, so we stick to simpler sequential for now or nested batches.
+    // Optimization: Wrapped in the caller's transaction is enough for massive performance.
+
     String? previousRefrain;
     int sequence = 1;
 
@@ -341,9 +463,6 @@ class DatabaseHelper {
               ? 'verse'
               : 'refrain';
 
-      // Skip duplicated refrains within the SAME hymn if desired,
-      // but usually the JSON already contains them.
-      // The old logic had: if (section.sectionType == 'refrain' && jsonSection.values.first == previousRefrain) continue;
       if (sectionType == 'refrain' &&
           jsonSection.values.first == previousRefrain) {
         continue;
@@ -351,16 +470,16 @@ class DatabaseHelper {
         previousRefrain = jsonSection.values.first;
       }
 
-      final section = Section(
-        hymnId: hymnId,
-        title: jsonSection.containsKey('titre') ? jsonSection['titre'] : null,
-        sectionType: sectionType,
-        sequence: sequence++,
+      final sectionId = await insertSection(
+        Section(
+          hymnId: hymnId,
+          title: jsonSection.containsKey('titre') ? jsonSection['titre'] : null,
+          sectionType: sectionType,
+          sequence: sequence++,
+        ),
+        db,
       );
 
-      final sectionId = await dbHelper.insertSection(section);
-
-      // Split and clean phrases
       final jsonPhrases = jsonSection.values.first.split('\n');
       int phraseSequence = 1;
 
@@ -380,39 +499,26 @@ class DatabaseHelper {
             .trim();
 
         if (cleanedPhrase.isNotEmpty) {
-          final phrase = Phrase(
-            sectionId: sectionId,
-            content: cleanedPhrase,
-            sequence: phraseSequence++,
-            repeatCount: repeatCount,
+          await insertPhrase(
+            Phrase(
+              sectionId: sectionId,
+              content: cleanedPhrase,
+              sequence: phraseSequence++,
+              repeatCount: repeatCount,
+            ),
+            db,
           );
-          await dbHelper.insertPhrase(phrase);
         }
       }
     }
   }
 
-  Future<List<List<Map<String, String>>>> jsonToHymnBookData(
-      String filePath) async {
+  Future<List<Map<String, dynamic>>> jsonToHymnBookData(String filePath) async {
     // Load JSON from assets
     final jsonString = await rootBundle.loadString(filePath);
     final List<dynamic> jsonData = jsonDecode(jsonString);
 
-    // Flatten the nested structure into a list of maps
-    final List<List<Map<String, String>>> book = [];
-
-    for (var jsonHymn in jsonData) {
-      final List<Map<String, String>> jsonSections = [];
-      for (var jsonSection in jsonHymn) {
-        // Each item is a Map with one key-value pair
-        jsonSection.forEach((key, value) {
-          jsonSections.add({key: value as String});
-        });
-      }
-      book.add(jsonSections);
-    }
-
-    return book;
+    return List<Map<String, dynamic>>.from(jsonData);
   }
 
   // Reset the database
@@ -477,9 +583,9 @@ class DatabaseHelper {
   }
 
   // HymnBook Methods
-  Future<int> insertHymnBook(HymnBook hymnBook) async {
-    final db = await database;
-    return await db.insert('hymn_book', hymnBook.toMap(),
+  Future<int> insertHymnBook(HymnBook hymnBook, [DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
+    return await executor.insert('hymn_book', hymnBook.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
@@ -496,9 +602,9 @@ class DatabaseHelper {
   }
 
   // Theme Methods
-  Future<int> insertTheme(HymnTheme theme) async {
-    final db = await database;
-    return await db.insert(
+  Future<int> insertTheme(HymnTheme theme, [DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
+    return await executor.insert(
       'theme',
       theme.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -516,9 +622,10 @@ class DatabaseHelper {
   }
 
   // set theme for hymn
-  Future<void> setHymnTheme(int hymnId, int themeId) async {
-    final db = await database;
-    await db.insert(
+  Future<void> setHymnTheme(int hymnId, int themeId,
+      [DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
+    await executor.insert(
       'hymn_theme',
       {'hymn_id': hymnId, 'theme_id': themeId},
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -549,9 +656,9 @@ class DatabaseHelper {
   }
 
   // Hymn Methods
-  Future<int> insertHymn(Hymn hymn) async {
-    final db = await database;
-    return await db.insert(
+  Future<int> insertHymn(Hymn hymn, [DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
+    return await executor.insert(
       'hymn',
       hymn.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -949,9 +1056,9 @@ class DatabaseHelper {
   }
 
   // hymn section methods
-  Future<int> insertSection(Section section) async {
-    final db = await database;
-    return await db.insert('section', section.toMap(),
+  Future<int> insertSection(Section section, [DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
+    return await executor.insert('section', section.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
@@ -969,9 +1076,9 @@ class DatabaseHelper {
   }
 
 // Phrase Methods
-  Future<int> insertPhrase(Phrase phrase) async {
-    final db = await database;
-    return await db.insert('phrase', phrase.toMap(),
+  Future<int> insertPhrase(Phrase phrase, [DatabaseExecutor? db]) async {
+    final executor = db ?? await database;
+    return await executor.insert('phrase', phrase.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 

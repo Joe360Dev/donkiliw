@@ -39,7 +39,10 @@
       "titre": "ALELUYA"
     },
     {
-      "couple": "Ama duba wooi goojɛ gɔ,\nBoi womɔ sɔmɔu dagaa.\nAleluya, aleluya,\nBoi womɔ gɔ ɛjii babamɔi.\nAmai bai wooi demɛniyɛnmɔi.\nAleluya, aleluya,\nAleluya, aleluya, aleluya.\nALELUYA,\nAleluya, Yesu bulaai,\nAleluya, amiina.\nAleluya, Yesu bulaai,\nYesu Ama Ii."
+      "couple": "Ama duba wooi goojɛ gɔ,\nBoi womɔ sɔmɔu dagaa.\nAleluya, aleluya,\nBoi womɔ gɔ ɛjii babamɔi.\nAmai bai wooi demɛniyɛnmɔi.\nAleluya, aleluya,\nAleluya, aleluya, aleluya."
+    },
+    {
+      "titre": "ALELUYA,\nAleluya, Yesu bulaai,\nAleluya, amiina.\nAleluya, Yesu bulaai,\nYesu Ama Ii."
     }
   ],
   [
@@ -591,7 +594,7 @@
       "couple": "Yesu mui Yabanɛ,\nKaluwɛrɛ nɛ yinwaain.\nMui yaabu kanran ga,\nDilɛ ma nɛ yowaai.\nMui Yabanɛi sai laa,\nMui Baranɛi biyaai,\nAma Kikinu Pilu kinɛ ma nɛ too."
     },
     {
-      "couple": "Wo kinɛ ma nɛ too,\nWo kinɛ ma nɛ too,\nAma Kikinu Pilu kinɛ ma nɛ too.\nBai turu Wo wiyaai,\nNɛɛ, Yesu pui kibaai,\nAma Kikinu Pilu kinɛ ma nɛ too."
+      "refrain": "Wo kinɛ ma nɛ too,\nWo kinɛ ma nɛ too,\nAma Kikinu Pilu kinɛ ma nɛ too.\nBai turu Wo wiyaai,\nNɛɛ, Yesu pui kibaai,\nAma Kikinu Pilu kinɛ ma nɛ too."
     },
     {
       "couple": "Kikinu Pilu gɔ,\nSaii gɔnrɔn Wo le yɔɔ.\nNɛɛ, gɔnrɔn Wo sɛɛ gɔ,\nKɔɔ mui ohobojɛ.\nMu Ama oju nɛ\nBai wooi gɔgɔnrɔnjɔn,\nAma Kikinu Pilu kinɛ ma nɛ too."
@@ -1115,7 +1118,7 @@
       "couple": "Emɛ bɔɔi biyaain Ama ɛju le,\nEmɛ Yesu boi le gawaa wɔin.\nEmɛ jamu le wɔin, duba diyɛ yɔɔ.\nEmɛ Yesu boi le gawaa wɔin."
     },
     {
-      "couple": "Yesu, Yesu,\nWo emi ɛjii dɔmiyɛnjɛ.\nYesu, Yesu,\nEmɛ boi womɔ le gawaa wɔin."
+      "refrain": "Yesu, Yesu,\nWo emi ɛjii dɔmiyɛnjɛ.\nYesu, Yesu,\nEmɛ boi womɔ le gawaa wɔin."
     },
     {
       "couple": "Yesui dimiyɛn, wogɔ ɛɛlii wɔɔ,\nEmɛ Yesu boi le gawaa wɔin.\nOju emɛ gɔ, Wo wijɛmɔjɛ.\nEmɛ Yesu boi le gawaa wɔin."
@@ -1149,7 +1152,7 @@
       "couple": "Anrunge emɛ gɔ Yesu sai,\nYesu sai, Yesu sai.\nHakɛ emɛ inɛ yaabu kanrun,\nYesu sai, Yesu sai."
     },
     {
-      "couple": "Yesu ɔɲɛ emɛ duiyaabe,\nBai wooi emi babarado.\nAnrunge emɛ gɔ Yesu sai,\nYesu sai, Yesu sai."
+      "refrain": "Yesu ɔɲɛ emɛ duiyaabe,\nBai wooi emi babarado.\nAnrunge emɛ gɔ Yesu sai,\nYesu sai, Yesu sai."
     },
     {
       "couple": "Anrunge emɛ gɔ Yesu sai,\nYesu sai, Yesu sai.\nWo bɛrɛ sai kinɛ jamu gogoojɛ,\nYesu sai, Yesu sai."
@@ -1513,43 +1516,43 @@
       "refrain": "Yabanɛ gɔ Yesui. (3x)"
     },
     {
-      "couple": "Bɛtɛlɛhɛmu nɛ Woi narin."
+      "couple": "Bɛtɛlɛhɛmu nɛ Woi narin. (3x)"
     },
     {
-      "couple": "Tolo diyɛ iyaabɛin."
+      "couple": "Tolo diyɛ iyaabɛin. (3x)"
     },
     {
-      "couple": "Yesu emɛ dɛi wiyaai."
+      "couple": "Yesu emɛ dɛi wiyaai. (3x)"
     },
     {
-      "couple": "Yalu Wo gabii Nasarɛtei."
+      "couple": "Yalu Wo gabii Nasarɛtei. (3x)"
     },
     {
-      "couple": "Sɔɔ yabanɛi biyaabe."
+      "couple": "Sɔɔ yabanɛi biyaabe. (3x)"
     },
     {
-      "couple": "Yesu emɛ dɛi yinwaain."
+      "couple": "Yesu emɛ dɛi yinwaain. (3x)"
     },
     {
-      "couple": "Yesu emɛ dɛi bulaai."
+      "couple": "Yesu emɛ dɛi bulaai. (3x)"
     },
     {
-      "couple": "Alagala nɛ ulaai."
+      "couple": "Alagala nɛ ulaai. (3x)"
     },
     {
-      "couple": "Yesu bɛrii wɛwɛɛdo."
+      "couple": "Yesu bɛrii wɛwɛɛdo. (3x)"
     },
     {
-      "couple": "Yesu boi le Ama gɛɛn."
+      "couple": "Yesu boi le Ama gɛɛn. (3x)"
     },
     {
-      "couple": "Yesu boi le tuŋiyɛnmɔi."
+      "couple": "Yesu boi le tuŋiyɛnmɔi. (3x)"
     },
     {
-      "couple": "Yesu boi le ingelemɔi."
+      "couple": "Yesu boi le ingelemɔi. (3x)"
     },
     {
-      "couple": "Aleluya, amiina."
+      "couple": "Aleluya, amiina. (3x)"
     }
   ],
   [
@@ -1604,6 +1607,41 @@
     },
     {
       "couple": "Nɛɛ, unrunw uwɔ bara, \nKikinu Pilu gɔ le. \nBoi uwɔ sɔmu ibɛɛwɔin, \nKinɛ ɛɛlu nii gɔ le."
+    }
+  ],
+  [
+    {
+      "titre": "82. PURU PAGU NII"
+    },
+    {
+      "couple": "Ama Adamai maŋaabe.\nAma Hawai maŋaabe.\nEdɛn yalu ɛju nɛ,\nAma bei kunaabe."
+    },
+    {
+      "couple": "Bei puru pagaabe,\nWo Hawai jɛɛlaabe,\nAdama bɛrɛ obaabe,\nBe lɛi koturu gi."
+    },
+    {
+      "couple": "Tunmɔ le kabanɔu,\nAma bei diŋaabe,\nAdama lee, Hawa lee,\nNɛɛ goju koturui."
+    },
+    {
+      "couple": "Bei duba kanraanbe,\nKai bemɛ kilaabe,\nKijɛ be kayajɛ,\nAma bei obaabe."
+    },
+    {
+      "couple": "Puru pagui babamɔi,\nYesu kanran babaabe.\nGalile ana nɛ,\nTaanrinyɛn biyaabe."
+    },
+    {
+      "couple": "Kikinu Pilu gɔ,\nSɛɛrɛ gɔ yato.\nGalile ana nɛ,\nTaanrinyɛn biyaabe."
+    },
+    {
+      "couple": "Emɛ ba unrunw,\nPuru pagu babamɔi,\nAma tɔɔraabe dɛi,\nEmɛ bɛrɛ ɛjii wɔɔ."
+    },
+    {
+      "couple": "Yaanran lee ainɛ lee,\nBa unrunw giru nɛ,\nPui e kunaabe,\nBai wooi ajubai."
+    },
+    {
+      "couple": "Nɛɛ tunmɔ le biyɛi,\nTunmɔi ɛjii babai,\nYiun gɔ laa ye,\nTunmɔ le kabanɔu."
+    },
+    {
+      "couple": "Ama ei duba kanran,\nDiŋɛ womɔ kanran ga.\nTɔɔru womɔ gɔ,\nBai wooi ajubai."
     }
   ],
   [
@@ -2775,7 +2813,7 @@
       "couple": "Ama le gawamɔi, emi ibɛɛwɔ dɛi,\nAma tɔɔru gɔ, kibemɔ ga mainiyɛnmɔi.\nAma teitai gɔ dɛi, ɛhɛju womɔ dɛi,\nAma tɔɔru gɔ kibemɔ ga mainiyɛnmɔi."
     },
     {
-      "refrain": "Ama tɔɔru gɔ, Ama tɔɔru gɔ,\nAma tɔɔru gɔ kibemɔ ga\nmainiyɛnmɔi."
+      "refrain": "Ama tɔɔru gɔ, Ama tɔɔru gɔ,\nAma tɔɔru gɔ kibemɔ ga mainiyɛnmɔi."
     },
     {
       "couple": "Waaru Yesu aduna nɛ bee le,\nAma tɔɔru gɔ, Yesu kɔɔ wooi kibemaabe.\nAduna nɛ Yesui subɔraabɛin,\nAma tɔɔru gɔ, Yesu kɔɔ wooi kibemaabe."
@@ -2801,7 +2839,10 @@
       "couple": "Yesu ili wooi togiyaai,\nYesu ili, ili maai wɔɔ.\nYabanɛ Yesu, mui gɛliyɛ,\nIli doɲu gɔ nɛ."
     },
     {
-      "titre": "GƆNRƆN MA LEI LAA\nGɔnrɔn ma le laa, paŋa ma le laa,\nKikinu Pilu gɔnrɔn birɛ le.\nGɔnrɔn ma le laa, paŋa ma le laa,\nKikinu Pilu gɔnrɔn le."
+      "titre": "GƆNRƆN MA LEI LAA"
+    },
+    {
+      "couple": "Gɔnrɔn ma le laa, paŋa ma le laa,\nKikinu Pilu gɔnrɔn birɛ le.\nGɔnrɔn ma le laa, paŋa ma le laa,\nKikinu Pilu gɔnrɔn le."
     },
     {
       "couple": "Yalu mɔɲu wooi nɛ kuu ma gogoodo,\nYalu mɔɲu wooi nɛ kuu ma gogoodo,\nYalu mɔɲu wooi nɛ kuu ma gogoodo,\nKikinu Pilu gɔnrɔn le."
@@ -2880,10 +2921,10 @@
       "titre": "126. ILI GƆNRƆN GƆ DƐI"
     },
     {
-      "couple": "Mui hakɛginɛi, lɔgɔ gabaai.\nKaa ili uwɔ wooi togiyaai.\nMui yaabu kanran, ɛjii gɛɛuwɔn."
+      "couple": "Mui hakɛginɛi, lɔgɔ gabaai.\nKaa ili uwɔ wooi togiyaai.\nMui yaabu kanran, ɛjii gɛɛuwɔn.\nIli gɔ le u mui ɛjɛmɔ."
     },
     {
-      "refrain": "Ili gɔ le u mui ɛjɛmɔ.\nIli gɔnrɔn gɔ dɛi, (3x)\nYesu ili gɔ dɛi, mu gɛɛunwɔn."
+      "refrain": "Ili gɔnrɔn gɔ dɛi, (3x)\nYesu ili gɔ dɛi, mu gɛɛunwɔn."
     },
     {
       "couple": "Mui subɔraaɲu, ɔɲɛ gabaai.\nKaa ili uwɔ wooi togiyaai.\nGɔnrɔn bɛbɛɛdɔn, ili gɔ dɛi.\nSetanu paŋa kanɛ dogaai."
@@ -3120,7 +3161,10 @@
       "titre": "135. YESU ILI LE SETANUI GƆNRAANBƐIN"
     },
     {
-      "couple": "Yesu ili le Setanui gɔnraanbɛin.\nAleluya, amiina.\nYesu ili le Setanui gɔnraanbɛin.\nAleluya, amiina.\nGɔnrɔn wo le wɔɔ, ili womɔ dɛi.\nYesu ili puu togiyaai.\nYesu ili le Setanui gɔnraanbɛin.\nAleluya, amiina."
+      "couple": "Yesu ili le Setanui gɔnraanbɛin.\nAleluya, amiina.\nYesu ili le Setanui gɔnraanbɛin.\nAleluya, amiina."
+    },
+    {
+      "couple": "Gɔnrɔn wo le wɔɔ, ili womɔ dɛi.\nYesu ili puu togiyaai.\nYesu ili le Setanui gɔnraanbɛin.\nAleluya, amiina."
     }
   ],
   [
@@ -3293,7 +3337,7 @@
       "couple": "Kanɛ kinɛ ma saii ɛɛlii wɔɔ,\nYabanɛ Yesu kɔɔ dɛi.\nBaga jai kuu nɛ mu dɛi yinwaain.\nWo mui yabai wiyaai."
     },
     {
-      "couple": "O, kinɛ ma ɛɛlii wɔɔ.\nO, kinɛ ma ɛɛlii wɔɔ.\nYesu wiyaa, kinɛ ma nɛ yowaai.\nKinɛ ɛɛlu le wɔn."
+      "refrain": "O, kinɛ ma ɛɛlii wɔɔ.\nO, kinɛ ma ɛɛlii wɔɔ.\nYesu wiyaa, kinɛ ma nɛ yowaai.\nKinɛ ɛɛlu le wɔn."
     },
     {
       "couple": "Pɔɔlɔ kinɛ ma saii mɔɲii bee,\nJaŋunɛ Setanui, kɔɔ dɛi.\nKaa Yesu dɛi Ama ii taŋaaun.\nKanɛ kinɛ ɛjaai."
@@ -3350,7 +3394,7 @@
       "couple": "Yesu inɛw wooi boonɔuwɔ,\nInɛw manaa wɔin gɔbe.\nYesu bei yabu ibɛɛwɔ,\nIli unrunmɔ gɔ le."
     },
     {
-      "couple": "Aleluya, Inɛw Baŋa.\nAleluya, birɛ poo.\nMui Yabanɛi, Yesu Baranɛ.\nGɛliyɛnɛi, asuu nasuu."
+      "refrain": "Aleluya, Inɛw Baŋa.\nAleluya, birɛ poo.\nMui Yabanɛi, Yesu Baranɛ.\nGɛliyɛnɛi, asuu nasuu."
     },
     {
       "couple": "Yesu, paŋaginɛ Yesu,\nYalu baŋi ma gɔ ui.\nSubɔrɔ mui liirɛmɔjɛ,\nDiyɛdɔn ma Yesu woi."
@@ -3509,7 +3553,7 @@
       "couple": "Kibɛru ɛju taga,\nKibɛru ɛju gɔ,\nYesu ui barado.\nKibɛru ɛju taga."
     },
     {
-      "couple": "Yesu sɔɔ ɛjii wɔɔ.\nKibɛru ɛju gɔ woi.\nYesu, wo yawɛɛjɛ.Kibɛru ɛju taga."
+      "refrain": "Yesu sɔɔ ɛjii wɔɔ.\nKibɛru ɛju gɔ woi.\nYesu, wo yawɛɛjɛ.Kibɛru ɛju taga."
     },
     {
       "couple": "Yesu ili togiyaai.\nSadaga uwɔ gɔ woi.\nAduna wooi dɛi togi.\nKibɛru ɛju taga."
@@ -3696,7 +3740,7 @@
       "couple": "Wo ɔnmɔii wɔɔ,\nInɛw Baŋa Yesu wo ɔnmɔii wɔɔ. (2x)"
     },
     {
-      "couple": "Aleluya, baga jai giru ma nɛ wɔɔ,\nMu waja onu go asuu yaaidolɔn."
+      "refrain": "Aleluya, baga jai giru ma nɛ wɔɔ,\nMu waja onu go asuu yaaidolɔn."
     },
     {
       "couple": "Wo mui ibɛɛwɔ,\nInɛw Baŋa Yesu mui ibɛɛwɔ. (2x)"
@@ -4760,7 +4804,10 @@
   ],
   [
     {
-      "titre": "201. ALUJƐNƐ YOOƝU\nAlujɛnɛ yooɲu mɔnɔgolo gɔ,\nInɛ aa boi le kɔɔn’ yoyoodɛin ma?\nAlujɛnɛ yooɲu mɔnɔgolo gɔ,\nYesu boi le emɛ kɔɔn’ yoyoodɛin."
+      "titre": "201. ALUJƐNƐ YOOƝU"
+    },
+    {
+      "couple": "Alujɛnɛ yooɲu mɔnɔgolo gɔ,\nInɛ aa boi le kɔɔn’ yoyoodɛin ma?\nAlujɛnɛ yooɲu mɔnɔgolo gɔ,\nYesu boi le emɛ kɔɔn’ yoyoodɛin."
     }
   ],
   [

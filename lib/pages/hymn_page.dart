@@ -93,23 +93,30 @@ class _HymnPageState extends State<HymnPage> {
 
   List<Section> _getHymnSections(Hymn hymn) {
     final settings = Provider.of<SettingsProvider>(context, listen: false);
+
+    // If repeatRefrain is off, or if the hymn already has multiple distinct refrains,
+    // we just display the sections exactly as they are in the database.
+    if (!settings.repeatRefrain || hymn.isMultipleRefrain) {
+      return hymn.sections;
+    }
+
     final List<Section> sections = [];
+    final Section? firstRefrain =
+        hymn.sections.where((s) => s.sectionType == 'refrain').firstOrNull;
 
-    for (final section in hymn.sections) {
-      final Section? refrainSection =
-          hymn.sections.where((s) => s.sectionType == 'refrain').firstOrNull;
-      Section? previousSection = refrainSection;
+    for (int i = 0; i < hymn.sections.length; i++) {
+      final section = hymn.sections[i];
+      sections.add(section);
 
-      if (!settings.repeatRefrain || (previousSection?.id != section.id)) {
-        sections.add(section);
-        previousSection = section;
-      }
+      // If it's a verse and we have a refrain to repeat
+      if (section.sectionType == 'verse' && firstRefrain != null) {
+        // Check if the next section is already a refrain to avoid duplicates
+        final bool nextIsRefrain = (i + 1 < hymn.sections.length) &&
+            hymn.sections[i + 1].sectionType == 'refrain';
 
-      if (refrainSection != null &&
-          settings.repeatRefrain &&
-          !hymn.isMultipleRefrain &&
-          section.sectionType == 'verse') {
-        sections.add(refrainSection);
+        if (!nextIsRefrain) {
+          sections.add(firstRefrain);
+        }
       }
     }
 

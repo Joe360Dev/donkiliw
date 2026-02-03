@@ -77,7 +77,8 @@ Boi womɔ gɔ ɛjii babamɔi.
 Amai bai wooi demɛniyɛnmɔi.
 Aleluya, aleluya,
 Aleluya, aleluya, aleluya.
- 
+
+[Title]
 ALELUYA,
 Aleluya, Yesu bulaai,
 Aleluya, amiina.
@@ -562,9 +563,10 @@ Wɛɛ, Yesu gɔnrɔn gɛɛn,
 Kuu uwɔ gɔ Woi obo
 Yesu gɔnrɔn bɛbɛɛdou.
 
-[Verse]
+[Title]
 16 MU YESU MII ƐGAABƆN
 
+[Verse]
 Mu Yesu mii ɛgaabɔn dɛi,
 Mu genɛ womɔn’ dɔwaaun.
 Wo deliye mui obaabe,
@@ -1056,7 +1058,7 @@ Mui Yabanɛi sai laa,
 Mui Baranɛi biyaai,
 Ama Kikinu Pilu kinɛ ma nɛ too.
 
-[Verse]
+[Refrain]
 Wo kinɛ ma nɛ too,
 Wo kinɛ ma nɛ too,
 Ama Kikinu Pilu kinɛ ma nɛ too.
@@ -1352,7 +1354,7 @@ Wo boi emɛ boonaajɛ ye, yayaadɛin.
 40 YESU IHIBƐ WOMƆ DƐI
 
 
-
+	
 [Verse]
 Yesu ihibɛ womɔ dɛi,
 Emɛ nii ɛju niidɛin.
@@ -1971,7 +1973,7 @@ Emɛ Yesu boi le gawaa wɔin.
 Emɛ jamu le wɔin, duba diyɛ yɔɔ.
 Emɛ Yesu boi le gawaa wɔin.
 
-[Verse]
+[Refrain]
 Yesu, Yesu,
 Wo emi ɛjii dɔmiyɛnjɛ.
 Yesu, Yesu,
@@ -2025,7 +2027,7 @@ Yesu sai, Yesu sai.
 Hakɛ emɛ inɛ yaabu kanrun,
 Yesu sai, Yesu sai.
 
-[Verse]
+[Refrain]
 Yesu ɔɲɛ emɛ duiyaabe,
 Bai wooi emi babarado.
 Anrunge emɛ gɔ Yesu sai,
@@ -2221,7 +2223,7 @@ Inɛw Baŋa Yesu mui yabaajɛ,
 Hakɛ yaabu kanrun mui obu.
 Kinɛ jamu sɔgɔido Wo obaabe,
 Kinɛ ɛɛlu lee ihibɛ lee.
- 
+ 	
 [Refrain]
 Inɛw wooi,
 Ama sɔɔ jugɔun dagaa.
@@ -2591,44 +2593,44 @@ Ama emi ibɛɛwɔ. (3)
 Yabanɛ gɔ Yesui. (3)
 
 [Verse]
-Bɛtɛlɛhɛmu nɛ Woi narin.
+Bɛtɛlɛhɛmu nɛ Woi narin. (3)
 
 [Verse]
-Tolo diyɛ iyaabɛin.
+Tolo diyɛ iyaabɛin. (3)
 
 [Verse]
-Yesu emɛ dɛi wiyaai.
+Yesu emɛ dɛi wiyaai. (3)
 
 [Verse]
-Yalu Wo gabii Nasarɛtei.
+Yalu Wo gabii Nasarɛtei. (3)
 
 [Verse]
-Sɔɔ yabanɛi biyaabe.
+Sɔɔ yabanɛi biyaabe. (3)
 
 [Verse]
-Yesu emɛ dɛi yinwaain.
+Yesu emɛ dɛi yinwaain. (3)
 
 [Verse]
-Yesu emɛ dɛi bulaai.
+Yesu emɛ dɛi bulaai. (3)
 
 
 [Verse]
-Alagala nɛ ulaai.
+Alagala nɛ ulaai. (3)
 
 [Verse]
-Yesu bɛrii wɛwɛɛdo.
+Yesu bɛrii wɛwɛɛdo. (3)
 
 [Verse]
-Yesu boi le Ama gɛɛn.
+Yesu boi le Ama gɛɛn. (3)
 
 [Verse]
-Yesu boi le tuŋiyɛnmɔi.
+Yesu boi le tuŋiyɛnmɔi. (3)
 
 [Verse]
-Yesu boi le ingelemɔi.
+Yesu boi le ingelemɔi. (3)
 
 [Verse]
-Aleluya, amiina.
+Aleluya, amiina. (3)
 
 [Title]
 79. YESU BULAAI
@@ -2647,7 +2649,7 @@ Wo kanɛ asuu ɔnmɔi bibiyɛdo.
 Wo bulaai,
 Wo bulaai,
 Aleluya, Wo bulaai.
- 
+ 	
 [Verse]
 Be Yesui bojaabɛin,
 Yesu mu Baŋa.
@@ -2738,6 +2740,70 @@ Nɛɛ, unrunw uwɔ bara,
 Kikinu Pilu gɔ le. 
 Boi uwɔ sɔmu ibɛɛwɔin, 
 Kinɛ ɛɛlu nii gɔ le. 
+[Title]
+82. PURU PAGU NII
+
+[Verse]
+Ama Adamai maŋaabe.
+Ama Hawai maŋaabe.
+Edɛn yalu ɛju nɛ,
+Ama bei kunaabe.
+
+[Verse]
+Bei puru pagaabe,
+Wo Hawai jɛɛlaabe,
+Adama bɛrɛ obaabe,
+Be lɛi koturu gi.
+
+[Verse]
+Tunmɔ le kabanɔu,
+Ama bei diŋaabe,
+Adama lee, Hawa lee,
+Nɛɛ goju koturui.
+
+ 
+[Verse]
+Bei duba kanraanbe,
+Kai bemɛ kilaabe,
+Kijɛ be kayajɛ,
+Ama bei obaabe.
+ 
+[Verse]
+Puru pagui babamɔi,
+Yesu kanran babaabe.
+Galile ana nɛ,
+Taanrinyɛn biyaabe.
+
+[Verse]
+Kikinu Pilu gɔ,
+Sɛɛrɛ gɔ yato.
+Galile ana nɛ,
+Taanrinyɛn biyaabe.
+
+[Verse]
+Emɛ ba unrunw,
+Puru pagu babamɔi,
+Ama tɔɔraabe dɛi,
+Emɛ bɛrɛ ɛjii wɔɔ.
+ 
+[Verse]
+Yaanran lee ainɛ lee,
+Ba unrunw giru nɛ,
+Pui e kunaabe,
+Bai wooi ajubai.
+
+[Verse]
+Nɛɛ tunmɔ le biyɛi,
+Tunmɔi ɛjii babai,
+Yiun gɔ laa ye,
+Tunmɔ le kabanɔu.
+
+[Verse]
+Ama ei duba kanran,
+Diŋɛ womɔ kanran ga.
+Tɔɔru womɔ gɔ,
+Bai wooi ajubai.
+
 [Title]
 84. INƐ SAI 
 [Verse]
@@ -4406,8 +4472,7 @@ Ama tɔɔru gɔ kibemɔ ga mainiyɛnmɔi.
  
 [Refrain]
 Ama tɔɔru gɔ, Ama tɔɔru gɔ,
-Ama tɔɔru gɔ kibemɔ ga
-mainiyɛnmɔi.
+Ama tɔɔru gɔ kibemɔ ga mainiyɛnmɔi.
  
 [Verse]
 Waaru Yesu aduna nɛ bee le,
@@ -4430,6 +4495,7 @@ Ama sɔɔ gɔ, Yesu kɔɔ wooi yabaabe.
  
 [Title]
 124. ILI DOƝU GƆ NƐ
+
 [Verse]
 Yesu ili gɔ taanrinyɛin,
 Mɔɲu gɔ wooi gɔgɔnrɔnjɛ,
@@ -4450,6 +4516,8 @@ Ili doɲu gɔ nɛ.
  
 [Title]
 GƆNRƆN MA LEI LAA
+
+[Verse]
 Gɔnrɔn ma le laa, paŋa ma le laa,
 Kikinu Pilu gɔnrɔn birɛ le.
 Gɔnrɔn ma le laa, paŋa ma le laa,
@@ -4534,9 +4602,9 @@ Yesu ili dɛi daa goo yayaadɛin.
 Mui hakɛginɛi, lɔgɔ gabaai.
 Kaa ili uwɔ wooi togiyaai.
 Mui yaabu kanran, ɛjii gɛɛuwɔn.
+Ili gɔ le u mui ɛjɛmɔ.
  
 [Refrain]
-Ili gɔ le u mui ɛjɛmɔ.
 Ili gɔnrɔn gɔ dɛi, (3)
 Yesu ili gɔ dɛi, mu gɛɛunwɔn.
  
@@ -4878,6 +4946,8 @@ Yesu ili le Setanui gɔnraanbɛin.
 Aleluya, amiina.
 Yesu ili le Setanui gɔnraanbɛin.
 Aleluya, amiina.
+
+[Verse]
 Gɔnrɔn wo le wɔɔ, ili womɔ dɛi.
 Yesu ili puu togiyaai.
 Yesu ili le Setanui gɔnraanbɛin.
@@ -5130,7 +5200,7 @@ Yabanɛ Yesu kɔɔ dɛi.
 Baga jai kuu nɛ mu dɛi yinwaain.
 Wo mui yabai wiyaai.
  
-[Verse]
+[Refrain]
 O, kinɛ ma ɛɛlii wɔɔ.
 O, kinɛ ma ɛɛlii wɔɔ.
 Yesu wiyaa, kinɛ ma nɛ yowaai.
@@ -5228,7 +5298,7 @@ Inɛw manaa wɔin gɔbe.
 Yesu bei yabu ibɛɛwɔ,
 Ili unrunmɔ gɔ le.
  
-[Verse]
+[Refrain]
 Aleluya, Inɛw Baŋa.
 Aleluya, birɛ poo.
 Mui Yabanɛi, Yesu Baranɛ.
@@ -5480,7 +5550,7 @@ Kibɛru ɛju gɔ,
 Yesu ui barado.
 Kibɛru ɛju taga.
  
-[Verse]
+[Refrain]
 Yesu sɔɔ ɛjii wɔɔ.
 Kibɛru ɛju gɔ woi.
 Yesu, wo yawɛɛjɛ.Kibɛru ɛju taga.
@@ -5784,7 +5854,7 @@ Ama emi tujɔdo.
 Wo ɔnmɔii wɔɔ,
 Inɛw Baŋa Yesu wo ɔnmɔii wɔɔ. (2)
  
-[Verse]
+[Refrain]
 Aleluya, baga jai giru ma nɛ wɔɔ,
 Mu waja onu go asuu yaaidolɔn.
  
@@ -7365,6 +7435,8 @@ Gagawu gɔ le biyɛi.
  
 [Title]
 201. ALUJƐNƐ YOOƝU
+
+[Verse]
 Alujɛnɛ yooɲu mɔnɔgolo gɔ,
 Inɛ aa boi le kɔɔn’ yoyoodɛin ma?
 Alujɛnɛ yooɲu mɔnɔgolo gɔ,
