@@ -31,8 +31,15 @@ class DatabaseHelper {
     final staticPath = join(dbPath, _staticDbName);
     final userPath = join(dbPath, _userDbName);
 
+    final oldPath = join(dbPath, 'donkiliw_app.db');
+
     debugPrint('Static DB path: $staticPath');
     debugPrint('User DB path: $userPath');
+    debugPrint('Old DB path: $oldPath');
+
+    if (await File(oldPath).exists()) {
+      await File(oldPath).delete();
+    }
 
     // 1. Ensure User Database exists with correct schema
     final userDbInitial = await openDatabase(
