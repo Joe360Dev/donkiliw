@@ -1,22 +1,14 @@
-import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:donkiliw/database/data/thematics.dart';
-import 'package:donkiliw/models/hymn_collection.dart';
-import 'package:donkiliw/models/hymn_collection_join.dart';
-import 'package:path/path.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:slugify/slugify.dart';
 import 'package:sqflite/sqflite.dart';
-
-// Import your models
-import '../models/hymn_book.dart';
-import '../models/hymn_theme.dart';
-import '../models/hymn.dart';
-import '../models/section.dart';
-import '../models/phrase.dart';
+import 'package:path/path.dart';
+import 'package:donkiliw/models/hymn_theme.dart';
+import 'package:donkiliw/models/hymn.dart';
+import 'package:donkiliw/models/hymn_book.dart';
+import 'package:donkiliw/models/section.dart';
+import 'package:donkiliw/models/phrase.dart';
+import 'package:donkiliw/models/hymn_collection.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -24,10 +16,9 @@ class DatabaseHelper {
   DatabaseHelper._internal();
 
   static Database? _database;
-  static bool _isUpgrading = false;
-  static const int currentDataVersion =
-      3; // Increment this to trigger a re-import
-  static const String _dataVersionKey = 'data_version';
+
+  static const String _staticDbName = 'donkiliw_static.db';
+  static const String _userDbName = 'donkiliw_user.db';
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -37,509 +28,103 @@ class DatabaseHelper {
 
   Future<Database> _initDatabase() async {
     final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'donkiliw_app.db');
-    if (kDebugMode) print('Database path: $path');
+    final staticPath = join(dbPath, _staticDbName);
+    final userPath = join(dbPath, _userDbName);
 
-    // Copy pre-populated database from assets if it doesn’t exist
-    // Ensure directory exists
-    if (!await File(path).exists()) {
-      await Directory(dbPath).create(recursive: true);
+    debugPrint('Static DB path: $staticPath');
+    debugPrint('User DB path: $userPath');
 
-      try {
-        ByteData data =
-            await rootBundle.load('assets/databases/donkiliw_app.db');
-        List<int> bytes = data.buffer.asUint8List(
-          data.offsetInBytes,
-          data.lengthInBytes,
-        );
-        // Ensure write completes
-        await File(path).writeAsBytes(bytes, flush: true);
-        if (kDebugMode) print('Pre-populated database copied from assets');
-      } catch (e) {
-        if (kDebugMode) print('Error copying database: $e');
-        // Fallback: Create an empty database if asset is missing
-        return await openDatabase(
-          path,
-          version: 1,
-          onCreate: _onCreate,
-        );
-      }
+    // 1. Ensure User Database exists with correct schema
+    final userDbInitial = await openDatabase(
+      userPath,
+      version: 1,
+      onCreate: _onUserDbCreate,
+    );
+    await userDbInitial.close();
+
+    // 2. Handle Static Database (Hymns)
+    if (!await File(staticPath).exists()) {
+      await _copyStaticDbFromAssets(staticPath);
     }
 
-    // Open the existing database
-    final db = await openDatabase(
-      path,
-      version: 1,
-      onCreate: _onCreate,
-    );
+    // 3. Open Static Database and ATTACH User Database
+    final db = await openDatabase(staticPath);
 
-    // Check if we need to refresh static data (JSON content)
-    // Run this in the background to avoid blocking the app launch
-    _checkDataUpgrade(db);
+    // Check if user_db is already attached (prevents error on hot restart)
+    final List<Map<String, dynamic>> databases =
+        await db.rawQuery('PRAGMA database_list');
+    if (kDebugMode) {
+      debugPrint('Current databases attached: $databases');
+    }
+
+    final bool isAlreadyAttached =
+        databases.any((database) => database['name'] == 'user_db');
+
+    if (!isAlreadyAttached) {
+      try {
+        debugPrint('Attaching user database...');
+        await db.execute("ATTACH DATABASE '$userPath' AS user_db");
+      } catch (e) {
+        // Double check the error message
+        if (e.toString().contains('already in use')) {
+          debugPrint(
+              'User database was already attached (detected via catch).');
+        } else {
+          debugPrint('Error attaching user database: $e');
+        }
+      }
+    } else {
+      debugPrint('User database already attached (detected via PRAGMA).');
+    }
 
     return db;
   }
 
-  Future<void> _onCreate(Database db, int version) async {
-    await db.execute('PRAGMA foreign_keys = ON;');
+  Future<void> _copyStaticDbFromAssets(String path) async {
+    try {
+      ByteData data = await rootBundle.load('assets/databases/$_staticDbName');
+      List<int> bytes = data.buffer.asUint8List(
+        data.offsetInBytes,
+        data.lengthInBytes,
+      );
+      await File(path).writeAsBytes(bytes, flush: true);
+      debugPrint('Static database copied from assets');
+    } catch (e) {
+      debugPrint('Error copying static database: $e');
+      // If asset is missing, we might need to build it from JSON
+      // but the user said it should be pre-populated.
+    }
+  }
 
+  Future<void> _onUserDbCreate(Database db, int version) async {
     await db.execute('''
-    CREATE TABLE hymn_book (
+      CREATE TABLE hymn_collection (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        publication_year INTEGER,
-        language TEXT,
-        UNIQUE(name, publication_year)
-    )''');
-
-    await db.execute('''
-    CREATE TABLE theme (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL UNIQUE,
-        icon_name TEXT,
-        description TEXT
-    )''');
-
-    await db.execute('''
-    CREATE TABLE hymn (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        hymn_book_id INTEGER NOT NULL,
-        book_name TEXT,
-        hymn_number INTEGER NOT NULL,
         title TEXT NOT NULL,
-        first_line TEXT,
-        other_reference TEXT,
-        FOREIGN KEY (hymn_book_id) REFERENCES hymn_book(id)
-    )''');
+        description TEXT NOT NULL,
+        creation_date TEXT NOT NULL
+      )
+    ''');
 
     await db.execute('''
-    CREATE TABLE favorite_hymn (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      hymn_id INTEGER NOT NULL,
-      FOREIGN KEY (hymn_id) REFERENCES hymn(id) ON DELETE CASCADE
-    )''');
-
-    // hymn theme tab
-    await db.execute('''
-    CREATE TABLE hymn_theme (
-        hymn_id INTEGER NOT NULL,
-        theme_id INTEGER NOT NULL,
-        PRIMARY KEY (hymn_id, theme_id),
-        FOREIGN KEY (hymn_id) REFERENCES hymn(id) ON DELETE CASCADE,
-        FOREIGN KEY (theme_id) REFERENCES theme(id) ON DELETE CASCADE
-    )''');
-
-    // Collections table
-    await db.execute('''
-    CREATE TABLE hymn_collection (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      description TEXT NOT NULL,
-      creation_date TEXT NOT NULL
-    )
+      CREATE TABLE favorite_hymn (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        book_name TEXT NOT NULL,
+        hymn_number INTEGER NOT NULL,
+        UNIQUE(book_name, hymn_number)
+      )
     ''');
 
     await db.execute('''
       CREATE TABLE hymn_collection_join (
-      hymn_id INTEGER NOT NULL,
-      collection_id INTEGER NOT NULL,
-      order_index INTEGER NOT NULL DEFAULT 0,
-      FOREIGN KEY (hymn_id) REFERENCES hymn (id) ON DELETE CASCADE,
-      FOREIGN KEY (collection_id) REFERENCES hymn_collection (id) ON DELETE CASCADE,
-      PRIMARY KEY (hymn_id, collection_id)
-    )
+        collection_id INTEGER NOT NULL,
+        book_name TEXT NOT NULL,
+        hymn_number INTEGER NOT NULL,
+        order_index INTEGER NOT NULL DEFAULT 0,
+        FOREIGN KEY (collection_id) REFERENCES hymn_collection (id) ON DELETE CASCADE,
+        PRIMARY KEY (collection_id, book_name, hymn_number)
+      )
     ''');
-
-    await db.execute('''
-    CREATE TABLE section (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        hymn_id INTEGER NOT NULL,
-        title TEXT,
-        section_type TEXT CHECK(section_type IN ('title', 'verse', 'refrain')) NOT NULL,
-        sequence INTEGER NOT NULL,
-        FOREIGN KEY (hymn_id) REFERENCES hymn(id),
-        UNIQUE(hymn_id, sequence)
-    )''');
-
-    await db.execute('''
-    CREATE TABLE phrase (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        section_id INTEGER NOT NULL,
-        content TEXT NOT NULL,
-        sequence INTEGER NOT NULL,
-        repeat_count INTEGER NOT NULL DEFAULT 1,
-        FOREIGN KEY (section_id) REFERENCES section(id),
-        UNIQUE(section_id, sequence)
-    )''');
-
-    await db.execute(
-      'CREATE INDEX idx_hymn_number ON hymn(hymn_book_id, hymn_number)',
-    );
-    await db.execute(
-      'CREATE INDEX idx_section_sequence ON section(hymn_id, sequence)',
-    );
-  }
-
-  Future<void> _checkDataUpgrade(Database db) async {
-    if (_isUpgrading) return;
-
-    final prefs = await SharedPreferences.getInstance();
-    final storedVersion = prefs.getInt(_dataVersionKey) ?? 0;
-
-    if (currentDataVersion > storedVersion) {
-      _isUpgrading = true;
-      try {
-        debugPrint(
-          'Data upgrade detected: $storedVersion -> $currentDataVersion. '
-          'Starting seamless import..',
-        );
-
-        await seamlessImport(db);
-        await prefs.setInt(_dataVersionKey, currentDataVersion);
-      } catch (e) {
-        debugPrint('Error during seamless import: $e');
-      } finally {
-        _isUpgrading = false;
-      }
-    }
-  }
-
-  Future<void> setHymnThemes([DatabaseExecutor? db]) async {
-    final executor = db ?? await database;
-    for (var themeMap in thematics.entries) {
-      final themeId = await insertTheme(
-        HymnTheme(
-          name: themeMap.key,
-          iconName: '${slugify(themeMap.key, delimiter: '_')}.svg',
-        ),
-        executor,
-      );
-
-      if (themeId <= 0) continue;
-      for (var hymnId in themeMap.value) {
-        await setHymnTheme(hymnId, themeId, executor);
-      }
-    }
-
-    if (kDebugMode) print('Hymn theme setting COMPLETED!');
-  }
-
-  /// Seamlessly imports new data while preserving user favorites and collections.
-  Future<void> seamlessImport([Database? db]) async {
-    final activeDb = db ?? await database;
-
-    // 1. Backup User Data (Favorites and Collections)
-    final backup = await _backupUserData(activeDb);
-
-    // 2. Clear static data and re-import within a SINGLE transaction
-    await activeDb.transaction((txn) async {
-      // Clear static data tables
-      await txn.execute('DELETE FROM phrase');
-      await txn.execute('DELETE FROM section');
-      await txn.execute('DELETE FROM hymn_theme');
-      await txn.execute('DELETE FROM theme');
-      await txn.execute('DELETE FROM hymn_collection_join');
-      await txn.execute('DELETE FROM hymn');
-      await txn.execute('DELETE FROM hymn_book');
-
-      // Reset sequences for clean AUTOINCREMENT from 1
-      await txn.execute("DELETE FROM sqlite_sequence WHERE name='hymn'");
-      await txn.execute("DELETE FROM sqlite_sequence WHERE name='hymn_book'");
-      await txn.execute("DELETE FROM sqlite_sequence WHERE name='section'");
-      await txn.execute("DELETE FROM sqlite_sequence WHERE name='phrase'");
-      await txn.execute("DELETE FROM sqlite_sequence WHERE name='theme'");
-
-      // 3. Re-import everything from JSON within the SAME transaction
-      await importHymnsFromJson(txn);
-      await setHymnThemes(txn);
-
-      // 4. Restore User Data by matching Books, Numbers, and Titles
-      await _restoreUserData(txn, backup);
-    });
-
-    if (kDebugMode) print('Seamless Import COMPLETED!');
-  }
-
-  Future<Map<String, dynamic>> _backupUserData(DatabaseExecutor db) async {
-    // Backup Favorites
-    final favorites = await db.rawQuery('''
-      SELECT hb.name AS book_name, h.hymn_number, h.title 
-      FROM favorite_hymn f
-      JOIN hymn h ON f.hymn_id = h.id
-      JOIN hymn_book hb ON h.hymn_book_id = hb.id
-    ''');
-
-    // Backup Collections
-    final collectionJoins = await db.rawQuery('''
-      SELECT hcj.collection_id, hb.name AS book_name, h.hymn_number, h.title, hcj.order_index
-      FROM hymn_collection_join hcj
-      JOIN hymn h ON hcj.hymn_id = h.id
-      JOIN hymn_book hb ON h.hymn_book_id = hb.id
-    ''');
-
-    return {
-      'favorites': favorites,
-      'collectionJoins': collectionJoins,
-    };
-  }
-
-  Future<void> _restoreUserData(
-      DatabaseExecutor db, Map<String, dynamic> backup) async {
-    final List<Map<String, dynamic>> favorites = backup['favorites'];
-    final List<Map<String, dynamic>> collectionJoins =
-        backup['collectionJoins'];
-
-    // Restore Favorites
-    // We clear the old table because IDs might have changed
-    await db.execute('DELETE FROM favorite_hymn');
-    for (var fav in favorites) {
-      final newHymnId = await _findNewHymnId(
-        db,
-        fav['book_name'],
-        fav['hymn_number'],
-        fav['title'],
-      );
-      if (newHymnId != null) {
-        await db.insert('favorite_hymn', {'hymn_id': newHymnId});
-      }
-    }
-
-    // Restore Collection Joins
-    // Note: hymn_collection_join was already deleted in seamlessImport
-    for (var join in collectionJoins) {
-      final newHymnId = await _findNewHymnId(
-        db,
-        join['book_name'],
-        join['hymn_number'],
-        join['title'],
-      );
-      if (newHymnId != null) {
-        await db.insert('hymn_collection_join', {
-          'hymn_id': newHymnId,
-          'collection_id': join['collection_id'],
-          'order_index': join['order_index'],
-        });
-      }
-    }
-  }
-
-  Future<int?> _findNewHymnId(
-      DatabaseExecutor db, String bookName, int number, String title) async {
-    final results = await db.rawQuery('''
-      SELECT h.id FROM hymn h
-      JOIN hymn_book hb ON h.hymn_book_id = hb.id
-      WHERE hb.name = ? AND h.hymn_number = ? AND h.title = ?
-    ''', [bookName, number, title]);
-
-    if (results.isNotEmpty) {
-      return results.first['id'] as int;
-    }
-    return null;
-  }
-
-  Future<void> importHymnsFromJson([DatabaseExecutor? db]) async {
-    final executor = db ?? await database;
-
-    final hymnBookFiles = [
-      {
-        'book_name': 'Beti Coura',
-        'path': 'assets/json_books/betiba_v2.json',
-      },
-      {
-        'book_name': 'Ala Tanu Donkiliw Nº1',
-        'path': 'assets/json_books/ala_tanu_donkiliw_1_v2.json',
-      },
-      {
-        'book_name': 'Ala Tanu Donkiliw Nº2',
-        'path': 'assets/json_books/ala_tanu_donkiliw_2_v2.json',
-      },
-      {
-        'book_name': 'Nii Don Diyɛ',
-        'path': 'assets/json_books/nii_don_v2.json',
-      },
-    ];
-
-    final repeatCountRegex = RegExp(r'\((\d+)x\)', unicode: true);
-    final cleanRegex = RegExp(r'^[:\s]*|[:\s]*$', unicode: true);
-
-    for (var bookFile in hymnBookFiles) {
-      final bookName = bookFile['book_name'] as String;
-      final List<Map<String, dynamic>> data =
-          await jsonToHymnBookData(bookFile['path'] as String);
-
-      final hymnBookId = await insertHymnBook(
-        HymnBook(name: bookName),
-        executor,
-      );
-
-      for (var jsonHymn in data) {
-        final hymnNumber = jsonHymn['hymn_number'] as int;
-        final List<dynamic> content = jsonHymn['content'];
-
-        List<Map<String, String>> currentHymnSections = [];
-        String? currentHymnTitle;
-        String? otherReference;
-
-        for (var rawSection in content) {
-          final section = Map<String, String>.from(rawSection);
-          if (section.containsKey('autrepassage')) {
-            otherReference = section['autrepassage'];
-            continue;
-          }
-          if (section.containsKey('titre')) {
-            currentHymnTitle = section['titre'];
-          }
-          currentHymnSections.add(section);
-        }
-
-        if (currentHymnSections.isNotEmpty) {
-          await _processAndInsertHymn(
-            executor,
-            hymnBookId,
-            bookName,
-            hymnNumber,
-            currentHymnTitle ?? 'Untitled',
-            currentHymnSections,
-            repeatCountRegex,
-            cleanRegex,
-            otherReference,
-          );
-        }
-      }
-    }
-    if (kDebugMode) print('Hymn Import COMPLETED!');
-  }
-
-  Future<void> _processAndInsertHymn(
-    DatabaseExecutor db,
-    int hymnBookId,
-    String bookName,
-    int hymnNumber,
-    String title,
-    List<Map<String, String>> sections,
-    RegExp repeatCountRegex,
-    RegExp cleanRegex,
-    String? otherReference,
-  ) async {
-    // Determine first line
-    String? firstLine;
-    for (var section in sections) {
-      if (section.containsKey('couple') || section.containsKey('refrain')) {
-        firstLine = section.values.first
-            .split('\n')
-            .firstWhere((line) => line.trim().isNotEmpty, orElse: () => '')
-            .replaceAll(cleanRegex, '');
-        if (firstLine.isNotEmpty) break;
-      }
-    }
-
-    String finalTitle = title;
-    if (bookName == 'Nii Don Diyɛ') {
-      finalTitle = title.replaceFirst(RegExp(r'^\d+[\.\s]+'), '').trim();
-    }
-
-    final hymn = Hymn(
-      hymnBookId: hymnBookId,
-      bookName: bookName,
-      number: hymnNumber,
-      title: finalTitle,
-      firstLine: firstLine,
-      otherReference: otherReference,
-    );
-
-    final hymnId = await insertHymn(hymn, db);
-
-    // Insert sections with their phrases using a single batch if possible,
-    // but here we need the sectionId for phrases, so we stick to simpler sequential for now or nested batches.
-    // Optimization: Wrapped in the caller's transaction is enough for massive performance.
-
-    String? previousRefrain;
-    int sequence = 1;
-
-    for (var jsonSection in sections) {
-      final sectionType = jsonSection.containsKey('titre')
-          ? 'title'
-          : jsonSection.containsKey('couple')
-              ? 'verse'
-              : 'refrain';
-
-      if (sectionType == 'refrain' &&
-          jsonSection.values.first == previousRefrain) {
-        continue;
-      } else if (sectionType == 'refrain') {
-        previousRefrain = jsonSection.values.first;
-      }
-
-      final sectionId = await insertSection(
-        Section(
-          hymnId: hymnId,
-          title: jsonSection.containsKey('titre') ? jsonSection['titre'] : null,
-          sectionType: sectionType,
-          sequence: sequence++,
-        ),
-        db,
-      );
-
-      final jsonPhrases = jsonSection.values.first.split('\n');
-      int phraseSequence = 1;
-
-      for (var jsonPhrase in jsonPhrases) {
-        if (jsonPhrase.trim().isEmpty) continue;
-
-        int repeatCount = 1;
-        final match = repeatCountRegex.firstMatch(jsonPhrase);
-        if (match != null) {
-          repeatCount = int.parse(match.group(1)!);
-        }
-
-        String cleanedPhrase = jsonPhrase
-            .trim()
-            .replaceAll(repeatCountRegex, '')
-            .replaceAll(cleanRegex, '')
-            .trim();
-
-        if (cleanedPhrase.isNotEmpty) {
-          await insertPhrase(
-            Phrase(
-              sectionId: sectionId,
-              content: cleanedPhrase,
-              sequence: phraseSequence++,
-              repeatCount: repeatCount,
-            ),
-            db,
-          );
-        }
-      }
-    }
-  }
-
-  Future<List<Map<String, dynamic>>> jsonToHymnBookData(String filePath) async {
-    // Load JSON from assets
-    final jsonString = await rootBundle.loadString(filePath);
-    final List<dynamic> jsonData = jsonDecode(jsonString);
-
-    return List<Map<String, dynamic>>.from(jsonData);
-  }
-
-  // Reset the database
-  Future<void> resetDatabase() async {
-    final db = await database;
-
-    // Drop all tables
-    await db.execute('DROP TABLE IF EXISTS phrase');
-    await db.execute('DROP TABLE IF EXISTS section');
-    await db.execute('DROP TABLE IF EXISTS hymn_theme');
-    await db.execute('DROP TABLE IF EXISTS theme');
-    await db.execute('DROP TABLE IF EXISTS hymn');
-    await db.execute('DROP TABLE IF EXISTS hymn_book');
-    await db.execute('DROP TABLE IF EXISTS favorite_hymn');
-    await db.execute('DROP TABLE IF EXISTS hymn_collection_join');
-    await db.execute('DROP TABLE IF EXISTS hymn_collection');
-
-    // Recreate all tables
-    await _onCreate(db, 1);
-
-    if (kDebugMode) print('DB reset DONE!');
   }
 
   Future<Map<String, List<Hymn>>> searchHymns(String query) async {
@@ -705,14 +290,18 @@ class DatabaseHelper {
       where: 'id = ?',
       whereArgs: [hymnId],
     );
+
+    if (hymnMaps.isEmpty) throw Exception('Hymn $hymnId not found');
+    final hymnRow = hymnMaps.first;
+
     final isLiked = await db.query(
-      'favorite_hymn',
-      where: 'hymn_id = ?',
-      whereArgs: [hymnId],
+      'user_db.favorite_hymn',
+      where: 'book_name = ? AND hymn_number = ?',
+      whereArgs: [hymnRow['book_name'], hymnRow['hymn_number']],
     ).then((map) => map.isNotEmpty);
 
     final hymn = Hymn.fromMap(
-      hymnMaps.first,
+      hymnRow,
       isLiked: isLiked,
     );
     final sectionMaps = await db.query(
@@ -771,23 +360,22 @@ class DatabaseHelper {
   Future<List<Hymn>> getHymnsByBook(int bookId) async {
     final db = await database;
 
-    // Query hymns for the given book
-    final maps = await db.query(
-      'hymn',
-      where: 'hymn_book_id = ?',
-      whereArgs: [bookId],
-    );
+    // Join with favorite_hymn using stable keys from user_db
+    final results = await db.rawQuery('''
+      SELECT h.*, f.id IS NOT NULL as is_liked
+      FROM hymn h
+      LEFT JOIN user_db.favorite_hymn f 
+        ON h.book_name = f.book_name AND h.hymn_number = f.hymn_number
+      WHERE h.hymn_book_id = ?
+      ORDER BY h.hymn_number
+    ''', [bookId]);
 
-    final likedHymnIds = await getFavoriteHymnIds();
-
-    return List.generate(maps.length, (i) {
-      final hymnMap = maps[i];
-      final hymnId = hymnMap['id'] as int;
+    return results.map((row) {
       return Hymn.fromMap(
-        hymnMap,
-        isLiked: likedHymnIds.contains(hymnId),
+        row,
+        isLiked: row['is_liked'] == 1,
       );
-    });
+    }).toList();
   }
 
   // hymn like methods
@@ -801,63 +389,58 @@ class DatabaseHelper {
 
   Future<void> likeHymn(int hymnId) async {
     final db = await database;
+    final hymn = await getHymnData(hymnId);
     await db.insert(
-      'favorite_hymn',
-      {'hymn_id': hymnId},
+      'user_db.favorite_hymn',
+      {
+        'book_name': hymn.bookName,
+        'hymn_number': hymn.number,
+      },
       conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 
   Future<void> unlikeHymn(int hymnId) async {
     final db = await database;
+    final hymn = await getHymnData(hymnId);
     await db.delete(
-      'favorite_hymn',
-      where: 'hymn_id = ?',
-      whereArgs: [hymnId],
+      'user_db.favorite_hymn',
+      where: 'book_name = ? AND hymn_number = ?',
+      whereArgs: [hymn.bookName, hymn.number],
     );
   }
 
-  Future<List<int>> getFavoriteHymnIds() async {
-    final db = await database;
-    final maps = await db.query(
-      'favorite_hymn',
-      columns: ['hymn_id'],
-    );
-    return maps.map((m) => m['hymn_id'] as int).toList();
-  }
+  // Removed getFavoriteHymnIds in favor of joined queries
 
   Future<List<Hymn>> getFavoriteHymns() async {
     final db = await database;
-    final maps = await db.rawQuery(
+    final results = await db.rawQuery(
       '''SELECT h.* FROM hymn h 
-      INNER JOIN favorite_hymn f 
-      ON h.id = f.hymn_id''',
+      INNER JOIN user_db.favorite_hymn f 
+      ON h.book_name = f.book_name AND h.hymn_number = f.hymn_number''',
     );
 
-    return List.generate(maps.length, (i) {
+    return results.map((row) {
       return Hymn.fromMap(
-        maps[i],
+        row,
         isLiked: true,
       );
-    });
+    }).toList();
   }
 
   // HymnCollection CRUD
   Future<HymnCollection> createCollection(HymnCollection collection) async {
     final db = await database;
-    final id = await db.insert('hymn_collection', collection.toMap());
+    final id = await db.insert('user_db.hymn_collection', collection.toMap());
     return collection.copyWith(
       id: id,
-      title: collection.title,
-      description: collection.description,
-      creationDate: collection.creationDate,
     );
   }
 
   Future<List<HymnCollection>> getAllCollections() async {
     final db = await database;
     final result = await db.query(
-      'hymn_collection',
+      'user_db.hymn_collection',
       orderBy: 'creation_date ASC',
     );
     return result.map((json) => HymnCollection.fromMap(json)).toList();
@@ -867,13 +450,12 @@ class DatabaseHelper {
     final db = await database;
     final result = await db.rawQuery('''
       SELECT hc.*, h.id AS hymn_id, h.title AS hymn_title, h.hymn_book_id, h.book_name, h.hymn_number, h.first_line, h.other_reference
-      FROM hymn_collection hc
-      LEFT JOIN hymn_collection_join hcj ON hc.id = hcj.collection_id
-      LEFT JOIN hymn h ON hcj.hymn_id = h.id
+      FROM user_db.hymn_collection hc
+      LEFT JOIN user_db.hymn_collection_join hcj ON hc.id = hcj.collection_id
+      LEFT JOIN hymn h ON hcj.book_name = h.book_name AND hcj.hymn_number = h.hymn_number
       ORDER BY hc.creation_date DESC, hcj.order_index ASC
     ''');
 
-    // Group hymns by collection
     final Map<int, HymnCollection> collectionMap = {};
 
     for (final row in result) {
@@ -912,9 +494,9 @@ class DatabaseHelper {
     final db = await database;
     final result = await db.rawQuery(
       '''SELECT hc.*, h.id AS hymn_id, h.title AS hymn_title, h.hymn_book_id, h.book_name, h.hymn_number, h.first_line, h.other_reference
-        FROM hymn_collection hc
-        LEFT JOIN hymn_collection_join hcj ON hc.id = hcj.collection_id
-        LEFT JOIN hymn h ON hcj.hymn_id = h.id
+        FROM user_db.hymn_collection hc
+        LEFT JOIN user_db.hymn_collection_join hcj ON hc.id = hcj.collection_id
+        LEFT JOIN hymn h ON hcj.book_name = h.book_name AND hcj.hymn_number = h.hymn_number
         WHERE hc.id = ?
         ORDER BY hcj.order_index ASC''',
       [collectionId],
@@ -959,37 +541,24 @@ class DatabaseHelper {
     int collectionId = collection.id ?? 0;
     if (collection.id != null) {
       await db.update(
-        'hymn_collection',
+        'user_db.hymn_collection',
         collection.toMap(),
         where: 'id = ?',
         whereArgs: [collection.id],
       );
     } else {
       collectionId = await db.insert(
-        'hymn_collection',
+        'user_db.hymn_collection',
         collection.toMap(),
       );
     }
-
-    final maps = collectionId > 0
-        ? await db.query(
-            'hymn_collection',
-            where: 'id = ?',
-            whereArgs: [collectionId],
-          )
-        : null;
-    final result = maps != null
-        ? HymnCollection.fromMap(
-            maps.first,
-          )
-        : collection;
-    return result;
+    return collection.copyWith(id: collectionId);
   }
 
   Future<void> deleteCollection(int id) async {
     final db = await database;
     await db.delete(
-      'hymn_collection',
+      'user_db.hymn_collection',
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -998,34 +567,36 @@ class DatabaseHelper {
   // Junction Table Operations
   Future<void> addHymnToCollection(int hymnId, int collectionId) async {
     final db = await database;
+    final hymn = await getHymnData(hymnId);
 
-    // Get the current maximum order_index for this collection
     final result = await db.rawQuery(
-      'SELECT MAX(order_index) as max_index FROM hymn_collection_join WHERE collection_id = ?',
+      'SELECT MAX(order_index) as max_index FROM user_db.hymn_collection_join WHERE collection_id = ?',
       [collectionId],
     );
     int nextIndex = 0;
     if (result.isNotEmpty && result.first['max_index'] != null) {
-      nextIndex = (result.first['max_index'] as int) + 1;
+      nextIndex = (result.first['max_index'] as int? ?? -1) + 1;
     }
 
     await db.insert(
-      'hymn_collection_join',
-      HymnCollectionJoin(
-        hymnId: hymnId,
-        collectionId: collectionId,
-        orderIndex: nextIndex,
-      ).toMap(),
+      'user_db.hymn_collection_join',
+      {
+        'collection_id': collectionId,
+        'book_name': hymn.bookName,
+        'hymn_number': hymn.number,
+        'order_index': nextIndex,
+      },
       conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 
   Future<void> removeHymnFromCollection(int hymnId, int collectionId) async {
     final db = await database;
+    final hymn = await getHymnData(hymnId);
     await db.delete(
-      'hymn_collection_join',
-      where: 'hymn_id = ? AND collection_id = ?',
-      whereArgs: [hymnId, collectionId],
+      'user_db.hymn_collection_join',
+      where: 'collection_id = ? AND book_name = ? AND hymn_number = ?',
+      whereArgs: [collectionId, hymn.bookName, hymn.number],
     );
   }
 
@@ -1033,7 +604,8 @@ class DatabaseHelper {
     final db = await database;
     final result = await db.rawQuery('''
       SELECT h.* FROM hymn h
-      INNER JOIN hymn_collection_join hcj ON h.id = hcj.hymn_id
+      INNER JOIN user_db.hymn_collection_join hcj 
+        ON h.book_name = hcj.book_name AND h.hymn_number = hcj.hymn_number
       WHERE hcj.collection_id = ?
       ORDER BY hcj.order_index ASC
     ''', [collectionId]);
@@ -1047,10 +619,10 @@ class DatabaseHelper {
     final db = await database;
     for (int i = 0; i < hymns.length; i++) {
       await db.update(
-        'hymn_collection_join',
+        'user_db.hymn_collection_join',
         {'order_index': i},
-        where: 'hymn_id = ? AND collection_id = ?',
-        whereArgs: [hymns[i].id!, collectionId],
+        where: 'collection_id = ? AND book_name = ? AND hymn_number = ?',
+        whereArgs: [collectionId, hymns[i].bookName, hymns[i].number],
       );
     }
   }
@@ -1058,8 +630,11 @@ class DatabaseHelper {
   // hymn section methods
   Future<int> insertSection(Section section, [DatabaseExecutor? db]) async {
     final executor = db ?? await database;
-    return await executor.insert('section', section.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace);
+    return await executor.insert(
+      'section',
+      section.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   Future<List<Section>> getSectionsByHymn(int hymnId) async {
