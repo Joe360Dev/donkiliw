@@ -1,0 +1,875 @@
+[
+  {
+    "hymn_number": 217,
+    "content": [
+      {
+        "titre": "IHIBƐ"
+      },
+      {
+        "refrain": "Ihibɛ, ihibɛ, ihibɛ.\nBa Ama ihibɛ gɔ Inɛw Baŋa nɛ too.\nIhibɛ tɔgu wooi nɛ dɔwaai."
+      },
+      {
+        "couple": "Ama aduna ibɛɛ biya Aini womɔ obaabe.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Ama peju wiyaa, hakɛ emɛ duiyaabe.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Oju gɔ Yesu woi, ɔmɔsɔgɔ Baŋa gɔ.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Naran gɔ Yesu woi, ɔmɔsɔgɔ Baŋa gɔ.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Jamu obonɛ Yesu woi, asuu jamu obonɛi.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Emɛ Ama sɔmɔmɔi, jamu diyɛ wogɔ dɛi.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Diyɛ dɔn emɛ Yesu woi, ɔmɔsɔgɔ obonɛi.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      },
+      {
+        "couple": "Diyɛdɔn emɛ Yesu woi, kuu emɛ goonɔnɛi.\nInɛ wo le gawaajɛ ye aduna nɛ\nWo yinwɛindolo, asuu, wo yinwɛindolo."
+      }
+    ]
+  },
+  {
+    "hymn_number": 218,
+    "content": [
+      {
+        "titre": "BAI DUMƆ SƆƆ"
+      },
+      {
+        "refrain": "Bai dumɔ gɔ dɔwaa ye (2x)\nMu kikinu pilu ma gɔ\nGoju nawan wooi kuu nɛ togo kɔɔkɔrɔdɔn."
+      },
+      {
+        "couple": "Anranw unrunw ebe lee, unrunw yanw ebe lee,\nBai dumɔ waaru gɔ le\nPropɛte sɔɔ gɔ sɔsɔɔdɛin."
+      },
+      {
+        "couple": "Sagataraw gɔbe kuu iyɛ ihiyɛdɛin.\nBai dumɔ waaru gɔ dɛi\nAma gɔ nrɔn birɛ womɔ tagarado"
+      },
+      {
+        "couple": "Anranw pɛi ebe gɔ yaŋawelu weleddɛin.\nBai dumɔ waaru gɔ dɛi\nAma gɔnrɔn birɛ womɔ tagarado"
+      },
+      {
+        "couple": "Gunɔw anranw mabe lee, gunɔw yaanw mabe lee,\nKuu bemɛ nɛ kanran\nKikinu ma togo kɔɔkɔrɔdɔn."
+      },
+      {
+        "couple": "Mu alagala lee minɛ lee nɛ\nBai dumɔ waaru gɔ dɛi\nSɛɛrɛ diyɛbe gogoomɔdɔn."
+      },
+      {
+        "couple": "Nai ɔlɔi biyɛdo. Iyepilu ilii biyɛdo.\nInɛw Baŋa bai diyɛ dooro\nBai gɔ dɔɔmɔ nɛ."
+      },
+      {
+        "couple": "Ama unrunw gɔbe, emɛ mainiyɛnmɔi.\nBai dumɔ waaru gɔ dɛi\nEmɛ maini diyɛ le biyɛmɔi."
+      }
+    ]
+  },
+  {
+    "hymn_number": 219,
+    "content": [
+      {
+        "titre": "AMA WIJƐ MAI"
+      },
+      {
+        "refrain": "Ama wijɛ mai, yayabu diyɛ ma gɔ woi.\nKinrun ma gɛliyɛnɛ gɔ woi dɛi,\nMu liyɛidolɔn."
+      },
+      {
+        "couple": "Ama ma gɔ mu le wɔɔ dɛi\nKɔɔ dɛi mu liyɛidolɔn.\nMui yabanɛ gɔ woi dɛi\nKɔɔ dɛi mu liyɛidolɔn.\nKinrun ma gɛliyɛnɛ gɔ woi dɛi,\nMu liyɛidolɔn."
+      },
+      {
+        "couple": "Ama ma gɔnrɔn Baŋai.\nKɔɔ dɛi mu liyɛidolɔn.\nDiyɛdɔn ma wo le wɔɔ dɛi\nKɔɔ dɛi mu liyɛidolɔn.\nKinrun ma gɛliyɛnɛ gɔ woi dɛi,\nMu liyɛidolɔn."
+      },
+      {
+        "couple": "Goju nawan ɔɲɔ mɔ w gɔ be\nAsuu bei liyɛidolɔn.\nGoju nawan danw gɔ be kanran\nAsuu bei liyɛidolɔn.\nKinrun ma gɛliyɛnɛ gɔ woi dɛi,\nMu liyɛidolɔn."
+      },
+      {
+        "couple": "Ama emi boonaabe dɛi,\nKɔɔ dɛi Liyɛmɔnɔmɔgin\nAma emi yɛmaabe dɛi\nKɔɔ dɛi Liyɛmɔnɔmɔgin\nKinrun emɛ gɛliyɛnɛ gɔ woi dɛi\nLiyɛ mɔ nɔ mɔ gin."
+      },
+      {
+        "couple": "Jamu Baŋa emɛ le wɔɔ dɛi\nKɔɔ dɛi liyɛmɔnɔmɔgin\nDuba Baŋa emɛ le wɔɔ dɛi\nKɔɔ dɛi liyɛmɔnɔmɔgin\nKinrun emɛ gɛliyɛnɛ gɔ woi dɛi\nLiyɛmɔnɔmɔgin."
+      }
+    ]
+  },
+  {
+    "hymn_number": 220,
+    "content": [
+      {
+        "titre": "AMA KIJƐ WOOI KANRUN BƐƐDO"
+      },
+      {
+        "refrain": "Kijɛ turu kanran ajubanɔu,\nAma Kijɛ wooi kanrun bɛɛdo. | (2x)"
+      },
+      {
+        "couple": "Musa Amai boonaabe.\nAma Musa aŋa saabe.\nAma dibe lɛi bojaabe.\nMusa wo maranw galaain."
+      },
+      {
+        "couple": "Parɔn wo maranw ingelaain,\nMusa onu nɛ dimiyaabɛin.\nDibe gɔ nɛ yowaabɛin,\nDibe bei dɛbaabe."
+      },
+      {
+        "couple": "Ama Dauda yɛ maabe,\nNii ɛju woi paraabe.\nAma gɔ nrɔ n woi obaabe,\nDauda gɔ nrɔ n biyaa."
+      },
+      {
+        "couple": "Eli Amai boonaabe,\nAma Eli aŋa saabe\nAma yaun lɛi boonaabe\nEli sadaga tɛgɛraabe."
+      },
+      {
+        "couple": "Ama Eli le sɔ waa,\nYalu u baŋiyɛindo dɛnɛ.\nSasaa u bɛrɛ titiidɔn,\nSasaa pana uwɔ dɛnɛdo."
+      },
+      {
+        "couple": "Ui jaŋ u ii biyaa ye,\nJaŋ u ii ɛjui biyaa ye,\nKijɛ ingei dɛnɛjɔu ye\nAma wo ui obodo."
+      }
+    ]
+  },
+  {
+    "hymn_number": 221,
+    "content": [
+      {
+        "titre": "EMƐ AMA GƐƐNMƆI"
+      },
+      {
+        "refrain": "Emɛ Ama gɛɛnmɔi,\nGɛɛn emɛ sasaado.\nGɔ nrɔ n bɛbɛɛdɛin\nAma gɛɛn diyɛ gɔ dɛi."
+      },
+      {
+        "couple": "Abarahamu Ama gɛɛnyaan, wo bainɛ ii Lote dɛi,\nAma Sodomɛ ana gɔ Lote le suyoru."
+      },
+      {
+        "couple": "Esekiasu Ama gɛɛnyaan, Asiri sɔldasu dɛi,\nAsiri sɔ ldasu unrunw joo naa yinwaanbe."
+      },
+      {
+        "couple": "Eli Ama gɛɛnyaan, sadaga womɔ gɔ dɛi.\nAma yaun tiyaa, sadaga womɔ tɛgɛraa."
+      },
+      {
+        "couple": "Elise Ama gɛɛnyaan, Sunamite ii gɔ dɛi.\nIi womɔ bulaai Sunamite bɛrɛ obaa."
+      },
+      {
+        "couple": "Yesu Ama gɛɛnyaan, Lazare ɔnsain aŋa nɛ.\nLazare bulaai wo maranw bɛrɛ obaa."
+      },
+      {
+        "couple": "Kuu numɔ numɔ nɛ Yesu bɛrɛ gɛɛnyaanbe.\nYesu womaa unrun le paradi nɛ yoodou."
+      },
+      {
+        "couple": "Piɛru Ama gɛɛnyaan Dɔrkasu yiun gɔ dɛi.\nDɔrkasu bulaai wo Yesu dimiyaabe."
+      },
+      {
+        "couple": "Pɔlu Ama gɛɛnyaan, Asi gana gɔ nɛ.\nEgilise joo Asi gana gɔ nɛ biyaa."
+      },
+      {
+        "couple": "Yesu Jaŋu unrunw le sɔwaa Kijɛ wo gi,\nGɛɛn e bɛbɛɛdɛin, dɛnɛi e tɛtɛmɛdei."
+      }
+    ]
+  },
+  {
+    "hymn_number": 222,
+    "content": [
+      {
+        "titre": "PEJU MABE MU BƐ IGIWƆN"
+      },
+      {
+        "refrain": "Peju mabe, mu bei igiwɔn.\nMa gɔ, be kai, mi ma igiwɔ n.\nWaru bei mu bonaavjɛ le\nPeju mabe bɔlɔ man yaadɛin."
+      },
+      {
+        "couple": "Ihibɛ le birɛ jɛ u ye.\nWogɔ Yabanɛ mii gɔ woi.\nKɔɔ le giru go yaamɔi.\nWogɔ Baŋa ui yabaga ga wiyaai."
+      },
+      {
+        "couple": "Kinɛ banrun lee jai lee ele lee,\nWogɔ yerunɛ mii gɔ woi.\nKɔɔ le yabanɔ u koi.\nWogɔ Baŋa ui jama ga wiyaai."
+      },
+      {
+        "couple": "Kinɛ pilu le birɛjɛu ye.\nWogɔ Yabanɛ mii gɔ woi.\nKɔɔ le giru go yaamɔi.\nWogɔ Baŋa ui yabaga ga wiyaai."
+      },
+      {
+        "couple": "Nabara ui daariyɛjɛ ye.\nWogɔ yerunɛ mii gɔ woi.\nKɔɔ le yabanɔu koi.\nWogɔ Baŋa ui jama ga wiyaai."
+      },
+      {
+        "couple": "Dimu ui daariyɛjɛ ye.\nWogɔ yerunɛ mii gɔ woi.\nKɔɔ le yabanɔu koi.\nWogɔ Baŋa ui jama ga wiyaai."
+      },
+      {
+        "couple": "Aduna dadaaru gɔ wooi.\nWogɔ yerunɛ mii gɔ woi.\nKɔɔ le yabanɔu koi.\nWogɔ Baŋa ui jama ga wiyaai."
+      },
+      {
+        "couple": "Ihibɛ le mainiyɛ nmɔ i,\nTɔ ɔ ru wooi nɛ diyɛnɛ gɔ woi.\nAma gɛɛ n diyɛ le biyɛ mɔi\nYesu wɛɛgu sɛgɛrɛ bɛɛ ga."
+      }
+    ]
+  },
+  {
+    "hymn_number": 223,
+    "content": [
+      {
+        "titre": "DUBA BAŋA AMA SƆƆ SƆWAABE"
+      },
+      {
+        "refrain": "Duba Baŋa gɔ ai ma?\nHakɛ oju nɛ yaidolo.\nAma duba bɛbɛɛdo,\nAduna ɔn nɛ alagala nɛ."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nEmaa Kijɛ waja babanɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nEmaa dege turu kanran labanɔu gi,"
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nAma boi bamai boonɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nDimasi bai birɛ birɛnɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nU ba lee, u na lee baba gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nDugu le inɛi daanɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nInɛ waja yanran daariyɛnɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nInɛ waja Kijɛ gunyɔnnɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nInɛ kuu nɛ kakalu maŋanɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nInɛ Kijɛ emaa daariyɛnɔu gi."
+      },
+      {
+        "couple": "Duba Baŋa Ama sɔɔ sɔwaabe gi,\nSetanu tɔɔru gɔbe babanɔu gi."
+      },
+      {
+        "couple": "Yesu inɛ hakɛ gɔ duiyaabe.\nAduna saliyɛ nɛ yoonɔu ga."
+      },
+      {
+        "couple": "Baga jai kuu nɛ wo yinwaain,\nAbada sadagai biyɛ ga."
+      }
+    ]
+  },
+  {
+    "hymn_number": 224,
+    "content": [
+      {
+        "titre": "YESU DƐI ALELUYA"
+      },
+      {
+        "refrain": "Aleluya, alagala ɔ gɔ nɛ Baŋa, | 2\nYesu dɛ i aleluya. |"
+      },
+      {
+        "couple": "Aleluya, aduna yabanɛ Baŋa, | 2\nYesu dɛi aleluya, |"
+      },
+      {
+        "couple": "Aleluya, alagala dooro diyɛ Baŋa,\nYesu dɛi aleluya."
+      },
+      {
+        "couple": "Aleluya, aduna baranɛ Baŋa,\nYesu dɛi aleluya."
+      },
+      {
+        "couple": "Aleluya, ihibɛ kuu Baŋa,\nYesu dɛi aleluya."
+      },
+      {
+        "couple": "Aleluya, amasɔ gɔ jugɔ nɛ Baŋa,\nYesu dɛi aleluya."
+      },
+      {
+        "couple": "Aleluya, jamu diyɛ obonɛ Baŋa,\nYesu dɛi aleluya."
+      },
+      {
+        "couple": "Aleluya, gɔ nrɔ n diyɛ obonɛ Baŋa,\nYesu dɛi aleluya"
+      }
+    ]
+  },
+  {
+    "hymn_number": 225,
+    "content": [
+      {
+        "titre": "RUTU SƆƆ TURU BAŋA BIYAABEI"
+      },
+      {
+        "couple": "Ba unrunw Rutu sɔɔ gɔ ajubu yɛ nɛi.\nWo sɔɔ turu baŋai biyaa.\nRutu Isɛ rɛ lu tɔ gu laa kanran\nWo sɔɔ turu baŋai biyaabe."
+      },
+      {
+        "refrain": "Inɛ w Baŋa, u bɛ rɛ gɛɛ uwnɔ,\nHakilɛ mu bɛrɛ obo.\nAma birɛ ma gɔ, aŋ a sɔɔ sai biyɛ nɔ u ga.\nHakilɛ mu bɛrɛ obo."
+      },
+      {
+        "couple": "Rutu Naomi niinaa gowaabe,\nWo sɔɔ turu baŋai biyaabe.\nBa ginrun womɔ nɛ wo le yaado gi.\nWo sɔɔ turu baŋai biyaabe."
+      },
+      {
+        "couple": "Naomi Rutu le kijɛ wo gi,\nWo sɔɔ turu baŋai biyaabe.\nMoabe gana u nɛ pilemɛ yaa.\nWo sɔɔ turu baŋai biyaabe."
+      },
+      {
+        "couple": "Rutu Naomi le kijɛ wo gi,\nWo sɔɔ turu baŋai biyaabe.\nYalu u yaaido wooi nɛ mu u le yaadɔ.\nWo sɔɔ turu baŋai biyaabe."
+      },
+      {
+        "couple": "Ama uwɔ gɔ Ama mai bibiyɛdo.\nWo sɔɔ turu baŋai biyaabe.\nGana uwɔ gɔ gana mai bibiyɛdo.\nWo sɔɔ turu baŋai biyaabe."
+      },
+      {
+        "couple": "Inɛ uwɔ gɔ inɛ bibiyɛdo\nWo sɔɔ turu baŋai biyaabe.\nTɔgo uwɔ gɔbei tɔgo mai bibiyɛdo\nWo sɔɔ turu baŋai biyaabe."
+      },
+      {
+        "couple": "Yalu u yinwɛindo nɛ mu kɔɔn yinwɛindɔn.\nWo sɔɔ turu baŋai biyaabe\nYiun laa ye mu u le kabiyɛidolɔn.\nWo sɔɔ turu baŋai biyaabe"
+      },
+      {
+        "couple": "Ama unrunw, emɛ mainiyɛnmɔi.\nSɔɔ turu baŋai biyaabe.\nAma birɛ emɛ aŋa sɔɔ sai biyɛmɔu ga.\nSɔɔ turu baŋai biyaabe."
+      }
+    ]
+  },
+  {
+    "hymn_number": 226,
+    "content": [
+      {
+        "titre": "YABANƐI GƆ, ADUNA YABANƐI GƆ"
+      },
+      {
+        "refrain": "Yabanɛ gɔ, aduna yabanɛ gɔ\nYesu turu sai, yabanɛ woi."
+      },
+      {
+        "couple": "Yesu wiyaai. Bɛtɛlɛhɛmu nɛ woi naraaɲu.\nɔgɔnɛ diyɛ, alagala Inɛw Baŋa."
+      },
+      {
+        "couple": "Yesu wiyaai, tɔɔru obaabe, jaŋu unrunw bɛrɛ.\nAduna yalu wooi kibɛru ma gɔ taga gi."
+      },
+      {
+        "couple": "ɛkɔrɔ yalu nɛ, Samari ɛkɔrɔ yalu nɛ\nYesu sɔwaa, Samari yaanran bɛrɛ."
+      },
+      {
+        "couple": "Yesu wiyaai, tɔɔru obaabe,gawaawɔin bɛrɛ.\nAduna yalu wooi nɛ kibɛru ma gɔ taga gi."
+      },
+      {
+        "couple": "Yesu wiyaai, sɔɔ sɔwaabe, Yahutunw bɛrɛ.\nAma Aini gɔ, wogɔ Mui, Ama Aini."
+      },
+      {
+        "couple": "Wo emi Selimɛdo, Inɛw Baŋa emi Selimɛdo.\nBirɛ emɛ bɛrɛ wo obu gɔ kanranjɔu ma?"
+      }
+    ]
+  },
+  {
+    "hymn_number": 227,
+    "content": [
+      {
+        "titre": "YESU TURU MUI BABAADO"
+      },
+      {
+        "refrain": "Wo turu mui babaado, (2)\nYesu turu sai mui babaado.\nGɔnrɔn diyɛ Baŋa mu le wɔɔ dɛi\nWo turu mui babaado.\n1. Aduna Maŋanɛ, aduna yabanɛ,\nWo turu mui babaado,\nKijɛ wooi Maŋanɛ gɔ."
+      },
+      {
+        "couple": "Amasɔgɔ jugɔnɛ gɔ,\nWo turu mui babaado,\nHakɛ yaabu kanranɛ gɔ."
+      },
+      {
+        "couple": "Aduna kuu nɛ saliyɛ kirenɛ,\nWo turu mui babaado,\nLaawagunbei naran obonɛ."
+      },
+      {
+        "couple": "ɔlɔ birɛ iyɛnɛ gɔ,\nWo turu mui babaado,\nKinɛ ajubu jugɔnɛ gɔ."
+      },
+      {
+        "couple": "Giri dii wooi yaaɲanɛ gɔ,\nWo turu mui babaado,\nKinɛ kaalu obonɛ gɔ."
+      }
+    ]
+  },
+  {
+    "hymn_number": 228,
+    "content": [
+      {
+        "titre": "MUYƆƆ N SƆƆ"
+      },
+      {
+        "refrain": "Inɛ w Baŋa emi bara,\nBirɛ uwɔ gɔ be birɛ ga.\nInɛw Baŋa emi bara,\nBirɛ uwɔ gɔbe birɛ ga."
+      },
+      {
+        "couple": "Aduna nɛ birɛ u biraabe gɔ\nEmaa wogɔ birɛ bɛɛ ga."
+      },
+      {
+        "couple": "Aduna nɛ ihibɛ u sɛbe gɔ\nEmaa tunmɔ ibɛ i biyɛ ga."
+      },
+      {
+        "couple": "Aduna nɛ muyɔ n u muyaanbe gɔ\nEmaa muyɔ n bɛɛ ga."
+      },
+      {
+        "couple": "Aduna nɛ ɛ ju u kanraanbe gɔ\nEmaa wogɔ kanran bɛɛ ga."
+      },
+      {
+        "couple": "Amasɔ gɔ jugɔ u kanranbe gɔ\nEmaa wogɔ kanran bɛɛ ga."
+      },
+      {
+        "couple": "Ama birɛ dɛ i emi tiyaajɛ.\nSɔɔ womɔ yabawin biyɛ mɔ i."
+      },
+      {
+        "couple": "Ama dɔ n emi jaŋ ajɛ gɔ\nEmaa wogɔ kanranwin biyɛ mɔ i."
+      }
+    ]
+  },
+  {
+    "hymn_number": 229,
+    "content": [
+      {
+        "titre": "MUI YAABU KANRAN"
+      },
+      {
+        "refrain": "Mui Baŋa Yesu, diyɛ dɔ n ma u le wɔɔ.\nMui yɛ bɛ lɛ ginɛ i, u mui yaabu kanran."
+      },
+      {
+        "couple": "Gojunawan ɔ ɲɛ dɛi Kinɛ ma yayanwanjɛ.\nU bɛ rɛ gɛɛ unwɔ n, u mui yaabu kanran."
+      },
+      {
+        "couple": "Jai mɔɲu waaru le Kinɛ ma yayanwanjɛ.\nMui yɛbɛlɛginɛi, u mui yaabu kanran."
+      },
+      {
+        "couple": "Giyɛ diyɛ waaru le Kinɛ ma yayanwanjɛ.\nMui yɛbɛlɛginɛi, u mui yaabu kanran."
+      },
+      {
+        "couple": "Goju nawan dadaaru dɛ i Kinɛ ma yayanwanjɛ.\nMui yɛbɛlɛginɛi, u mui yaabu kanran."
+      },
+      {
+        "couple": "Jiun mɔɲu waaru le Kinɛ ma yayanwanjɛ.\nMui yɛbɛlɛginɛi, u mui yaabu kanran."
+      },
+      {
+        "couple": "Mui yɛbɛlɛginɛi, gɔnrɔn ma gɔ gaila.\nBirɛ mɔɲu ma wooi nɛ u mui yaabu kanran."
+      }
+    ]
+  },
+  {
+    "hymn_number": 230,
+    "content": [
+      {
+        "titre": "PURU PAGU NII"
+      },
+      {
+        "couple": "Ba Ama unrunw e mii ɔ n ɛ gɛ i gun\nAma dɔ n sɔɔ diyɛ sɔ waabe.\nWo gi, Kijɛ wooi puu dogodo.\nKaa ihibɛ sɔsɔgɔdo."
+      },
+      {
+        "refrain": "Ba Ama wo ihibɛi,\nYesu le wogɔ iyaaɲu.\nKɔɔ dɛ i bai baa yaajɛ wooi\nIhibɛ nɛ mainiyɛ nmɔ i."
+      },
+      {
+        "couple": "Ihibɛ kuu ulo siyɛɛ lɛ,\nKijɛ dagalu kanranlɛ,\nBainɛ dɛ i mɔɲu ajubaalɛ,\nKuu womɔ sɔɔ dɛnɛɛlɛ."
+      },
+      {
+        "couple": "U aini sɔɔ ɔn ai gɛliyɛ,\nYaanran uwɔ ibɛ i biyɛ.\nGoju uwɔ gin woi kajuba.\nBai wooi kai womɔ Kilɛ"
+      },
+      {
+        "couple": "Nɛɛ yaanran u igɛ dɔbɔrɔ,\nU wo le bai wooi tubiye.\nKijɛ wooi puu ɛ jii muyɔ n,\nIgɛnɛ wo kuu baŋai."
+      },
+      {
+        "couple": "Ba unrunw emɛ yani wɔ in ma?\nEmɛ tunmɔ ibɛɛwɔin ma?\nGɔ nrɔ n emɛ dɔɔ idolo,\nO Ba Ama emi bara."
+      }
+    ]
+  },
+  {
+    "hymn_number": 231,
+    "content": [
+      {
+        "titre": "UNRUNW YAANW GULƆI SƆƆ (Matiu 25: 1-13)"
+      },
+      {
+        "couple": "Waaru wogɔ le alagala diinɛ gɔ\nUnrunw yaanw pɛ lu le murin wɔɔ.\nBe lanpa bemɛ jeɲaabɛin\nAkanai sɛgɛrɛi yaa ga."
+      },
+      {
+        "couple": "Logoro bemɛ nɛ numɔ rɔ n hakilɛ gunwin bɛ in,\nNumɔ rɔ n bomɔ gunwin bɛin."
+      },
+      {
+        "couple": "Bomɔ w gɔ be lanpa bemɛ jeɲaabɛin, nii jeɲɛnɛ.\nKaa hakilɛ gunw nii jeɲaabɛin."
+      },
+      {
+        "couple": "Akana tanwaain wɛɛ lu wo kanraan,\nBe wooi giri bariyaa, be wooi giri yeiyaabɛin."
+      },
+      {
+        "couple": "Digɛ taŋ u le kɔ mu kɔ nmaabɛin,\nAkana gɔ yawɛɛ jɛ, yai ye woi sɛgɛrɛi."
+      },
+      {
+        "couple": "Waaru wogɔ le unrunw gɔ be wooi\nLanpa bemɛ yegeraabɛin."
+      },
+      {
+        "couple": "Bomɔ w gɔ be be le Kijɛ gin: Nii ebe gaila oboi\nLanpa emɛ gɔ i yinwɛin ga wɔɔ."
+      },
+      {
+        "couple": "Sɔɔ kɔɔ emi deerejɛ, emaa yeguru le biyɛ ga.\nYesu wɛɛgu bɛri wɔɔ."
+      }
+    ]
+  },
+  {
+    "hymn_number": 232,
+    "content": [
+      {
+        "titre": "AMA KIJƐ WOOI KUU BAŋA"
+      },
+      {
+        "couple": "Ba gɔ lee, Aini gɔ lee,\nKikinu gɔ lee, koturui."
+      },
+      {
+        "refrain": "Aleluya, aleluya,\nYabanɛ Yesu naraaɲu dɛ i."
+      },
+      {
+        "couple": "Ama bagai laa, ɔ mɔ lɔ Ama laa.\nAma alaga go daan."
+      },
+      {
+        "couple": "Ama Kijɛ wooi Maŋ anɛ i dɛ i\nAma emɛ bai, Ama ihibɛ i."
+      },
+      {
+        "couple": "Ama Kijɛ wooi nɛ kai Kilɛ nɛ i.\nAma babamɔ i, Ama boi sɔ mɔ mɔ i."
+      },
+      {
+        "couple": "Gɔ nrɔ n lee nɛɛ ma lee Ama mɔ i.\nAma kikinui, Ama kai Kilɛ nɛ i."
+      },
+      {
+        "couple": "Ama diinɛ aduna diinɛ i laa.\nAma diinɛ, alagala diinɛ i."
+      },
+      {
+        "couple": "Aduna diinɛ gɔ be dodogodo.\nKaa Ama diinɛ gɔ dogoidolo."
+      },
+      {
+        "couple": "Ama sɔ mɔ mɔ i, woi babamɔ i.\nAma unrunw wooi Ama boi sɔ mɔ mɔ i."
+      }
+    ]
+  },
+  {
+    "hymn_number": 233,
+    "content": [
+      {
+        "titre": "AMA SƆ WAA, NOE TINWƐNRAANBE"
+      },
+      {
+        "couple": "Ama sɔ waa, Noe tinwɛnraanbe,\nDii diyɛ wɛɛido sɔɔ gɔ dɛi."
+      },
+      {
+        "couple": "Dii diyɛ waaru le aabei yabaɲu,\nNoe lee wo maranw lee."
+      },
+      {
+        "couple": "Ama sɔ waa, koro diyɛ yegere gi.\nNoe wogɔ kanraanbe."
+      },
+      {
+        "couple": "Ama sɔ waa, waaju kanran gi.\nNoe waaju kanraanbe."
+      },
+      {
+        "couple": "Noe yaabe, waaju tagaabe.\nBe Ama sɔɔ gɔ yabanɛ."
+      },
+      {
+        "couple": "Inɛ w gɔ be Noe mɔ waabɛin.\nNoe wogɔ lugolu."
+      },
+      {
+        "couple": "Ama ihibɛ dɛ i aduna yaba ga\nAini womɔ ili le."
+      },
+      {
+        "couple": "Aleluya, emɛ Amai sɔ mɔ mɔ i.\nAleluya, amiina."
+      }
+    ]
+  },
+  {
+    "hymn_number": 234,
+    "content": [
+      {
+        "titre": "NII TUURU BƐƐUN"
+      },
+      {
+        "couple": "Mu ui ɛ jii tinwɛɛ nrɛnwɔn,\nAma lee Yesu kirisito lee giru nɛ."
+      },
+      {
+        "refrain": "Birɛ sagu duuraaɲu gɔ\nMaini ye kibemɔ."
+      },
+      {
+        "couple": "Inɛ w ɔ nmɔ i wɔ in lee yinwaain lee\nSaliyɛ kirenɛ."
+      },
+      {
+        "couple": "Bai wooi lee waaru wooi lee\nWaaju gɔ tagamɔ i."
+      },
+      {
+        "couple": "Inɛ w tinwɛɛ nrɛ n, muyɔ n wooi lee\nDeeru wooi lee Yesu boi le."
+      },
+      {
+        "couple": "Ama unrunw, waaju tagamɔ i\nSabu waaru gɔ bɛ runiyaain dɛ i."
+      },
+      {
+        "couple": "Jaŋ u unrunw gamuu naran ibɛ lain\nDadaaru bemɛ sabu dɛ i."
+      },
+      {
+        "couple": "Aleluya, Ama gana\nInɛ w Baŋa wɛwɛɛdo."
+      }
+    ]
+  },
+  {
+    "hymn_number": 235,
+    "content": [
+      {
+        "titre": "INƐW BAŋA AMA GƐƐN NII"
+      },
+      {
+        "couple": "Ba Ama, Ba Ama,\nBa Ama alagala nɛ wɔɔ,\nBoi uwɔ gɔ ɛ jaai biyɛ mɔ."
+      },
+      {
+        "couple": "Diinɛ uwɔ gɔ wɛɛ mɔ,\nDiŋɛ uwɔ gɔ kanranmɔ waaru wooi,\nAlagala nɛ lee minɛ nɛ lee."
+      },
+      {
+        "couple": "Iye pana gɔ emi obo,\nHakɛ emɛ gɔ yaabu kanran\nBana tunmɔ emɛ yaabajɛ"
+      },
+      {
+        "couple": "Subɔ rɔ nɛ emaa yoonɔ u ga\nEmi ɛ jii kajuba waaru wooi,\nEmi paaba mɔɲu wooi nɛ."
+      },
+      {
+        "couple": "Emɛ igiwɔ in, diinɛ wooi\nGɔ nrɔ n diyɛ lee dooro wooi lee\nWogɔ uwɔ i biyɛ mɔ i, asuu nasuu."
+      },
+      {
+        "couple": "Amiina, Ba Ama,\nAini Yesu kirisito boi le\nKikinu gɔ boi le Amiina."
+      }
+    ]
+  },
+  {
+    "hymn_number": 236,
+    "content": [
+      {
+        "titre": "KIBƐRU ƐJU TAGAMƆI"
+      },
+      {
+        "couple": "Yesu yaagu womɔ le\nJaŋ u unrunw womɔ le Kijɛ wo gi:\nKibɛ ru ɛ ju taga gi.\nAma dɛ nɛ mɔ i, (3)\nBa unrunw, Ama dɛ nɛ mɔ i."
+      },
+      {
+        "couple": "Aduna dogogu bɛ rii wɔɔ dɛ i\nYani biyɛ dɛ in.\nKibɛ ru ɛ ju tagamɔ i."
+      },
+      {
+        "couple": "Yalu wage wooi nɛ yaamɔ i,\nKibɛ ru ɛ ju dɛ i.\nYesu wɛɛ gu bɛɛ rii wɔɔ."
+      },
+      {
+        "couple": "Kibɛ ru ɛ ju gɔ inɛ w wooi nɛ\nYaa ye tagamɔ i.\nBa unrunw, Yesu bɛ rii wɔɔ."
+      },
+      {
+        "couple": "Kibɛ ru ɛ ju gɔ tɔ gu wooi nɛ\nYaa ye tagamɔ i.\nEmɛ maini birɛ mɔ i."
+      },
+      {
+        "couple": "Gɔ nrɔ n wooi lee paŋ a wooi lee\nEmi obaaɲu.\nKole yaa ye birɛ mɔ i."
+      }
+    ]
+  },
+  {
+    "hymn_number": 237,
+    "content": [
+      {
+        "titre": "JUGƆ LA BIRƐ"
+      },
+      {
+        "couple": "Jugɔ la birɛ, hakɛ Jugɔ la birɛ. \nHakɛ inɛ w joo manamaa. Jugɔ la birɛ. | (2)"
+      },
+      {
+        "couple": "Setanu inɛ w joo manamaa. Jugɔ la birɛ.\nBe Ama diŋɛ kanrun bɛɛ idenɛ. Jugɔ la birɛ."
+      },
+      {
+        "couple": "Kinɛ banrun inɛ w joo manamaa. Jugɔ la birɛ\nBe Ama diŋɛ kanrun bɛɛ idenɛ. Jugɔ nɛ birɛ."
+      },
+      {
+        "couple": "Kuu ulo inɛw joo manamaa. Jugɔla birɛ.\nBe Ama diŋɛ kanrun bɛɛidenɛ. Jugɔla birɛ."
+      },
+      {
+        "couple": "Sɔɔ yabala inɛw joo manamaa. Jugɔla birɛ.\nBe Ama diŋɛ kanrun bɛɛidenɛ. Jugɔla birɛ."
+      },
+      {
+        "couple": "Ele inɛw joo manamaa. Jugɔla birɛ.\nBe Ama diŋɛ kanrun bɛɛidenɛ. Jugɔla birɛ."
+      },
+      {
+        "couple": "Ama boi sɔ mɔ mɔ i. Ba unrunw, Ama boi sɔ mɔ mɔ i.\nWo hakɛ nɛ emi yabaabe. Ama boi sɔ mɔ mɔ i."
+      }
+    ]
+  },
+  {
+    "hymn_number": 238,
+    "content": [
+      {
+        "titre": "TUNMƆ IBƐI BII"
+      },
+      {
+        "refrain": "Tunmɔ ibɛ i bii gɔ,\nWogɔ tɔɔ ru diyɛ i, Yesu nɛ.\nTunmɔ ibɛ i bii gɔ,\nWogɔ tɔɔ ru diyɛ i, Yesu nɛ."
+      },
+      {
+        "couple": "Ama emi ibɛɛ iwɔ dɛ i,\nAini womɔ tiyaabe.\nYesu wiyaai, aduna nɛ,\nHakɛ emɛ dɛ i wo yinwaain."
+      },
+      {
+        "couple": "Yesu sɔ waa, Kijɛ gi:\nTunmɔ i ibɛ i biyɛ gi.\nMu Ba ihibɛ nɛ\nBana toyaa mu wɔɔ gin."
+      },
+      {
+        "couple": "Yesu sɔwaa, Kijɛ gi:\nTunmɔi ibɛi biyɛ gi.\nTunmɔ i ibɛɛ wɔ in ye.\nE mui ibɛ i biyɛ dɛ in."
+      },
+      {
+        "couple": "Tunmɔ i ibɛɛ biyɛ nɛ ye,\nYesu wɛɛ gu gɔ le yani biyɛ dɛ in.\nTunmɔ i ibɛɛ biyɛ nɛ ye,\nYesu wɛɛ gu gɔ le yani bii biyɛ dɛ in."
+      },
+      {
+        "couple": "Ama unrunw gɔ be\nTunmɔ i ibɛ i biyɛ mɔ i.\nTunmɔ ibɛɛ biyɛ nɛ ye,\nUnrunw womɔ i bii bɛɛ denɛ."
+      }
+    ]
+  },
+  {
+    "hymn_number": 239,
+    "content": [
+      {
+        "titre": "YESU ILI KUU EMƐ GOONAATI"
+      },
+      {
+        "couple": "Peju Ii turu yɔɔ, Ama Aini turu sai.\nWo yinwaain, kuu emɛ goonaati.\nIli womɔ togiyaai, hakɛ emɛ goonaati.\nYesu ili kuu emɛ goonaati"
+      },
+      {
+        "refrain": "Ama Aini ili gɔ,\nYesu ili kuu emɛ goonaati.\nAleluya emɛ nii ɔ n niniidɛ in,\nBoi womɔ sɔ mɔ ga.\nYesu ili kuu emɛ goonaati."
+      },
+      {
+        "couple": "Jamu diyɛ mu le wɔɔ, Kinɛ ma nɛ joowaai.\nInɛ w Baŋa mu bɛ rɛ obaati,\nHakɛ ma wooi dogaai. Kɔɔ wooi yaabu kanraanti.\nYesu ili kuu emɛ goonaati."
+      },
+      {
+        "couple": "Baranɛ mu le wɔɔ birɛ ma gɔ wooi nɛ\nKuu ma le sɔɔ ma sɔɔ idoɔ n.\nKikinu Pilu gɔ, wo mui pajadolo.\nYesu ili kuu emɛ goonaati."
+      }
+    ]
+  },
+  {
+    "hymn_number": 240,
+    "content": [
+      {
+        "titre": "BOI WOMƆ YESU KIRISITO"
+      },
+      {
+        "couple": "Yesu Ama Peju Ii\nAduna hakɛ goonɔ nɛ i.\nWo wiyaai emaa ɛjaai biyɛ ga."
+      },
+      {
+        "refrain": "Boi womɔ kirisito. Yesui.\nWo wiyaai, tɔ gu ma wooi dɛ i yinwaain."
+      },
+      {
+        "couple": "Hakɛ gunɔ nɛ tobe le,\nSetanu oju nɛ yaaubɔ n.\nWo wiyaai wogɔ nɛ mui yabaabe."
+      },
+      {
+        "couple": "Kanɛ mu inɛ kanai.\nSɔɔ pɛ i ma gɔ wooi galaai.\nKuu ma gowaai, Yesu ili gɔ dɛ i."
+      },
+      {
+        "couple": "Kanɛ liyɛ mɔ ɲu dogaai.\nKinɛ ɛɛ lu diyɛ yɔɔ, Yesu dɛ i.\nIli womɔ paŋ a dɛ i."
+      }
+    ]
+  },
+  {
+    "hymn_number": 241,
+    "content": [
+      {
+        "titre": "U BƐRƐ WƐƐ WƆN"
+      },
+      {
+        "couple": "Amasɔ gɔ jugɔ nɛ gɔ\nAma, wo mui ibɛɛ wɔ.\nMu hakɛ dɔɔ le ɔ ɲaabɔ n dɛ i\nKɔɔ dɛ i Yesu wo yinwaain."
+      },
+      {
+        "refrain": "U bɛ rɛ wɛ uwɔ n,\nO Yesu kirisito. | (3)\nHakɛ ma le mu wɛ uwɔ n."
+      },
+      {
+        "couple": "Mu waaru joo wo le wagee bɔ n,\nAma Kinɛ banrun le bee.\nNɛɛ ma womɔ sɔɔ yabalun dɛ i,\nMu ɔ lɔ diyɛ nɛ tobɔ n."
+      },
+      {
+        "couple": "Nɛɛ, Yesu kuu ma ui obouwɔ n,\nHakɛ gunɔ nɛ mui goonɔ.\nKanɛ mui inɛ kanai biyaai,\nAma nɛɛ ma womɔ sabu dɛ i."
+      },
+      {
+        "couple": "Aleluya, mui yabaaɲu,\nKanɛ Yesu Kinɛ ma nɛ too.\nWo asuu nasuu mui pajaalɛ,\nMu Diŋɛ womɔ kanrandɔ n."
+      }
+    ]
+  },
+  {
+    "hymn_number": 242,
+    "content": [
+      {
+        "titre": "YESU NARIN SƆƆ"
+      },
+      {
+        "couple": "Kɔɔ numɔ kuu Baŋa Jehowa sɔ waabe,\nInɛ titiyainɛ womɔ Esai le sɔ waabe.\nEmɛ wɛ i ye wogɔ tunmɔ le yɛ nɛ mɔ i\nKirisito narin sɔɔ wo sɔ waabe."
+      },
+      {
+        "couple": "Kɔɔ numɔ kuu baŋa Jehowa sɔwaabe,\nInɛ titiyainɛ womɔ Jeremi le sɔwaabe.\nEmɛ wɛi ye wogɔ tunmɔ le yɛnɛmɔi\nSɛ mɛ ginɛ narin sɔɔ wo sɔ waabe."
+      },
+      {
+        "couple": "Inɛ w titiyanw sɔɔ gɔ bai kibe gɔ\nWogɔ Desanere iyepilu le.\nBai pɛɛ lɛ i numɔ nrɔ nsigɛ lei bée.\nSɛmɛginɛ emɛ gɔ bai narin woi."
+      },
+      {
+        "couple": "Woi narin gɔ tanrinyɛ in biyaabe,\nTitiyanw peju girɛ nw le sɔ waabɛ in.\nE ibanrin turu gɔ iyɛ dɛ in,\nSɔ un koro nɛ wo yadiinbe."
+      },
+      {
+        "couple": "Iye Ibanrin naraanɲu gɔ\nBoi womɔ Yesu Kirisitoi.\nYabanɛ i biyɛ ga woi naraanɲu,\nSɛmɛginɛ emɛ gɔ Yesu Kirisito."
+      }
+    ]
+  },
+  {
+    "hymn_number": 243,
+    "content": [
+      {
+        "titre": "YESU GIRU GO YATO"
+      },
+      {
+        "couple": "Yesu giru go yato,\nEmɛ maini yaamɔ i.\nAduna nɛ emɛ i niinɛ wuɔ.\nYesu sɔ waa Kijɛ gi.\nOnu womɔ nɛ dimiyɛ n gi,\nAma diinɛ nɛ.\nOnu womɔ nɛ dimiyɛ n gi,\nAma diinɛ nɛ."
+      },
+      {
+        "couple": "Jiun lee ɔ ɲiyɛn lee,\nTɛ u lee paruju lee,\nWaaru wooi oju ma nɛ yɔ in.\nKaa bana biyaai wooi puu\nMu drapo uwɔ gɔ.\nDa go gɛ gɛ liyɛ dɔ n.\nMu drapo uwɔ gɔ.\nDa go gɛ gɛ liyɛ dɔ n."
+      },
+      {
+        "couple": "Jamu sɔɔ dogaai,\nBɔ nrɔ n diyɛ yɔɔ.\nMu kuu ma le ɔɲaa wɔ un ma,\nMu ba unrunw dɛ i sɔ miyɛ un wɔun ma,\nKaa Kinɛ ma kɔ lɔ nɛ \nMui baranɛ yɛ sɔ un.\nKaa Kinɛ ma kɔ lɔ nɛ.\nMui baranɛ yɛ sɔ un."
+      },
+      {
+        "couple": "U mu le wɔ u dɛ i\nMu giru go yauwɔ n.\nAnrangaju ma bariyɛ mɔ,\nBirɛ uwɔ mu le birɛ.\nNɛɛ, gagawu gɔ dɛ i\nDiyɛ ma u le daan.\nNɛɛ, gagawu gɔ dɛ i\nDiyɛ ma u le daan."
+      }
+    ]
+  },
+  {
+    "hymn_number": 244,
+    "content": [
+      {
+        "titre": "YESU MUI IBƐƐ WƆ"
+      },
+      {
+        "refrain": "Yesu mui ibɛɛ wɔ (3)\nWo mu dɛ i yinwaain.\nWo mu dɛi yinwaain,\nWo mu dɛi yinwaain,\nGɔ lugɔ ta yalu nɛ\nYesu ihibɛ dɛ i mu dɛ i yinwaain."
+      },
+      {
+        "couple": "Mu woi didimiyɛ ndɔ n, (3)\nWo mu dɛ i yinwaain."
+      },
+      {
+        "couple": "Yesu mui tinwɛ nraanbe, (3)\nWo mu dɛi yinwaain."
+      },
+      {
+        "couple": "Emɛ puu woi dimiyɛ nmɔ i, (3)\nWo emɛ dɛi yinwaain."
+      },
+      {
+        "couple": "ɔnmɔ gɔ Yesu sɛɛ, (3)\nWo emɛ dɛi yinwaain."
+      },
+      {
+        "couple": "Yesu jamu obonɛi, (3)\nWo emɛ dɛi yinwaain."
+      },
+      {
+        "couple": "Yesu jamu obaabe, (3)\nWo emɛ dɛi yinwaain."
+      },
+      {
+        "couple": "Yesu nɛ toyomɔi, (3)\nWo emɛ dɛi yinwaain."
+      },
+      {
+        "couple": "Wo emi baranɛi, (3)\nWo emɛ dɛi yinwaain."
+      },
+      {
+        "couple": "Ale aleluya, (3)\nWo emɛ dɛi yinwaain."
+      }
+    ]
+  },
+  {
+    "hymn_number": 245,
+    "content": [
+      {
+        "titre": "MƆMƆŊU MƆŊU TUJƆNƆU (1 Piɛru 3)"
+      },
+      {
+        "couple": "Inɛ kintaun bɛɛ ibɛɛwɔ ye,\nInɛ bai ɛju bɛɛ ibɛɛwɔ ye,\nMɔɲu dɛi ninɛ womɔ kajuba,\nWo mɔɲu sɔɔ paja."
+      },
+      {
+        "refrain": "Sabu Maŋanɛ gɔ Woi.\nKinɛ jugɔnɛ gɔ Ba Ama woi.\nNɛɛ, kɔɔ dɛi aduna sɔɔ wooi pajamɔi\nAma sɔɔ yayabu kɔɔ gɔ dimiyɛnmɔi.\nMɔmɔɲu gɔ, mɔɲu gɔ,\nMɔɲu le tɔjɔnɔu.\nKaa ɛju gɔ, ɛju gɔ\nWogɔ kanranmɔi."
+      },
+      {
+        "couple": "Inɛ Baŋa giru pala unrungɔ,\nTeitai wɔin bɛrɛ dɛɛraa wɔ.\nWo gɛɛn bemɛ keŋiyɛunwɔ,\nKaa mɔɲu sɔɔ ibɛla."
+      },
+      {
+        "couple": "E ɛju kanrun nɛ mainiyɛin.\nBai wooi birɛ ɛju birɛi,\nE duba diyɛ bɛbɛɛdei.\nKinɛ ebe yanwanmɔnɔu."
+      }
+    ]
+  },
+  {
+    "hymn_number": 246,
+    "content": [
+      {
+        "titre": "NƆƐLU NII"
+      },
+      {
+        "couple": "Titiyanw Dawide ana nɛ,\nKibɛru ɛju nii gɔ niuwɔin.\nYalu wooi nɛ ɛgɛmɛuwɔ,\nAduna Yabanɛ wiyaai."
+      },
+      {
+        "refrain": "Ee Yesu naraanɲu,\nAma Aini naraanɲu,\nWɛɛ ye woi babamɔ i, | (2)\nAma yabanɛ tii gɔ i."
+      },
+      {
+        "couple": "Peju girɛ nw olu nɛ bɛ in,\nTitiyaanw sɔɔ sɔ waabɛ in.\nAma taanrinyɛ in sɔɔ ɛ gɛ i,\nAduna Yabanɛ wiyaai."
+      },
+      {
+        "couple": "Ama emɛ birɛ poo woi tagamɔ i.\nɛ jii birɛ poo woi tagamɔ i.\nNɔɛ lu Kinɛ ɛɛ lu diyɛ bai,\nAduna Yabanɛ wiyaai."
+      }
+    ]
+  }
+]

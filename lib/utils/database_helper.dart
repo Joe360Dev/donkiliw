@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:donkiliw/models/hymn_theme.dart';
 import 'package:donkiliw/models/hymn.dart';
 import 'package:donkiliw/models/hymn_book.dart';
@@ -48,6 +50,20 @@ class DatabaseHelper {
       onCreate: _onUserDbCreate,
     );
     await userDbInitial.close();
+
+    // Check if app version has changed to update static DB
+    final prefs = await SharedPreferences.getInstance();
+    final packageInfo = await PackageInfo.fromPlatform();
+    final currentAppVersion = '${packageInfo.version}+${packageInfo.buildNumber}';
+    final lastDbVersion = prefs.getString('static_db_version');
+
+    if (lastDbVersion != currentAppVersion) {
+      debugPrint('App version changed ($lastDbVersion -> $currentAppVersion). Updating static DB.');
+      if (await File(staticPath).exists()) {
+        await File(staticPath).delete();
+      }
+      await prefs.setString('static_db_version', currentAppVersion);
+    }
 
     // 2. Handle Static Database (Hymns)
     if (!await File(staticPath).exists()) {

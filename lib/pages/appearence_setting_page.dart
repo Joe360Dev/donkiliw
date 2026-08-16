@@ -96,8 +96,7 @@ class AppearenceSettingPage extends StatelessWidget {
                     ),
                   ],
                   selected: <ThemeMode>{settings.themeMode},
-                  onSelectionChanged:
-                      (Set<ThemeMode> newSelection) {
+                  onSelectionChanged: (Set<ThemeMode> newSelection) {
                     settings.setThemeMode(newSelection.first);
                   },
                 ),
@@ -129,8 +128,7 @@ class AppearenceSettingPage extends StatelessWidget {
                         onSelected: (p0) {
                           settings.setThemeColor(color);
                         },
-                        isSelected: settings.themeColor.value ==
-                            color.value,
+                        isSelected: settings.themeColor.value == color.value,
                         color: color,
                       );
                     },

@@ -33,8 +33,7 @@ class FutureBuilderWrapper<T> extends StatelessWidget {
     return FutureBuilder<T>(
       future: future,
       builder: (context, snapshot) {
-        if (snapshot.connectionState ==
-            ConnectionState.waiting) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -51,8 +50,7 @@ class FutureBuilderWrapper<T> extends StatelessWidget {
                     style: GoogleFonts.notoSans().copyWith(
                       fontSize: defaultSize * 0.75,
                       fontWeight: FontWeight.w500,
-                      color:
-                          colorScheme.onSurface.withAlpha(245),
+                      color: colorScheme.onSurface.withAlpha(245),
                     ),
                   ),
                 ],

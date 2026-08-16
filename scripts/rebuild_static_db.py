@@ -12,36 +12,50 @@ HYMN_BOOKS = [
     {
         'name': 'Beti Coura',
         'file': 'betiba.json',
+        'language': 'Bambara',
     },
     {
         'name': 'Ala Tanu Donkiliw Nº1',
         'file': 'ala_tanu_donkiliw_1.json',
+        'language': 'Bambara',
     },
     {
         'name': 'Ala Tanu Donkiliw Nº2',
         'file': 'ala_tanu_donkiliw_2.json',
+        'language': 'Bambara',
     },
     {
         'name': 'Nii Don Diyɛ',
         'file': 'nii_don.json',
+        'language': 'Dogon',
+    },
+    {
+        'name': 'Ama Sɔmu Nii',
+        'file': 'ama_somu_nii.json',
+        'language': 'Dogon',
+    },{
+        'name': 'Nii Don Kana Dagi',
+        'file': 'nii_dɔn_kana_dagi.json',
+        'language': 'Dogon',
     },
 ]
 
 # Themes from thematics.dart
+
 THEMES = [
-    {"id": 1, "title": "Adoration & Prière"},
-    {"id": 2, "title": "Foi & Espérance"},
-    {"id": 3, "title": "Combat Spirituel & Persévérance"},
-    {"id": 4, "title": "Délivrance & Secours"},
-    {"id": 5, "title": "Passion & Résurrection"},
-    {"id": 6, "title": "Jésus-Christ"},
-    {"id": 7, "title": "Puissance & Parole de Dieu"},
-    {"id": 8, "title": "Amour & Grâce"},
-    {"id": 9, "title": "Espérance Céleste & Avènement"},
-    {"id": 10, "title": "Loi & Commandement"},
-    {"id": 11, "title": "Mission & Discipulat"},
-    {"id": 12, "title": "Actes de Foi"},
-    {"id": 13, "title": "Esprit Saint"},
+    {"id": 1, "title": "Adoration & Prière", "icon_name": "adoration_and_priere.svg"},
+    {"id": 2, "title": "Foi & Espérance", "icon_name": "foi_and_esperance.svg"},
+    {"id": 3, "title": "Combat Spirituel & Persévérance", "icon_name": "combat_spirituel_and_perseverance.svg"},
+    {"id": 4, "title": "Délivrance & Secours", "icon_name": "delivrance_and_secours.svg"},
+    {"id": 5, "title": "Passion & Résurrection", "icon_name": "passion_and_resurrection.svg"},
+    {"id": 6, "title": "Jésus-Christ", "icon_name": "jesus-christ.svg"},
+    {"id": 7, "title": "Puissance & Parole de Dieu", "icon_name": "puissance_and_parole_de_dieu.svg"},
+    {"id": 8, "title": "Amour & Grâce", "icon_name": "amour_and_grace.svg"},
+    {"id": 9, "title": "Espérance Céleste & Avènement", "icon_name": "esperance_celeste_and_avenement.svg"},
+    {"id": 10, "title": "Loi & Commandement", "icon_name": "loi_and_commandement.svg"},
+    {"id": 11, "title": "Mission & Discipulat", "icon_name": "mission_and_discipulat.svg"},
+    {"id": 12, "title": "Actes de Foi", "icon_name": "actes_de_foi.svg"},
+    {"id": 13, "title": "Esprit Saint", "icon_name": "esprit_saint.svg"},
 ]
 
 # Thematic mappings (matching thematics.dart)
@@ -62,16 +76,6 @@ THEMATIC_MAPPINGS = {
     "Esprit Saint": [55, 68, 81, 109, 125, 178, 185],
 }
 
-# Book-specific thematic overrides (e.g. for Beti Coura)
-# Key: Book Name, Value: { Theme_ID: [Hymn_Numbers] }
-BOOK_SPECIFIC_THEMES = {
-    "Beti Coura": {
-        1: [2, 3, 5],
-        4: [4, 6],
-        10: [1],
-        7: [4],
-    }
-}
 
 def rebuild_db():
     if not os.path.exists('assets/databases'):
@@ -150,7 +154,7 @@ def rebuild_db():
     # 2. Insert Themes
     print("Inserting themes...")
     for t in THEMES:
-        cursor.execute('INSERT INTO theme (id, name) VALUES (?, ?)', (t['id'], t['title']))
+        cursor.execute('INSERT INTO theme (id, name, icon_name) VALUES (?, ?, ?)', (t['id'], t['title'], t['icon_name']))
 
     # 3. Populate Data
     clean_regex = re.compile(r'^[:\s]*|[:\s]*$', re.UNICODE)
@@ -165,7 +169,7 @@ def rebuild_db():
         print(f"Processing {book_info['name']}...")
         
         # Insert book
-        cursor.execute('INSERT INTO hymn_book (name) VALUES (?)', (book_info['name'],))
+        cursor.execute('INSERT INTO hymn_book (name, language) VALUES (?, ?)', (book_info['name'], book_info['language']))
         book_id = cursor.lastrowid
 
         with open(json_path, 'r', encoding='utf-8') as f:
@@ -192,7 +196,13 @@ def rebuild_db():
             for s in sections:
                 if 'couple' in s or 'refrain' in s:
                     val = list(s.values())[0]
-                    lines = [l.strip() for l in val.split('\n') if l.strip()]
+                    if isinstance(val, list):
+                        lines = []
+                        for item in val:
+                            if isinstance(item, dict) and 'lines' in item:
+                                lines.extend([l.strip() for l in item['lines'] if l.strip()])
+                    else:
+                        lines = [l.strip() for l in val.split('\n') if l.strip()]
                     if lines:
                         first_line = clean_regex.sub('', lines[0])
                         break
@@ -218,23 +228,27 @@ def rebuild_db():
                         if theme_id:
                             cursor.execute('INSERT OR IGNORE INTO hymn_theme (hymn_id, theme_id) VALUES (?, ?)', (hymn_id, theme_id))
                 
-                # 2. Book Specific Overrides (Explicitly defined in BOOK_SPECIFIC_THEMES)
-                if book_info['name'] in BOOK_SPECIFIC_THEMES:
-                    for t_id, h_numbers in BOOK_SPECIFIC_THEMES[book_info['name']].items():
-                        if hymn_number in h_numbers:
-                            cursor.execute('INSERT OR IGNORE INTO hymn_theme (hymn_id, theme_id) VALUES (?, ?)', (hymn_id, t_id))
-
             # Insert sections and phrases
             prev_refrain = None
             seq = 1
             for section_data in sections:
                 s_type = 'title' if 'titre' in section_data else ('verse' if 'couple' in section_data else 'refrain')
                 s_content = list(section_data.values())[0]
+                
+                # Normalize s_content to string if it's a list
+                if isinstance(s_content, list):
+                    text_lines = []
+                    for item in s_content:
+                        if isinstance(item, dict) and 'lines' in item:
+                            text_lines.extend(item['lines'])
+                    s_content_str = '\n'.join(text_lines)
+                else:
+                    s_content_str = s_content
 
-                if s_type == 'refrain' and s_content == prev_refrain:
+                if s_type == 'refrain' and s_content_str == prev_refrain:
                     continue
                 if s_type == 'refrain':
-                    prev_refrain = s_content
+                    prev_refrain = s_content_str
 
                 s_title = section_data.get('titre')
                 cursor.execute('''
@@ -245,7 +259,7 @@ def rebuild_db():
                 seq += 1
 
                 phrase_seq = 1
-                for p_text in s_content.split('\n'):
+                for p_text in s_content_str.split('\n'):
                     p_text = p_text.strip()
                     if not p_text: continue
 

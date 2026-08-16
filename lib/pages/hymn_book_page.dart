@@ -111,9 +111,13 @@ class _HymnBookPageState extends State<HymnBookPage> {
               hymn: hymn,
               contextHymns: _hymnsData,
               onActionTap: () {
-                HymnActionsBottomSheet.show(context, hymn, onUpdate: () {
-                  setState(() {});
-                });
+                HymnActionsBottomSheet.show(
+                  context,
+                  hymn,
+                  onUpdate: () {
+                    setState(() {});
+                  },
+                );
               },
             );
           },

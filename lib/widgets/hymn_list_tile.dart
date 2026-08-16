@@ -36,7 +36,6 @@ class HymnListTile extends StatelessWidget {
             'context_hymns': contextHymns,
           },
         );
-        onActionTap?.call(); // Refresh parent if possible
       },
       contentPadding: EdgeInsets.only(
         left: defaultSize * .5,

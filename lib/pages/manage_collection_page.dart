@@ -75,31 +75,33 @@ class _ManageCollectionPageState extends State<ManageCollectionPage> {
 
   void _showAddHymnBottomSheet(BuildContext ctx) async {
     if (_collection.id == null) await _saveChanges();
-    showModalBottomSheet(
-      context: ctx,
-      isScrollControlled: true,
-      useSafeArea: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) {
-        return CollectionHymnAdditionBottomSheet(
-          collection: _collection,
-        );
-      },
-    ).then((result) {
-      if (result != null && result > 0) {
-        setState(() {
-          _hasChanges = true;
-          _futureCollection = DatabaseHelper()
-              .getHymnByCollection(
-            _collection.id!,
-          )
-              .then((collection) {
-            _collection = collection;
-            return collection;
+    if (context.mounted) {
+      showModalBottomSheet(
+        context: ctx,
+        isScrollControlled: true,
+        useSafeArea: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return CollectionHymnAdditionBottomSheet(
+            collection: _collection,
+          );
+        },
+      ).then((result) {
+        if (result != null && result > 0) {
+          setState(() {
+            _hasChanges = true;
+            _futureCollection = DatabaseHelper()
+                .getHymnByCollection(
+              _collection.id!,
+            )
+                .then((collection) {
+              _collection = collection;
+              return collection;
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    }
   }
 
   Future<void> _removeHymn(Hymn hymn) async {

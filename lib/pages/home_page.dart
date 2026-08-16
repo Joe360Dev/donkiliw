@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage>
     final dbHelper = DatabaseHelper();
     final books = await dbHelper.getHymnBooks();
     final hymnThemes = await dbHelper.getHymnThemes();
-
     data['hymn_books'] = books;
     data['hymn_themes'] = hymnThemes;
 
@@ -125,6 +124,7 @@ class _HomePageState extends State<HomePage>
     final l10n = AppLocalizations.of(context)!;
     final defaultSize = SizeConfig.defaultSize;
     final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         Padding(
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage>
         ),
         SizedBox(height: defaultSize * .1),
         SizedBox(
-          height: defaultSize * 19.5,
+          height: (defaultSize * 19.5) * 1.4,
           child: GridView.count(
             crossAxisCount: 2,
             physics: NeverScrollableScrollPhysics(),
@@ -305,7 +305,6 @@ class _HomePageState extends State<HomePage>
                   children: [
                     // Thematics
                     _buildThematics(hymnThemes),
-
                     SizedBox(height: defaultSize * 1.1),
                     _buildHymnBooks(hymnBooks),
                     SizedBox(height: defaultSize * .25),

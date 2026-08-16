@@ -1,14 +1,7 @@
 [
   {
     "hymn_number": 1,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 15)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 1,
+    "autrepassage": "(BB, p: 15)",
     "content": [
       {
         "titre": "An Ka Lajɛ Ka Yesu Bato"
@@ -47,14 +40,7 @@
   },
   {
     "hymn_number": 2,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 168)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 2,
+    "autrepassage": "(BB, p: 168)",
     "content": [
       {
         "titre": "Ka Israɛldenw Sɔrɔ Kungo La"
@@ -194,44 +180,37 @@
   },
   {
     "hymn_number": 7,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 7)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 7,
+    "autrepassage": "(BB, p: 7)",
     "content": [
       {
         "titre": "Ala Ka Kuma Kɔrɔta"
       },
       {
-        "couple": ": Ala Ka Kuma Kɔrɔta...Kɔrɔta : (2x)\nAla Ka Kuma Kɔrɔta\nYesu tɔgɔ de la."
+        "couple": "Ala Ka Kuma Kɔrɔta...Kɔrɔta (2x)\nAla Ka Kuma Kɔrɔta\nYesu tɔgɔ de la."
       },
       {
-        "couple": ": Yesu sara an bɛɛ ye...an bɛɛ ye : (2x)\nYesu sara an bɛɛ ye\nA ye an bɛɛ kisi"
+        "couple": "Yesu sara an bɛɛ ye...an bɛɛ ye (2x)\nYesu sara an bɛɛ ye\nA ye an bɛɛ kisi"
       },
       {
-        "couple": ": De y'a to an bɛ se sɔrɔ...se sɔrɔ : (2x)\nDe y'a to an bɛ se sɔrɔ\nSe sɔrɔ sitanɛ kan"
+        "couple": "De y'a to an bɛ se sɔrɔ...se sɔrɔ (2x)\nDe y'a to an bɛ se sɔrɔ\nSe sɔrɔ sitanɛ kan"
       },
       {
-        "couple": ": Yesu kununna ka ban...kununna : (2x)\nYesu kununna ka ban\nA ye saya fanga tiɲɛn."
+        "couple": "Yesu kununna ka ban...kununna (2x)\nYesu kununna ka ban\nA ye saya fanga tiɲɛn."
       },
       {
-        "couple": ": Ala ka nɛɛmaba...nɛɛmaba : (2x)\nAla ka nɛɛmaba\nSera dannabaaw ma"
+        "couple": "Ala ka nɛɛmaba...nɛɛmaba (2x)\nAla ka nɛɛmaba\nSera dannabaaw ma"
       },
       {
-        "couple": ": Matigi Yesu bɛ na...a bɛ na : (2x)\nMatigi Yesu bɛ na\nA bɛ na k'an bɛɛ ta"
+        "couple": "Matigi Yesu bɛ na...a bɛ na (2x)\nMatigi Yesu bɛ na\nA bɛ na k'an bɛɛ ta"
       },
       {
-        "couple": ": An ka nɛgɛ bɛnnan ta...bɛnnan ta : (2x)\nAn ka nɛgɛ bɛnnan ta\nO ye an kisili ye"
+        "couple": "An ka nɛgɛ bɛnnan ta...bɛnnan ta (2x)\nAn ka nɛgɛ bɛnnan ta\nO ye an kisili ye"
       },
       {
-        "couple": ": Tuma bɛɛ an ka Ala deli...Ala deli : (2x)\nTuma bɛɛ an ka Ala deli\nO ye an ka baara ye"
+        "couple": "Tuma bɛɛ an ka Ala deli...Ala deli (2x)\nTuma bɛɛ an ka Ala deli\nO ye an ka baara ye"
       },
       {
-        "couple": ": Aleluya Amiina...Amiina : (2x)\nAleluya Amiina\nAn ka Ala tanu"
+        "couple": "Aleluya Amiina...Amiina (2x)\nAleluya Amiina\nAn ka Ala tanu"
       }
     ]
   },
@@ -312,14 +291,7 @@
   },
   {
     "hymn_number": 11,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 26)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 11,
+    "autrepassage": "(BB, p: 26)",
     "content": [
       {
         "titre": "An Matigi Yesu Filɛ"
@@ -366,14 +338,7 @@
   },
   {
     "hymn_number": 13,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 175)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 13,
+    "autrepassage": "(BB, p: 175)",
     "content": [
       {
         "titre": "A Be Ne Bi Mara"
@@ -438,14 +403,7 @@
   },
   {
     "hymn_number": 15,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 34)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 15,
+    "autrepassage": "(BB, p: 34)",
     "content": [
       {
         "titre": "O Ye Tiɲɛ Ye"
@@ -469,14 +427,7 @@
   },
   {
     "hymn_number": 16,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 169)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 16,
+    "autrepassage": "(BB, p: 169)",
     "content": [
       {
         "titre": "O Ye Dubaden Ye"
@@ -512,14 +463,7 @@
   },
   {
     "hymn_number": 17,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 48)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 17,
+    "autrepassage": "(BB, p: 48)",
     "content": [
       {
         "titre": "Diɲɛ Kisibaa"
@@ -632,14 +576,7 @@
   },
   {
     "hymn_number": 19,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 45)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 19,
+    "autrepassage": "(BB, p: 45)",
     "content": [
       {
         "titre": "Abada Tuma Bɛɛ"
@@ -660,14 +597,7 @@
   },
   {
     "hymn_number": 20,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 52)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 20,
+    "autrepassage": "(BB, p: 52)",
     "content": [
       {
         "titre": "Fangaba bɛ Yesu Joli La"
@@ -735,14 +665,7 @@
   },
   {
     "hymn_number": 22,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 170)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 22,
+    "autrepassage": "(BB, p: 170)",
     "content": [
       {
         "titre": "Fa Ala Boɲa"
@@ -1366,14 +1289,7 @@
   },
   {
     "hymn_number": 44,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 212)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 44,
+    "autrepassage": "(BB, p: 212)",
     "content": [
       {
         "titre": "Tuma Bɛɛ Ne Matigi Bɛ Ne Fɛ"
@@ -1620,14 +1536,7 @@
   },
   {
     "hymn_number": 53,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 130)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 53,
+    "autrepassage": "(BB, p: 130)",
     "content": [
       {
         "titre": "An Ka Ala Bato Dɛ. N'an Bɛ Ala Bato"
@@ -1719,14 +1628,7 @@
   },
   {
     "hymn_number": 55,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 131)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 55,
+    "autrepassage": "(BB, p: 131)",
     "content": [
       {
         "titre": "Dimansi Don Kun"
@@ -1869,14 +1771,7 @@
   },
   {
     "hymn_number": 60,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 171)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 60,
+    "autrepassage": "(BB, p: 171)",
     "content": [
       {
         "titre": "Yesu Tɔɔrɔla An Ye"
@@ -1927,14 +1822,7 @@
   },
   {
     "hymn_number": 61,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 136)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 61,
+    "autrepassage": "(BB, p: 136)",
     "content": [
       {
         "titre": "Yesu Sara Ka Kunun"
@@ -2188,14 +2076,7 @@
   },
   {
     "hymn_number": 66,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 172)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 66,
+    "autrepassage": "(BB, p: 172)",
     "content": [
       {
         "titre": "Matigi Yesu Makarila An Na"
@@ -2341,14 +2222,7 @@
   },
   {
     "hymn_number": 71,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 173)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 71,
+    "autrepassage": "(BB, p: 173)",
     "content": [
       {
         "titre": "Ala Kanubaaw"
@@ -2446,14 +2320,7 @@
   },
   {
     "hymn_number": 73,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 170)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 73,
+    "autrepassage": "(BB, p: 170)",
     "content": [
       {
         "titre": "An Ka Abada Hɛra Makɔnɔ"
@@ -2541,14 +2408,7 @@
   },
   {
     "hymn_number": 76,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 142)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 76,
+    "autrepassage": "(BB, p: 142)",
     "content": [
       {
         "titre": "Ne Fa Ala, Ne Fa Senuma"
@@ -2875,14 +2735,7 @@
   },
   {
     "hymn_number": 83,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 147)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 83,
+    "autrepassage": "(BB, p: 147)",
     "content": [
       {
         "titre": "Ka Tugu Ala Nɔ Fɛ"
@@ -2983,14 +2836,7 @@
   },
   {
     "hymn_number": 85,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 152)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 85,
+    "autrepassage": "(BB, p: 152)",
     "content": [
       {
         "titre": "I Ka Na Yesu Fɛ"
@@ -3161,14 +3007,7 @@
   },
   {
     "hymn_number": 89,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 216)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 89,
+    "autrepassage": "(BB, p: 216)",
     "content": [
       {
         "titre": "Se Bɛ I Ye"
@@ -3210,14 +3049,7 @@
   },
   {
     "hymn_number": 90,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 217)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 90,
+    "autrepassage": "(BB, p: 217)",
     "content": [
       {
         "titre": "Ala Kuma Ka ɲi"
@@ -3284,14 +3116,7 @@
   },
   {
     "hymn_number": 93,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 156)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 93,
+    "autrepassage": "(BB, p: 156)",
     "content": [
       {
         "titre": "An Kisibaa ɲuman Ye Yesu De Ye"
@@ -3432,14 +3257,7 @@
   },
   {
     "hymn_number": 97,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 157)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 97,
+    "autrepassage": "(BB, p: 157)",
     "content": [
       {
         "titre": "Aleluya, Se Dira I Ma"
@@ -3475,14 +3293,7 @@
   },
   {
     "hymn_number": 98,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 159)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 98,
+    "autrepassage": "(BB, p: 159)",
     "content": [
       {
         "titre": "Kibaru Duman Fɔbaa"
@@ -3539,14 +3350,7 @@
   },
   {
     "hymn_number": 99,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 167)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 99,
+    "autrepassage": "(BB, p: 167)",
     "content": [
       {
         "titre": "Hɛraba Nana"
@@ -3781,14 +3585,7 @@
   },
   {
     "hymn_number": 105,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 188)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 105,
+    "autrepassage": "(BB, p: 188)",
     "content": [
       {
         "titre": "I Ka I Dusu Da yɛlɛ"
@@ -3904,14 +3701,7 @@
   },
   {
     "hymn_number": 107,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 174)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 107,
+    "autrepassage": "(BB, p: 174)",
     "content": [
       {
         "titre": "E Yesu Krisita Nana"
@@ -4014,14 +3804,7 @@
   },
   {
     "hymn_number": 110,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 176)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 110,
+    "autrepassage": "(BB, p: 176)",
     "content": [
       {
         "titre": "Kisibaa Wolola An Ye"
@@ -4083,14 +3866,7 @@
   },
   {
     "hymn_number": 112,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 177)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 112,
+    "autrepassage": "(BB, p: 177)",
     "content": [
       {
         "titre": "Yesu O. Ala Denkɛ Yesu"
@@ -4135,14 +3911,7 @@
   },
   {
     "hymn_number": 113,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 178)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 113,
+    "autrepassage": "(BB, p: 178)",
     "content": [
       {
         "titre": "Ala Denkɛ Yesu Krisita, A Nana An Kosɔn"
@@ -4181,14 +3950,7 @@
   },
   {
     "hymn_number": 114,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 179)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 114,
+    "autrepassage": "(BB, p: 179)",
     "content": [
       {
         "titre": "Diɲɛ N'A Kɔnɔ Fɛnw Bɛɛ"
@@ -4291,14 +4053,7 @@
   },
   {
     "hymn_number": 117,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 180)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 117,
+    "autrepassage": "(BB, p: 180)",
     "content": [
       {
         "titre": "Yuhana 14"
@@ -4337,14 +4092,7 @@
   },
   {
     "hymn_number": 118,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 181)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 118,
+    "autrepassage": "(BB, p: 181)",
     "content": [
       {
         "titre": "Zaburu Fɔlɔ"
@@ -4377,14 +4125,7 @@
   },
   {
     "hymn_number": 119,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 183)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 119,
+    "autrepassage": "(BB, p: 183)",
     "content": [
       {
         "titre": "Kalivɛrɛ Jiri Kan"
@@ -4517,14 +4258,7 @@
   },
   {
     "hymn_number": 122,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 184)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 122,
+    "autrepassage": "(BB, p: 184)",
     "content": [
       {
         "titre": "Matigi Ye Alifa Ni Omɛga Ye"
@@ -4557,14 +4291,7 @@
   },
   {
     "hymn_number": 123,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 182)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 123,
+    "autrepassage": "(BB, p: 182)",
     "content": [
       {
         "titre": "Matigi Yesu Nana"
@@ -4665,14 +4392,7 @@
   },
   {
     "hymn_number": 125,
-    "content": [
-      {
-        "autrepassage": "(ATDNº2, p: 4)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 125,
+    "autrepassage": "(ATDNº2, p: 4)",
     "content": [
       {
         "titre": "Mɔgɔ Bɛɛ Ye Tɔɔrɔ Sɔrɔ Hadama Fɛ, Mɔgɔ Caman Na Hɛra Sɔrɔ Yesu Fɛ"
@@ -4783,14 +4503,7 @@
   },
   {
     "hymn_number": 129,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 185)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 129,
+    "autrepassage": "(BB, p: 185)",
     "content": [
       {
         "titre": "Bange Ko Kura"
@@ -4916,14 +4629,7 @@
   },
   {
     "hymn_number": 133,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 213)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 133,
+    "autrepassage": "(BB, p: 213)",
     "content": [
       {
         "titre": "Yesu Kelen Ye Ne Marabaa Ye"
@@ -4962,14 +4668,7 @@
   },
   {
     "hymn_number": 134,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 186)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 134,
+    "autrepassage": "(BB, p: 186)",
     "content": [
       {
         "titre": "Kisibaa, Kisibaa, Kisibaa"
@@ -5127,14 +4826,7 @@
   },
   {
     "hymn_number": 139,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 187)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 139,
+    "autrepassage": "(BB, p: 187)",
     "content": [
       {
         "titre": "Ni Senu La. Delili Kɛ Dɛ"
@@ -5170,14 +4862,7 @@
   },
   {
     "hymn_number": 140,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 104)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 140,
+    "autrepassage": "(BB, p: 104)",
     "content": [
       {
         "titre": "Krisita Bɛ Na Bange Min ?"
@@ -5257,14 +4942,7 @@
   },
   {
     "hymn_number": 142,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 201)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 142,
+    "autrepassage": "(BB, p: 201)",
     "content": [
       {
         "titre": "Setigi Ala Ba"
@@ -5628,14 +5306,7 @@
   },
   {
     "hymn_number": 154,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 215)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 154,
+    "autrepassage": "(BB, p: 215)",
     "content": [
       {
         "titre": "Kanuya Ye Ton Dafalen Ye"
@@ -5921,14 +5592,7 @@
   },
   {
     "hymn_number": 163,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 96)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 163,
+    "autrepassage": "(BB, p: 96)",
     "content": [
       {
         "titre": "Zaburu 91"
@@ -6169,14 +5833,7 @@
   },
   {
     "hymn_number": 169,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 65)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 169,
+    "autrepassage": "(BB, p: 65)",
     "content": [
       {
         "titre": "Kisibaa ɲuman"
@@ -6892,14 +6549,7 @@
   },
   {
     "hymn_number": 183,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 140)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 183,
+    "autrepassage": "(BB, p: 140)",
     "content": [
       {
         "titre": "Ala Tɛ Mɔgɔ Janfa"
@@ -8327,14 +7977,7 @@
   },
   {
     "hymn_number": 244,
-    "content": [
-      {
-        "autrepassage": "(BB, p: 214)"
-      }
-    ]
-  },
-  {
-    "hymn_number": 244,
+    "autrepassage": "(BB, p: 214)",
     "content": [
       {
         "titre": "An Fa Ala, An K'A Bato"

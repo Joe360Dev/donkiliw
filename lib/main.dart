@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
                 upgrader: Upgrader(
                   countryCode: locale.countryCode,
                   languageCode: locale.languageCode,
-                  debugLogging: true,
+                  debugLogging: false,
                   debugDisplayAlways: true, // Forces dialog
                 ),
                 child: const MainPage(),

@@ -1,107 +1,102 @@
 import json
 import re
-import sys
+import os
 
-def get_song_number(text):
-    match = re.match(r'^(\d+)', text.strip())
-    if match:
-        return match.group(1)
-    return None
+def clean_text(text):
+    # Remove leading verse numbers like "1. ", "1.", "1) ", etc.
+    text = re.sub(r'^\d+[\.\)]\s*', '', text.strip())
+    # Remove leading tabs
+    text = text.replace('\t', ' ')
+    # Normalize multiple spaces
+    text = re.sub(r' +', ' ', text)
+    return text.strip()
 
-def is_numbered_title_line(line):
-    line_s = line.strip()
-    if not line_s: return False
-    return re.match(r'^\d+[\.\s]+[A-Z]', line_s)
-
-def parse_nii_don(file_path):
+def parse_txt(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+        content = f.read()
 
-    hymns = []
-    current_hymn = []
-    current_type = None
-    current_lines = []
-    current_song_num = None
+    # Split content into parts starting with [Title], [Verse], or [Refrain]
+    parts = re.split(r'(\[(?:Title|Verse|Refrain)\])', content)
     
-    in_forced_titre = False
-    just_finished_title_line = False
-
-    def flush():
-        nonlocal current_type, current_lines, in_forced_titre, just_finished_title_line
-        if current_type and current_lines:
-            text = "".join(current_lines).strip()
-            if text:
-                text = re.sub(r'\((\d+)\)', r'(\1x)', text)
-                current_hymn.append({current_type: text})
-        current_lines = []
-        in_forced_titre = False
-        just_finished_title_line = False
-
-    for i, line in enumerate(lines):
-        line_s = line.strip()
-        
-        if not line_s:
-            if just_finished_title_line:
-                flush()
-                # If we were in titre, and next thing is not a tag, it'll be a couple
-                current_type = "couple"
-                just_finished_title_line = False
-            continue
-
-        if line_s == "[Title]":
-            in_forced_titre = True
-            continue
-        elif line_s == "[Verse]":
-            flush()
-            current_type = "couple"
-            continue
-        elif line_s == "[Refrain]":
-            flush()
-            current_type = "refrain"
+    hymns = []
+    current_hymn = None
+    current_tag = None
+    
+    for part in parts:
+        part = part.strip()
+        if not part:
             continue
         
-        is_numbered = is_numbered_title_line(line)
+        if part in ['[Title]', '[Verse]', '[Refrain]']:
+            current_tag = part
+            continue
         
-        if in_forced_titre or is_numbered:
-            num = get_song_number(line_s)
-            if num is not None and num != current_song_num:
-                flush()
-                if current_hymn:
-                    hymns.append(current_hymn)
-                    current_hymn = []
-                current_song_num = num
+        if current_tag == '[Title]':
+            lines = [l.strip() for l in part.split('\n') if l.strip()]
+            if not lines: continue
+            
+            # The first line contains the number and title
+            title_line = lines[0]
+            
+            # Extract leading number
+            num_match = re.search(r'^(\d+)', title_line)
+            if num_match:
+                hymn_num = int(num_match.group(1))
+                # Title is everything after the number
+                title = title_line[len(num_match.group(0)):].strip()
             else:
-                flush()
+                hymn_num = 0
+                title = title_line
+            
+            # If there are subsequent lines in the title block, join them to the title
+            if len(lines) > 1:
+                title += " " + " ".join(lines[1:])
+            
+            current_hymn = {
+                "hymn_number": hymn_num,
+                "content": [{"titre": title}]
+            }
+            
+            hymns.append(current_hymn)
                 
-            current_type = "titre"
-            current_lines.append(line)
-            just_finished_title_line = True
-            in_forced_titre = False
-            continue
-
-        if not current_type:
-            current_type = "titre"
-        
-        current_lines.append(line)
-        # If we just started a title (without tag) and finished the line, reset the flag
-        # (Though we handle blank lines above)
-
-    flush()
-    if current_hymn:
-        hymns.append(current_hymn)
-        
+        elif current_tag == '[Verse]':
+            if current_hymn is not None:
+                cleaned = clean_text(part)
+                current_hymn["content"].append({"couple": cleaned})
+                
+        elif current_tag == '[Refrain]':
+            if current_hymn is not None:
+                # Refrains usually don't have leading numbers but we can clean anyway
+                cleaned = clean_text(part)
+                current_hymn["content"].append({"refrain": cleaned})
+                
     return hymns
 
+def main():
+    base_path = "assets/json_books"
+    files = ["ama somu nii.txt", "nii dɔn kana dagi.txt"]
+    
+    for filename in files:
+        txt_path = os.path.join(base_path, filename)
+        if not os.path.exists(txt_path):
+            # Try absolute path if relative fails (though I am in Cwd)
+            txt_path = os.path.join("/Users/joe360dev/Projects/Flutter/donkiliw/assets/json_books", filename)
+            
+        if not os.path.exists(txt_path):
+            print(f"Skipping {txt_path}, not found.")
+            continue
+            
+        print(f"Parsing {txt_path}...")
+        hymns = parse_txt(txt_path)
+        
+        # Determine output filename
+        # Normalize name: lowercase, replace spaces for consistency
+        out_name = filename.lower().replace(" ", "_").replace(".txt", ".json")
+        out_path = os.path.join(base_path, out_name)
+        
+        with open(out_path, 'w', encoding='utf-8') as f:
+            json.dump(hymns, f, ensure_ascii=False, indent=2)
+        print(f"Saved {len(hymns)} hymns to {out_path}")
+
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python parse_hymns.py <input_txt> <output_json>")
-        sys.exit(1)
-    
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
-    
-    result = parse_nii_don(input_file)
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
-    
-    print(f"Successfully parsed {len(result)} hymn entries.")
+    main()
